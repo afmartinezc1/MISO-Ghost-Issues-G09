@@ -17,6 +17,7 @@ When("I click SignIn", async function () {
   return await element.click();
 });
 
+// DESIGN //
 When("I click in Design", async function () {
   let element = await this.driver.$(global.pageElements.design.linkSideMenu);
   return await element.click();
@@ -29,16 +30,33 @@ When("I fill name of menu item {string}", async function (msg) {
   return await element.setValue(msg);
 });
 
-When("I fill page url {string}", async function (url) {
+When("I fill url of menu item {kraken-string}", async function (url) {
   let element = await this.driver.$(
     global.pageElements.design.menuItemUrlInput
   );
   return await element.setValue(url);
 });
 
-When("I save changes", async function () {
+When("I save navBar design changes", async function () {
   let element = await this.driver.$(global.pageElements.design.saveBtn);
   return await element.click();
+});
+
+Then("I should see a navBar item with name {string}", async function (navItem) {
+  let element = await this.driver.$(`.nav-${navItem.toLowerCase()} a`);
+  const navBarText = await element.getText();
+  expect(navBarText).to.equal(navItem.toUpperCase());
+});
+
+When("I click in navBar delete button", async function () {
+  let element = await this.driver.$(global.pageElements.design.deleteButton);
+  return await element.click();
+});
+
+Then("I shouldn't see a navBar item with name {string}", async function (navItem) {
+  let element = await this.driver.$(`.nav-${navItem.toLowerCase()} a`);
+  const existNavItem = await element.isExisting();
+  expect(existNavItem).to.equal(false);
 });
 
 // POSTS //

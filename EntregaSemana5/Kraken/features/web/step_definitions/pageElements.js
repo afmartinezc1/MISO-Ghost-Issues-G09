@@ -35,12 +35,14 @@ const pageElements = {
     confirmDeleteBtn: "button.gh-btn-red > span",
   },
   design: {
-    linkSideMenu: "#ember41",
+    linkSideMenu: "ul.gh-nav-settings li:nth-child(3)",
     menuItemNameInput:
       "#settings-navigation > .gh-blognav-item .gh-blognav-line span:first-of-type input",
     menuItemUrlInput:
       "#settings-navigation > .gh-blognav-item .gh-blognav-line span:last-of-type input",
     saveBtn: ".gh-btn-blue",
+    lastNavBarItem: "ul.nav li:last-child a",
+    deleteButton: "#settings-navigation > .sortable-objects .draggable-object:last-child button"
   },
 };
 

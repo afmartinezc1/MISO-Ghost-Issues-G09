@@ -1,20 +1,35 @@
-Feature: Login
+Feature: NavBar
 
   @user1 @web
-  Scenario: Como usuario inicio sesion en ghost
-    Given I navigate to page "http://localhost:2368/ghost/#/signin"
+  Scenario: Como usuario inicio sesion en ghost, creo un nuevo item para el navbar, reviso que se vea reflejado en la pagina, lo elimino, y reviso que efectivamente ya no se encuentre
+    Given I navigate to page "<URL>"
     And I wait for 3 seconds
     When I enter email "<USERNAME>"
     And I wait for 2 seconds
     And I enter password "<PASSWORD>"
     And I wait for 2 seconds
     And I click SignIn
-    And I wait for 5 seconds
+    And I wait for 3 seconds
     And I click in Design
     And I wait for 2 seconds
-    And I fill name of menu item "texto"
+    And I fill name of menu item "new-NavBar-Item"
     And I wait for 2 seconds
-    And I fill page url "http://localhost:2368/tag/getting-started/"
+    And I fill url of menu item "<EXISTING_URL>"
+    And I wait for 2 seconds
+    And I save navBar design changes
+    And I wait for 2 seconds
+    And I navigate to page "<BLOG>"
     And I wait for 3 seconds
-    And I save changes
-    Then I wait for 7 seconds
+    Then I should see a navBar item with name "new-NavBar-Item"
+    And I wait for 2 seconds
+    When I navigate to page "<URL>"
+    And I wait for 3 seconds
+    And I click in Design
+    And I wait for 2 seconds
+    And I click in navBar delete button
+    And I wait for 1 seconds
+    And I save navBar design changes
+    And I wait for 1 seconds
+    And I navigate to page "<BLOG>"
+    And I wait for 3 seconds
+    Then I shouldn't see a navBar item with name "new-NavBar-Item"
