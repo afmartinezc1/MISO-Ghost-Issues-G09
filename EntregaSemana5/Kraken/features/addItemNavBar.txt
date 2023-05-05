@@ -9,4 +9,12 @@ Feature: Login
     And I enter password "<PASSWORD>"
     And I wait for 2 seconds
     And I click SignIn
+    And I wait for 5 seconds
+    And I click in Design
+    And I wait for 2 seconds
+    And I fill name of menu item "texto"
+    And I wait for 2 seconds
+    And I fill page url "http://localhost:2368/tag/getting-started/"
+    And I wait for 3 seconds
+    And I save changes
     Then I wait for 7 seconds
