@@ -8,6 +8,6 @@ Admeas encontrara las estrategias de pruebas usadas en las diferentes semanas, y
 
 Pasos para correr el proyecto de Kraken: 
 1. Ingresar a la carpeta **EntregaSemana5\Kraken\**
-2. Ejecutar el comando npm install ```kraken-node```
+2. Ejecutar el comando ```npm install kraken-node```
 3. Correr el test usando el comando ```npx kraken-node run```
 
