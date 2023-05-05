@@ -1,4 +1,8 @@
 const pageElements = {
+  application: {
+    body: "body",
+    iframe: "iframe",
+  },
   login: {
     userInput: "#ember8",
     passInput: "#ember10",
@@ -14,6 +18,10 @@ const pageElements = {
     postSettings: "button.post-settings",
     deletePostBtn: "button.settings-menu-delete-button",
     confirmDeleteBtn: "button.gh-btn-red > span",
+    addExtraContentBtn: "button.koenig-plus-menu-button",
+    addYoutubeLink:
+      ".kg-cardmenu-card-hover[data-kg='cardmenu-card'][title='YouTube']",
+    youtubeURLInput: "[placeholder='Paste URL to add embedded content...']",
   },
   page: {
     pageView: "[href='#/pages/']",

@@ -122,6 +122,33 @@ When("I click on confirm post delete", async function () {
   return await element.click();
 });
 
+When("I click on add post extra content", async function () {
+  let element = await this.driver.$(
+    global.pageElements.post.addExtraContentBtn
+  );
+  return await element.click();
+});
+
+When("I click on add post youtube link", async function () {
+  let element = await this.driver.$(global.pageElements.post.addYoutubeLink);
+  return await element.click();
+});
+
+When("I enter post youtube link {string}", async function (url) {
+  let element = await this.driver.$(global.pageElements.post.youtubeURLInput);
+  return await element.setValue(url);
+});
+
+When("I click on the application body", async function () {
+  let element = await this.driver.$(global.pageElements.application.body);
+  return await element.click();
+});
+
+Then("I should see an iframe with the youtube video", async function () {
+  let element = await this.driver.$(global.pageElements.application.iframe);
+  expect(element).to.not.be.undefined;
+});
+
 // PAGES //
 When("I go to the pages view", async function () {
   let element = await this.driver.$(global.pageElements.page.pageView);
