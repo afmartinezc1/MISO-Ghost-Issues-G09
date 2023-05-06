@@ -18,9 +18,9 @@ Feature: NavBar
     And I wait for 2 seconds
     And I click on stay modal design button
     And I wait for 2 seconds
-    Then I should see the new navBar item input with name "new-NavBar-Item"
+    And I should see the new navBar item input with name "new-NavBar-Item"
     And I wait for 2 seconds
-    When I click in General 
+    And I click in General 
     And I wait for 2 seconds
     And I click on leave modal design button
     And I wait for 2 seconds

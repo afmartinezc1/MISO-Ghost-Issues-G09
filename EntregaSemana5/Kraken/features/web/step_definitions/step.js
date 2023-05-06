@@ -87,6 +87,38 @@ When("I click in General", async function () {
   return await element.click();
 });
 
+When("I click on general settings title description expand button", async function () {
+  let element = await this.driver.$(global.pageElements.general.expandTitleBtn);
+  return await element.click();
+});
+
+When("I fill general settings site title with text {string}", async function (title) {
+  let element = await this.driver.$(global.pageElements.general.titleSettingsInput);
+  return await element.setValue(title);
+});
+
+When("I fill general settings site description with text {string}", async function (description) {
+  let element = await this.driver.$(global.pageElements.general.descriptionSettingsInput);
+  return await element.setValue(description);
+});
+
+When("I save general settings changes", async function () {
+  let element = await this.driver.$(global.pageElements.general.saveBtn);
+  return await element.click();
+});
+
+Then("I should see the new site title with text {string}", async function (title) {
+  let element = await this.driver.$(global.pageElements.application.siteTitle);
+  const navBarText = await element.getText();
+  expect(navBarText).to.equal(title);
+});
+
+Then("I should see the new site description with text {string}", async function (description) {
+  let element = await this.driver.$(global.pageElements.application.siteDescription);
+  const navBarText = await element.getText();
+  expect(navBarText).to.equal(description);
+});
+
 // POSTS //
 When("I go to the posts view", async function () {
   let element = await this.driver.$(global.pageElements.post.postView);

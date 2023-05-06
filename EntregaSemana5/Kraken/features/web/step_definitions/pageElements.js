@@ -2,6 +2,8 @@ const pageElements = {
   application: {
     body: "body",
     iframe: "iframe",
+    siteTitle: ".gh-nav-menu-details-blog",
+    siteDescription: ".site-description"
   },
   login: {
     userInput: "#ember8",
@@ -48,6 +50,10 @@ const pageElements = {
   },
   general: {
     linkSideMenu: "ul.gh-nav-settings li:nth-child(2)",
+    expandTitleBtn: ".flex-column.mt2 > .gh-setting-first button",
+    titleSettingsInput: ".form-group:not(.description-container) .ember-text-field",
+    descriptionSettingsInput: ".description-container .ember-text-field",
+    saveBtn: ".gh-btn-blue",
   },
 };
 
