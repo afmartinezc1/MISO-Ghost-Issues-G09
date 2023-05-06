@@ -9,9 +9,9 @@ Admeas encontrara las estrategias de pruebas usadas en las diferentes semanas, y
 ### Entrega Semana 5
 
 Versiones:
-Cypres: 12.11.0
-Node: 14.21.3
-Ghost: 3.41.1
+- Cypres: 12.11.0
+- Node: 14.21.3
+- Ghost: 3.41.1
 
 Antes de empezar:
 1. Tener instalada la version de ghost que se menciona arriba
@@ -33,3 +33,12 @@ Pasos para correr el proyecto de Cypress:
 3. Correr cypres usando el comando ```npx cypress open```
 4. ejecutar una a una las pruebas e2e
 
+### Funcionalidades y escenarios de prueba
+
+| Funcionalidad | Escenario de pruebas |
+| --- | --- |
+| Agregar items al NavBar | Como usuario inicio sesion en ghost, creo un nuevo item para el navbar, reviso que se vea reflejado en la página, lo elimino, y reviso que efectivamente ya no se encuentre |
+| Agregar items al NavBar sin guardar | Como usuario inicio sesion en ghost, creo un nuevo item para el navbar, trato de salir sin guardar los cambios, cancelo la accion y válido que los cambios no se descarten, luego intento de nuevo, descarto la accion y válido que los cambios se hayan descartado |
+| Modificar ajustes generales | Como usuario inicio sesion en ghost, entro en las opciones generales del sitio, cambio el título y la descripción, guardo cambios y válido que estos se vean reflejados en el blog |
+| Editar Staff | Como usuario inicio sesion en ghost, entro a staff, y modifico algunos de los atributos del usuario. Luego valido que estos atributos se hayan modificado correctamente |
+| Cambiar contraseña de un usuario del Staff | Como usuario inicio sesion en ghost, entro a staff, y modifico la contraseña de un usuario, me deslogueo e ingreso con la nueva contraseña |
