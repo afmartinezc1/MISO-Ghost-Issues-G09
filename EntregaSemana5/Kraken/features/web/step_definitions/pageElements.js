@@ -69,7 +69,17 @@ const pageElements = {
     saveNewPassBtn: ".button-change-password",
     userProfile: ".gh-user-avatar",
     signout: ".user-menu-signout"
-  }
+  },
+  tag: {
+    tagView: "[href='#/tags/']",
+    newTag: "[href='#/tags/new/']",
+    inputName: "#tag-name",
+    inputColor: "[placeholder='abcdef']",
+    inputSlug: "#tag-slug",
+    inputDescription: "#tag-description",
+    saveBtn: ".gh-btn-blue",
+    tagList: ".tags-list > *"
+  },
 };
 
 global.pageElements = pageElements;

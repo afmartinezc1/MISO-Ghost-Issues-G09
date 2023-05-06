@@ -1,5 +1,6 @@
 const { Given, When, Then } = require("@cucumber/cucumber");
 const { expect } = require("chai");
+const exp = require("constants");
 require("./pageElements");
 
 When("I enter email {kraken-string}", async function (email) {
@@ -406,3 +407,54 @@ When("I click on confirm page delete", async function () {
   let element = await this.driver.$(global.pageElements.page.confirmDeleteBtn);
   return await element.click();
 });
+
+// TAGS //
+When("I go to the tags view", async function () {
+  let element = await this.driver.$(global.pageElements.tag.tagView);
+  return await element.click();
+});
+
+When("I click new tag", async function () {
+  let element = await this.driver.$(global.pageElements.tag.newTag);
+  return await element.click();
+});
+
+When("I enter tag name {string}", async function (name) {
+  let element = await this.driver.$(global.pageElements.tag.inputName);
+  return await element.setValue(name);
+});
+
+When("I enter tag color {string}", async function (color) {
+  let element = await this.driver.$(global.pageElements.tag.inputColor);
+  return await element.setValue(color);
+});
+
+When("I enter tag slug {string}", async function (slug) {
+  let element = await this.driver.$(global.pageElements.tag.inputSlug);
+  return await element.setValue(slug);
+});
+
+When("I enter tag description {kraken-string}", async function (description) {
+  let element = await this.driver.$(global.pageElements.tag.inputDescription);
+  return await element.setValue(description);
+});
+
+When("I save tag changes", async function () {
+  let element = await this.driver.$(global.pageElements.tag.saveBtn);
+  return await element.click();
+});
+
+Then(
+  "I should see tag in tag list with name {string}, slug {string} and description {kraken-string}",
+  async function (name, slug, description) {
+    let elements = await this.driver.$$(global.pageElements.tag.tagList);
+    let encontrado = false;
+    for (const element of elements) {
+      const text = await element.getText();
+      if (text.includes(name) && text.includes(slug) && text.includes(description)) {
+        encontrado = true;
+      }
+    }
+    expect(encontrado).to.equal(true);
+  }
+);
