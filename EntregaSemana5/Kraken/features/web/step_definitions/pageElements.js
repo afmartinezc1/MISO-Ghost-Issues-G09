@@ -55,6 +55,16 @@ const pageElements = {
     descriptionSettingsInput: ".description-container .ember-text-field",
     saveBtn: ".gh-btn-blue",
   },
+  staff: {
+    linkSideMenu: "ul.gh-nav-manage li:nth-child(5)",
+    userToEdit: ".author",
+    userEdited: ".apps-grid-cell:last-of-type",
+    inputName: "#user-name",
+    inputLocation: "#user-location",
+    inputBio: "#user-bio",
+    saveBtn: ".gh-btn-blue",
+    userEditedName: ".apps-grid-cell:last-of-type .apps-card-app-title"
+  }
 };
 
 global.pageElements = pageElements;

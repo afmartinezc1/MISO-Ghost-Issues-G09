@@ -119,6 +119,73 @@ Then("I should see the new site description with text {string}", async function 
   expect(navBarText).to.equal(description);
 });
 
+// STAFF //
+When("I click in Staff", async function () {
+  let element = await this.driver.$(global.pageElements.staff.linkSideMenu);
+  return await element.click();
+});
+
+When("I click in author user to modify", async function () {
+  let element = await this.driver.$(global.pageElements.staff.userToEdit);
+  return await element.click();
+});
+
+When("I fill user full name in staff with text {string}", async function (name) {
+  let element = await this.driver.$(global.pageElements.staff.inputName);
+  return await element.setValue(name);
+});
+
+When("I fill user location in staff with text {string}", async function (location) {
+  let element = await this.driver.$(global.pageElements.staff.inputLocation);
+  return await element.setValue(location);
+});
+
+When("I fill user biography in staff with text {kraken-string}", async function (biography) {
+  let element = await this.driver.$(global.pageElements.staff.inputBio);
+  return await element.setValue(biography);
+});
+
+When("I save user edit staff changes", async function () {
+  let element = await this.driver.$(global.pageElements.staff.saveBtn);
+  return await element.click();
+});
+
+Then(
+  "I should see user full name in staff list with text {string}",
+  async function (name) {
+    let element = await this.driver.$(global.pageElements.staff.userEditedName);
+    const actualTitle = await element.getText();
+    expect(actualTitle).to.equal(name);
+  }
+);
+
+Then(
+  "I should see user full name in edit user with text {string}",
+  async function (name) {
+    let element = await this.driver.$(global.pageElements.staff.inputName);
+    const actualTitle = await element.getValue();
+    expect(actualTitle).to.equal(name);
+  }
+);
+
+Then(
+  "I should see user location in edit user with text {string}",
+  async function (location) {
+    let element = await this.driver.$(global.pageElements.staff.inputLocation);
+    const actualTitle = await element.getValue();
+    expect(actualTitle).to.equal(location);
+  }
+);
+
+Then(
+  "I should see user biography in edit user with text {kraken-string}",
+  async function (biography) {
+    let element = await this.driver.$(global.pageElements.staff.inputBio);
+    const actualTitle = await element.getValue();
+    expect(actualTitle).to.equal(biography);
+  }
+);
+
 // POSTS //
 When("I go to the posts view", async function () {
   let element = await this.driver.$(global.pageElements.post.postView);

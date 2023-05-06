@@ -1,4 +1,4 @@
-Feature: NavBar
+Feature: Edit General Settings
 
   @user1 @web
   Scenario: Como usuario inicio sesion en ghost, entro en las opciones generales del sitio, cambio el titulo y la descripcion, guardo cambios y valido que estos se vean reflejados en el blog
