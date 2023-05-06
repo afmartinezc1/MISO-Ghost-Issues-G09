@@ -62,8 +62,13 @@ const pageElements = {
     inputName: "#user-name",
     inputLocation: "#user-location",
     inputBio: "#user-bio",
+    inputPassword: "#user-password-new",
+    inputPasswordVerification: "#user-new-password-verification",
     saveBtn: ".gh-btn-blue",
-    userEditedName: ".apps-grid-cell:last-of-type .apps-card-app-title"
+    userEditedName: ".apps-grid-cell:last-of-type .apps-card-app-title",
+    saveNewPassBtn: ".button-change-password",
+    userProfile: ".gh-user-avatar",
+    signout: ".user-menu-signout"
   }
 };
 

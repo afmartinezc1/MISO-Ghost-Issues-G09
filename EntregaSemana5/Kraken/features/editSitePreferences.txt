@@ -9,7 +9,7 @@ Feature: Edit General Settings
     And I enter password "<PASSWORD>"
     And I wait for 2 seconds
     And I click SignIn
-    And I wait for 3 seconds
+    And I wait for 5 seconds
     And I click in General
     And I wait for 2 seconds
     And I click on general settings title description expand button

@@ -145,6 +145,31 @@ When("I fill user biography in staff with text {kraken-string}", async function 
   return await element.setValue(biography);
 });
 
+When("I fill user new password in staff with text {string}", async function (password) {
+  let element = await this.driver.$(global.pageElements.staff.inputPassword);
+  return await element.setValue(password);
+});
+
+When("I fill user new password verification in staff with text {string}", async function (password) {
+  let element = await this.driver.$(global.pageElements.staff.inputPasswordVerification);
+  return await element.setValue(password);
+});
+
+When("I save user new password staff changes", async function () {
+  let element = await this.driver.$(global.pageElements.staff.saveNewPassBtn);
+  return await element.click();
+});
+
+When("I click user profile sideBar", async function () {
+  let element = await this.driver.$(global.pageElements.staff.userProfile);
+  return await element.click();
+});
+
+When("I click user sign out", async function () {
+  let element = await this.driver.$(global.pageElements.staff.signout);
+  return await element.click();
+});
+
 When("I save user edit staff changes", async function () {
   let element = await this.driver.$(global.pageElements.staff.saveBtn);
   return await element.click();
@@ -185,6 +210,12 @@ Then(
     expect(actualTitle).to.equal(biography);
   }
 );
+
+Then("I shouldn see a sideNav page title", async function () {
+  let element = await this.driver.$(global.pageElements.application.siteTitle);
+  const existNavItem = await element.isExisting();
+  expect(existNavItem).to.equal(true);
+});
 
 // POSTS //
 When("I go to the posts view", async function () {
