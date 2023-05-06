@@ -4,7 +4,7 @@ const password = Cypress.env("PASSWORD");
 const pageElements = Cypress.env("pageElements");
 const EXISTING_URL = Cypress.env("EXISTING_URL");
 const BLOG = Cypress.env("BLOG");
-describe("Add NavBar item without save", () => {
+describe("Edit General Settings", () => {
   it("Como usuario inicio sesion en ghost, entro en las opciones generales del sitio, cambio el titulo y la descripcion, guardo cambios y valido que estos se vean reflejados en el blog", async () => {
     //Given I navigate to page "<URL>"
     cy.visit(url);
