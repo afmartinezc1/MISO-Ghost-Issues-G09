@@ -42,7 +42,12 @@ const pageElements = {
       "#settings-navigation > .gh-blognav-item .gh-blognav-line span:last-of-type input",
     saveBtn: ".gh-btn-blue",
     lastNavBarItem: "ul.nav li:last-child a",
-    deleteButton: "#settings-navigation > .sortable-objects .draggable-object:last-child button"
+    deleteButton: "#settings-navigation > .sortable-objects .draggable-object:last-child button",
+    stayBtn: ".modal-footer button:first-of-type",
+    leaveBtn: ".modal-footer button:last-of-type"
+  },
+  general: {
+    linkSideMenu: "ul.gh-nav-settings li:nth-child(2)",
   },
 };
 

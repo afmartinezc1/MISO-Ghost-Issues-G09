@@ -59,6 +59,34 @@ Then("I shouldn't see a navBar item with name {string}", async function (navItem
   expect(existNavItem).to.equal(false);
 });
 
+When("I click on stay modal design button", async function () {
+  let element = await this.driver.$(global.pageElements.design.stayBtn);
+  return await element.click();
+});
+
+When("I click on leave modal design button", async function () {
+  let element = await this.driver.$(global.pageElements.design.leaveBtn);
+  return await element.click();
+});
+
+Then("I should see the new navBar item input with name {string}", async function (navItem) {
+  let element = await this.driver.$(global.pageElements.design.menuItemNameInput);
+  const navBarText = await element.getValue();
+  expect(navBarText).to.equal(navItem);
+});
+
+Then("I shouldn't see the new navBar item input with name {string}", async function (navItem) {
+  let element = await this.driver.$(global.pageElements.design.menuItemNameInput);
+  const navBarText = await element.getValue();
+  expect(navBarText).to.not.equal(navItem);
+});
+
+// GENERAL //
+When("I click in General", async function () {
+  let element = await this.driver.$(global.pageElements.general.linkSideMenu);
+  return await element.click();
+});
+
 // POSTS //
 When("I go to the posts view", async function () {
   let element = await this.driver.$(global.pageElements.post.postView);
