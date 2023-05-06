@@ -43,7 +43,7 @@ When("I save navBar design changes", async function () {
 });
 
 Then("I should see a navBar item with name {string}", async function (navItem) {
-  let element = await this.driver.$(`.nav-${navItem.toLowerCase()} a`);
+  let element = await this.driver.$(global.pageElements.design.lastNavBarItem);
   const navBarText = await element.getText();
   expect(navBarText).to.equal(navItem.toUpperCase());
 });
