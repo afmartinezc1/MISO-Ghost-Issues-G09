@@ -580,7 +580,7 @@ When("I click filter page by state All", async function () {
 Then(
   "I should see pages with estado {string}",
   async function (state) {
-    let elements = await this.driver.$$(global.pageElements.post.postList);
+    let elements = await this.driver.$$(global.pageElements.page.pageList);
     let estadoOk = true;
     let i=0;
     for (const element of elements) {

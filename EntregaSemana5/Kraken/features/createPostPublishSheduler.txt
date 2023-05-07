@@ -1,4 +1,4 @@
-Feature: Create Post and publish
+Feature: Create Post and publish sheduled
   
   @user1 @web
   Scenario: Como usuario inicio sesion en ghost, creo un post, programar la publicacion por 5 minutos y verificar que quedó programado

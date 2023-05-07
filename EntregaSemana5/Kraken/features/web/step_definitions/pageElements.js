@@ -52,6 +52,7 @@ const pageElements = {
     pageSettings: "button.post-settings",
     deletePageBtn: "button.settings-menu-delete-button",
     confirmDeleteBtn: "button.gh-btn-red > span",
+    pageList: ".gh-list > *",
   },
   design: {
     linkSideMenu: "ul.gh-nav-settings li:nth-child(3)",

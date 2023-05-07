@@ -24,6 +24,19 @@ const pageElements = {
     addYoutubeLink:
       ".kg-cardmenu-card-hover[data-kg='cardmenu-card'][title='YouTube']",
     youtubeURLInput: "[placeholder='Paste URL to add embedded content...']",
+
+    publishPost: ".gh-editor-header div.gh-publishmenu",
+    publishConfirm: "button.gh-publishmenu-button",
+    viewPost: "span.gh-notification-actions",
+    calendarSheduler: "div.gh-date-time-picker-time > input",
+    firstPostInListStatus: ".gh-list > li:nth-child(2) .gh-content-status-draft",
+    filterPostState: "div.gh-contentfilter-type",
+    filterPostAuthor: "div.gh-contentfilter-author",
+    filterPostStateDraft: ".ember-power-select-options > li:nth-child(2)",
+    filterPostStatePublished: ".ember-power-select-options > li:nth-child(3)",
+    filterPostAuthorGhost: ".ember-power-select-options > li:last-child",
+    postList: ".posts-list",
+    filterPostStateAll: ".ember-power-select-options > li:nth-child(1)",
   },
   page: {
     pageView: ".gh-nav-list [href='#/pages/']",
@@ -35,6 +48,7 @@ const pageElements = {
     pageSettings: "button.post-settings",
     deletePageBtn: "button.settings-menu-delete-button",
     confirmDeleteBtn: "button.gh-btn-red > span",
+    pageList: ".gh-list",
   },
   design: {
     linkSideMenu: "ul.gh-nav-settings li:nth-child(3)",
