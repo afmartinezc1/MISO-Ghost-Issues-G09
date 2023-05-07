@@ -458,3 +458,18 @@ Then(
     expect(encontrado).to.equal(true);
   }
 );
+
+When(
+  "I click a tag with name {string}, slug {string} and description {kraken-string}",
+  async function (name, slug, description) {
+    let elements = await this.driver.$$(global.pageElements.tag.tagList);
+    let last = null;
+    for (const element of elements) {
+      const text = await element.getText();
+      if (text.includes(name) && text.includes(slug) && text.includes(description)) {
+        last = element;
+      }
+    }
+    return await last.click();
+  }
+);
