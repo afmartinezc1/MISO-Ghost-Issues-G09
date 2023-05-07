@@ -25,7 +25,8 @@ Antes de empezar:
 Pasos para correr el proyecto de Kraken: 
 1. Ingresar a la carpeta **EntregaSemana5\Kraken\**
 2. Ejecutar el comando ```npm install kraken-node```
-3. Correr el test usando el comando ```npx kraken-node run```
+3. Ejecutar el comando ```npm install chai```
+4. Correr el test usando el comando ```npx kraken-node run```
 
 Pasos para correr el proyecto de Cypress: 
 1. Ingresar a la carpeta **EntregaSemana5\Cypress\**
