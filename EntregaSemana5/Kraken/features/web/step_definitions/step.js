@@ -326,6 +326,107 @@ Then("I should see an iframe with the youtube video", async function () {
   expect(element).to.not.be.undefined;
 });
 
+When("I click publish to show dialog to publish", async function () {
+  let element = await this.driver.$(
+    global.pageElements.post.publishPost
+  );
+  return await element.click();
+});
+
+When("I click publish to confirm", async function () {
+  let element = await this.driver.$(
+    global.pageElements.post.publishConfirm
+  );
+  return await element.click();
+});
+When("I click viewpost", async function () {
+  let element = await this.driver.$(
+    global.pageElements.post.publishConfirm
+  );
+  return await element.click();
+});
+When("I click calendar", async function () {
+  let element = await this.driver.$(
+    global.pageElements.post.calendarSheduler
+  );
+  return await element.click();
+});
+
+Then(
+  "I should see the first post with state {string} {string}",
+  async function (title, state) {
+    let element = await this.driver.$(global.pageElements.post.firstPostInList);
+    let element1 = await this.driver.$(global.pageElements.post.firstPostInListStatus);
+    const actualTitle = await element.getText();
+    const actualState = await element1.getText();
+    expect(actualTitle).to.equal(title) && expect(actualState).to.equal(state);
+  }
+);
+
+When("I click filter post by state", async function () {
+  let element = await this.driver.$(global.pageElements.post.filterPostState);
+  return await element.click();
+});
+
+When("I click filter post by state Draft", async function () {
+  let element = await this.driver.$(global.pageElements.post.filterPostStateDraft);
+  return await element.click();
+});
+
+When("I click filter post by state Published", async function () {
+  let element = await this.driver.$(global.pageElements.post.filterPostStatePublished);
+  return await element.click();
+});
+
+When("I click filter post by author", async function () {
+  let element = await this.driver.$(global.pageElements.post.filterPostAuthor);
+  return await element.click();
+});
+
+When("I click filter post by author ghost", async function () {
+  let element = await this.driver.$(global.pageElements.post.filterPostAuthorGhost);
+  return await element.click();
+});
+
+When("I click filter post by state All", async function () {
+  let element = await this.driver.$(global.pageElements.post.filterPostStateAll);
+  return await element.click();
+});
+
+Then(
+  "I should see posts with estado {string}",
+  async function (state) {
+    let elements = await this.driver.$$(global.pageElements.post.postList);
+    let estadoOk = true;
+    let i=0;
+    for (const element of elements) {
+      const text = await element.getText();
+      if (i>0 && !text.includes(state)) {
+        estadoOk = false;
+      }
+      i++;
+    }
+    expect(estadoOk).to.equal(true);
+  }
+);
+
+Then(
+  "I should see posts with author {string}",
+  async function (state) {
+    let elements = await this.driver.$$(global.pageElements.post.postList);
+    let estadoOk = true;
+    let i=0;
+    for (const element of elements) {
+      const text = await element.getText();
+      if (i>0 && !text.includes(state)) {
+        estadoOk = false;
+      }
+      i++;
+    }
+    expect(estadoOk).to.equal(true);
+  }
+);
+
 // PAGES //
 When("I go to the pages view", async function () {
   let element = await this.driver.$(global.pageElements.page.pageView);
@@ -407,6 +508,70 @@ When("I click on confirm page delete", async function () {
   let element = await this.driver.$(global.pageElements.page.confirmDeleteBtn);
   return await element.click();
 });
+
+When("I click filter page by state", async function () {
+  let element = await this.driver.$(global.pageElements.post.filterPostState);
+  return await element.click();
+});
+
+When("I click filter page by state Draft", async function () {
+  let element = await this.driver.$(global.pageElements.post.filterPostStateDraft);
+  return await element.click();
+});
+
+When("I click filter page by state Published", async function () {
+  let element = await this.driver.$(global.pageElements.post.filterPostStatePublished);
+  return await element.click();
+});
+
+When("I click filter page by author", async function () {
+  let element = await this.driver.$(global.pageElements.post.filterPostAuthor);
+  return await element.click();
+});
+
+When("I click filter page by author ghost", async function () {
+  let element = await this.driver.$(global.pageElements.post.filterPostAuthorGhost);
+  return await element.click();
+});
+
+When("I click filter page by state All", async function () {
+  let element = await this.driver.$(global.pageElements.post.filterPostStateAll);
+  return await element.click();
+});
+
+Then(
+  "I should see pages with estado {string}",
+  async function (state) {
+    let elements = await this.driver.$$(global.pageElements.post.postList);
+    let estadoOk = true;
+    let i=0;
+    for (const element of elements) {
+      const text = await element.getText();
+      if (i>0 && !text.includes(state)) {
+        estadoOk = false;
+      }
+      i++;
+    }
+    expect(estadoOk).to.equal(true);
+  }
+);
+
+Then(
+  "I should see pages with author {string}",
+  async function (state) {
+    let elements = await this.driver.$$(global.pageElements.post.postList);
+    let estadoOk = true;
+    let i=0;
+    for (const element of elements) {
+      const text = await element.getText();
+      if (i>0 && !text.includes(state)) {
+        estadoOk = false;
+      }
+      i++;
+    }
+    expect(estadoOk).to.equal(true);
+  }
+);
 
 // TAGS //
 When("I go to the tags view", async function () {

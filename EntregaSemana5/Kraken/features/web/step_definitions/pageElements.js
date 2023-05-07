@@ -24,6 +24,18 @@ const pageElements = {
     addYoutubeLink:
       ".kg-cardmenu-card-hover[data-kg='cardmenu-card'][title='YouTube']",
     youtubeURLInput: "[placeholder='Paste URL to add embedded content...']",
+    publishPost: "div.gh-publishmenu",
+    publishConfirm: "button.gh-publishmenu-button",
+    viewPost: "span.gh-notification-actions",
+    calendarSheduler: "div.gh-date-time-picker-time",
+    firstPostInListStatus: ".gh-list > li:nth-child(2) .gh-content-status-draft",
+    filterPostState: "div.gh-contentfilter-type",
+    filterPostAuthor: "div.gh-contentfilter-author",
+    filterPostStateDraft: ".ember-power-select-options > li:nth-child(2)",
+    filterPostStatePublished: ".ember-power-select-options > li:nth-child(3)",
+    filterPostAuthorGhost: ".ember-power-select-options > li:last-child",
+    postList: ".posts-list > *",
+    filterPostStateAll: ".ember-power-select-options > li:nth-child(1)",
   },
   page: {
     pageView: "[href='#/pages/']",
