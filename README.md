@@ -1,10 +1,10 @@
 # MISO-Ghost-Issues-G09
-Repositorio para reportar errores de la herramienta Ghost v3.14.1
+Repositorio para realizar pruebas automatizadas E2E sobre la aplicación Ghost v3.14.1
 
 En la seccion de la [wiki](https://github.com/afmartinezc1/MISO-Ghost-Issues-G09/wiki) encontrara enlaces a los diferentes documentos en los cuales explicamos 
 nuestra experiencia con las herramientas propuestas, asi como sus pros y sus contras. 
 
-Admeas encontrara las estrategias de pruebas usadas en las diferentes semanas, y la justificacion del cambio realizado en la semana 4
+Admeas encontrará las estrategias de pruebas usadas en las diferentes semanas, y la justificacion del cambio realizado en la semana 4
 
 ### Entrega Semana 5
 
@@ -12,6 +12,9 @@ Versiones:
 - Cypres: 12.11.0
 - Node: 14.21.3
 - Ghost: 3.41.1
+- Npm: 6.14.18
+- Chai: 4.3.7
+- Kraken-node: 1.0.24
 
 Antes de empezar:
 1. Tener instalada la version de ghost que se menciona arriba
@@ -22,17 +25,23 @@ Antes de empezar:
 4. En ambos archivos configurar las propiedades del json (USERNAME, PASSWORD)
 5. En ambos archivos configurar el puerto de las propiedades (URL, EXISTING_URL, BLOG) para que coincida con el puerto en el que esta corriendo su version de ghost
 
+Nota: Se sugiere borrar la BD de Ghost antes de realizar los suites de prueba en cada herramienta y para hacerlo se debe ingresar (con Ghost detenido) a la carpeta **ghost/content/data** y eliminar el archivo ghost-local.db. Una vez hecho esto, se debe correr ```ghost start``` para crear un usuario administrador. Lo anterior para realizar las pruebas en un entorno limpio.
+
 Pasos para correr el proyecto de Kraken: 
-1. Ingresar a la carpeta **EntregaSemana5\Kraken\**
+1. Ingresar a la carpeta **EntregaSemana5\Kraken**
 2. Ejecutar el comando ```npm install kraken-node```
 3. Ejecutar el comando ```npm install chai```
-4. Correr el test usando el comando ```npx kraken-node run```
+4. Asegurarse que en la raíz de la carpeta **EntregaSemana5/Kraken/features** solo exista un archivo con extensión .feature que es el archivo que contiene el escenario de la prueba. Solo se debe correr un escenario a la vez.
+5. Todas los escenarios se encuentran en la carpeta **EntregaSemana5/Kraken/features/scenarios**
+6. Correr el test usando el comando ```npx kraken-node run``` desde la carpeta **EntregaSemana5/Kraken**
 
 Pasos para correr el proyecto de Cypress: 
-1. Ingresar a la carpeta **EntregaSemana5\Cypress\**
+1. Ingresar a la carpeta **EntregaSemana5\Cypress**
 2. Ejecutar el comando ```npm install cypress --save-dev```
 3. Correr cypres usando el comando ```npx cypress open```
-4. ejecutar una a una las pruebas e2e
+4. Escoger la opción E2E testing en la interfaz de cypress
+5. Escoger Chrome como el navegador
+4. Ejecutar una a una las pruebas E2E en la vista Specs
 
 ### Funcionalidades y escenarios de prueba
 
