@@ -6,9 +6,9 @@ const pageElements = {
     siteDescription: ".site-description",
   },
   login: {
-    userInput: ".gh-icon-mail input",
-    passInput: ".gh-icon-lock input",
-    loginBtn: ".login.gh-btn",
+    userInput: "#ember8",
+    passInput: "#ember10",
+    loginBtn: "#ember12",
   },
   post: {
     postView: ".gh-nav-list-new [href='#/posts/']",
@@ -71,6 +71,18 @@ const pageElements = {
     saveNewPassBtn: ".button-change-password",
     userProfile: ".gh-user-avatar",
     signout: ".user-menu-signout",
+  },
+  tag: {
+    tagView: "ul.gh-nav-manage li:nth-child(4)",
+    newTag: "[href='#/tags/new/']",
+    inputName: "#tag-name",
+    inputColor: "[placeholder='abcdef']",
+    inputSlug: "#tag-slug",
+    inputDescription: "#tag-description",
+    saveBtn: ".gh-btn-blue",
+    tagList: ".tags-list > *",
+    deleteTagBtn: ".gh-btn-red",
+    confirmDeleteBtn: ".liquid-destination-stack .gh-btn-red",
   },
 };
 
