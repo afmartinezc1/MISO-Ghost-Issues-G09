@@ -78,8 +78,10 @@ const pageElements = {
     inputSlug: "#tag-slug",
     inputDescription: "#tag-description",
     saveBtn: ".gh-btn-blue",
-    tagList: ".tags-list > *"
-  },
+    tagList: ".tags-list > *",
+    deleteTagBtn: ".gh-btn-red",
+    confirmDeleteBtn: ".liquid-destination-stack .gh-btn-red"
+  }
 };
 
 global.pageElements = pageElements;

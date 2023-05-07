@@ -473,3 +473,28 @@ When(
     return await last.click();
   }
 );
+
+When("I click on delete tag", async function () {
+  let element = await this.driver.$(global.pageElements.tag.deleteTagBtn);
+  return await element.click();
+});
+
+When("I click on confirm tag delete", async function () {
+  let element = await this.driver.$(global.pageElements.tag.confirmDeleteBtn);
+  return await element.click();
+});
+
+Then(
+  "I should not see tag in tag list with name {string}, slug {string} and description {kraken-string}",
+  async function (name, slug, description) {
+    let elements = await this.driver.$$(global.pageElements.tag.tagList);
+    let encontrado = false;
+    for (const element of elements) {
+      const text = await element.getText();
+      if (text.includes(name) && text.includes(slug) && text.includes(description)) {
+        encontrado = true;
+      }
+    }
+    expect(encontrado).to.equal(false);
+  }
+);
