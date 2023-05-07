@@ -72,6 +72,18 @@ const pageElements = {
     userProfile: ".gh-user-avatar",
     signout: ".user-menu-signout",
   },
+  tag: {
+    tagView: "ul.gh-nav-manage li:nth-child(4)",
+    newTag: "[href='#/tags/new/']",
+    inputName: "#tag-name",
+    inputColor: "[placeholder='abcdef']",
+    inputSlug: "#tag-slug",
+    inputDescription: "#tag-description",
+    saveBtn: ".gh-btn-blue",
+    tagList: ".tags-list",
+    deleteTagBtn: ".gh-btn-red",
+    confirmDeleteBtn: ".liquid-destination-stack .gh-btn-red",
+  },
 };
 
 global.pageElements = pageElements;

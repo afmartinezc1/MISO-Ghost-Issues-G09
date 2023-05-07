@@ -36,6 +36,11 @@ const pageElements = {
     filterPostAuthorGhost: ".ember-power-select-options > li:last-child",
     postList: ".posts-list > *",
     filterPostStateAll: ".ember-power-select-options > li:nth-child(1)",
+
+    inputTag: "#tag-input",
+    tagList: ".ember-power-select-options > *",
+    closePostSettings: "button.close",
+    selectedTags: ".ember-power-select-multiple-options > *"
   },
   page: {
     pageView: "[href='#/pages/']",
@@ -92,7 +97,7 @@ const pageElements = {
     saveBtn: ".gh-btn-blue",
     tagList: ".tags-list > *",
     deleteTagBtn: ".gh-btn-red",
-    confirmDeleteBtn: ".liquid-destination-stack .gh-btn-red"
+    confirmDeleteBtn: ".liquid-destination-stack .gh-btn-red",
   }
 };
 
