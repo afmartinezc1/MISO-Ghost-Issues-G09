@@ -6,9 +6,9 @@ const pageElements = {
     siteDescription: ".site-description",
   },
   login: {
-    userInput: "#ember8",
-    passInput: "#ember10",
-    loginBtn: "#ember12",
+    userInput: ".gh-icon-mail input",
+    passInput: ".gh-icon-lock input",
+    loginBtn: ".login.gh-btn",
   },
   post: {
     postView: ".gh-nav-list-new [href='#/posts/']",
