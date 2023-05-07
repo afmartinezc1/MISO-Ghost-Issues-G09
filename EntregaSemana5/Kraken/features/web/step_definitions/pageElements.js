@@ -24,6 +24,10 @@ const pageElements = {
     addYoutubeLink:
       ".kg-cardmenu-card-hover[data-kg='cardmenu-card'][title='YouTube']",
     youtubeURLInput: "[placeholder='Paste URL to add embedded content...']",
+    inputTag: "#tag-input",
+    tagList: ".ember-power-select-options > *",
+    closePostSettings: "button.close",
+    selectedTags: ".ember-power-select-multiple-options > *"
   },
   page: {
     pageView: "[href='#/pages/']",
@@ -80,7 +84,7 @@ const pageElements = {
     saveBtn: ".gh-btn-blue",
     tagList: ".tags-list > *",
     deleteTagBtn: ".gh-btn-red",
-    confirmDeleteBtn: ".liquid-destination-stack .gh-btn-red"
+    confirmDeleteBtn: ".liquid-destination-stack .gh-btn-red",
   }
 };
 

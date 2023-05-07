@@ -326,6 +326,46 @@ Then("I should see an iframe with the youtube video", async function () {
   expect(element).to.not.be.undefined;
 });
 
+When("I click tags list", async function () {
+  let element = await this.driver.$(global.pageElements.post.inputTag);
+  return await element.click();
+});
+
+When(
+  "I select tag {string}",
+  async function (tag) {
+    let elements = await this.driver.$$(global.pageElements.post.tagList);
+    let last = null;
+    for (const element of elements) {
+      const text = await element.getText();
+      if (text.includes(tag)) {
+        last = element;
+      }
+    }
+    return await last.click();
+  }
+);
+
+When("I click on close post settings", async function () {
+  let element = await this.driver.$(global.pageElements.post.closePostSettings);
+  return await element.click();
+});
+
+Then(
+  "I should see the selected tag {string}",
+  async function (tag) {
+    let elements = await this.driver.$$(global.pageElements.post.selectedTags);
+    let encontrado = false;
+    for (const element of elements) {
+      const text = await element.getText();
+      if (text.includes(tag)) {
+        encontrado = true;
+      }
+    }
+    expect(encontrado).to.equal(true);
+  }
+);
+
 // PAGES //
 When("I go to the pages view", async function () {
   let element = await this.driver.$(global.pageElements.page.pageView);
