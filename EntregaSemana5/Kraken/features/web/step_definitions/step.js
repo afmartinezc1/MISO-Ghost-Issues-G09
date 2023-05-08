@@ -424,6 +424,7 @@ Then(
       i++;
     }
     expect(estadoOk).to.equal(true);
+});
 
 When("I click tags list", async function () {
   let element = await this.driver.$(global.pageElements.post.inputTag);
@@ -699,5 +700,4 @@ Then(
       }
     }
     expect(encontrado).to.equal(false);
-  }
-)});
+  });
