@@ -28,7 +28,7 @@ const pageElements = {
     publishPost: ".gh-editor-header div.gh-publishmenu",
     publishConfirm: "button.gh-publishmenu-button",
     viewPost: "span.gh-notification-actions",
-    calendarSheduler: "div.gh-date-time-picker-time > input",
+    calendarSheduler: ".gh-publishmenu-section div.gh-date-time-picker-time > input",
     firstPostInListStatus: ".gh-list > li:nth-child(2) .gh-content-status-draft",
     filterPostState: "div.gh-contentfilter-type",
     filterPostAuthor: "div.gh-contentfilter-author",
