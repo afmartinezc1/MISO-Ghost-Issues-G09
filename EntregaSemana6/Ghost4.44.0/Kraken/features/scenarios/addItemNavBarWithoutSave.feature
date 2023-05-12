@@ -9,7 +9,6 @@ Feature: NavBar
     And I enter password "<PASSWORD>"
     And I wait for 2 seconds
     And I click SignIn
-    And I take screenshot with name "login"
     And I wait for 5 seconds
     And I click in Design
     And I wait for 2 seconds
