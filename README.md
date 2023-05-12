@@ -59,6 +59,17 @@ Pasos para correr el proyecto de Cypress:
 | Editar Post |  Como usuario inicio sesion en ghost, creo un post, reviso que esté en la lista de draft posts, entro de nuevo al post, edito su título y su contenido, reviso que el título editado sea el que aparece en el primer post de la lista de drafs, entro a ese post y valido que su título y contenido sean los editados|
 | Borrar Page | Como usuario inicio sesion en ghost, creo una page, reviso que esté en la lista de draft pages, creo otra page, reviso que esté en la lista de draft pages, borro esta page, y valido que la primera page de la lista de draft pages sea la primera que cree, con lo cual me cercioro que la segunda page efectivamente fue borrada|
 | Borrar Post | Como usuario inicio sesion en ghost, creo un post, reviso que esté en la lista de draft posts, creo otro post, reviso que esté en la lista de draft posts, borro este post, y valido que el primer post de la lista de draft posts sea el primero que cree, con lo cual me cercioro que el segundo post efectivamente fue borrado|
+| Crear post y publicarlo | Como usuario inicio sesion en ghost, creo un post, lo publico y verifico que la url del post exista como publicado|
+| Crear post y publicarlo | Como usuario inicio sesion en ghost, creo una page, la publico y verifico que la url de la page exista como publicada|
+| Crear post y programar publicación | Como usuario inicio sesion en ghost, creo un post, le programo para que se publique en 5 minutos. Luego me regreso a la viewsite de post y verifico que este de tipo sheduled|
+| Filtrar posts | Como usuario inicio sesion en ghost, entro a viewsite de posts, filtro por tipo utilizando los estados(Draft y published) y verifico que solo filtra de estos dos estados. Luego limpio el filtro de tipo y usando el filtro de Author filltramos por el autor Ghost y verificamos que solo esten los post con author Ghost|
+| Filtrar pages | Como usuario inicio sesion en ghost, entro a viewsite de pages, filtro por tipo utilizando los estados(Draft y published) y verifico que solo filtra de estos dos estados. Luego limpio el filtro de tipo y usando el filtro de Author filltramos por el autor Ghost y verificamos que solo esten las pages con author Ghost|
+| Crear tag | Como usuario inicio sesión en ghost, entro a la sección de tags, selecciono a crear un nuevo tag, ingreso los datos del nuevo tag, confirmo la creación y verifico que el tag se haya creado correctamente en la lista de tags |
+| Editar tag | Como usuario inicio sesión en ghost, entro a la sección de tags, selecciono a crear un nuevo tag, ingreso los datos del nuevo tag, confirmo la creación, verifico que el tag se haya creado correctamente en la lista de tags, edito la información del tag y verifico que el tag se haya acualizado correctamente |
+| Eliminar tag | Como usuario inicio sesión en ghost, entro a la sección de tags, selecciono a crear un nuevo tag, ingreso los datos del nuevo tag, confirmo la creación, verifico que el tag se haya creado correctamente en la lista de tags, elimino el tag y verifico que el tag se haya eliminado correctamente |
+| Agregar un tag a un post | Como usuario inicio sesión en ghost, creo un tag y un post, selecciono el post, le agrego el tag al post correspondiente y verifico que el tag se haya agregado correctamente |
+| Agregar un tag a un page | Como usuario inicio sesión en ghost, creo un tag y un page, selecciono el page, le agrego el tag al page correspondiente y verifico que el tag se haya agregado correctamente |
+
 
 
 

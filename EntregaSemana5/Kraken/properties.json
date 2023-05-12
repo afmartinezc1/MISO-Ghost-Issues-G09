@@ -1,6 +1,6 @@
 {
-  "USERNAME": "<<SU_USUARIO>>",
-  "PASSWORD": "<<SU_CONTRASEÑA>>",
+  "USERNAME": "<<USERNAME>>",
+  "PASSWORD": "<<PASSWORD>>",
   "URL": "http://localhost:2368/ghost/#/signin",
   "EXISTING_URL": "http://localhost:2368/tag/getting-started/",
   "BLOG": "http://localhost:2368",
