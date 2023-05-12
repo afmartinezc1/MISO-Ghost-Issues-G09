@@ -8,8 +8,9 @@ module.exports = defineConfig({
     },
     env: {
       pageElements: global.pageElements,
-      USERNAME: "<USERNAME>",
-      PASSWORD: "<PASSWORD>",
+      ScreenShoot: './customReports',
+      USERNAME: "andressvx@gmail.com",
+      PASSWORD: "PruebasMiso",
       URL: "http://localhost:2368/ghost/#/signin",
       EXISTING_URL: "http://localhost:2368/tag/getting-started/",
       BLOG: "http://localhost:2368",

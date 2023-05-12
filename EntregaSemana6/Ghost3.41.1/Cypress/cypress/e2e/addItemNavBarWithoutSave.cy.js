@@ -1,17 +1,22 @@
 const url = Cypress.env("URL");
 const userName = Cypress.env("USERNAME");
 const password = Cypress.env("PASSWORD");
+const ScreenShoot = Cypress.env("ScreenShoot");
 const pageElements = Cypress.env("pageElements");
 const EXISTING_URL = Cypress.env("EXISTING_URL");
 const BLOG = Cypress.env("BLOG");
+const fs = require('fs');
+
 describe("Add NavBar item without save", () => {
   it("Como usuario inicio sesion en ghost, creo un nuevo item para el navbar, trato de salir sin guardar los cambios, cancelo la accion y valido que los cambios no se descarten, luego intento de nuevo, descarto la accion y valido que los cambios se hayan descartado", async () => {
     //Given I navigate to page "<URL>"
     cy.visit(url);
     //When I enter email "<USERNAME>"
     cy.get(pageElements.login.userInput).type(userName);
+    cy.screenshot(`${ScreenShoot}/addItemNavBarWithoutSave/enterEmail`, { overwrite:true });
     //And I enter password "<PASSWORD>"
     cy.get(pageElements.login.passInput).type(password);
+    cy.screenshot(`${ScreenShoot}/addItemNavBarWithoutSave/enterPassword`, { overwrite:true });
     //And I click SignIn
     cy.get(pageElements.login.loginBtn).click();
     //And I wait for 5 seconds
