@@ -3,12 +3,13 @@ const pageElements = {
     body: "body",
     iframe: "iframe",
     siteTitle: ".gh-nav-menu-details-blog",
-    siteDescription: ".site-description"
+    siteDescription: ".site-description",
+    settingsButton: ".gh-nav-bottom-tabicon"
   },
   login: {
-    userInput: "#ember8",
-    passInput: "#ember10",
-    loginBtn: "#ember12",
+    userInput: ".email",
+    passInput: ".password",
+    loginBtn: ".js-login-button",
   },
   post: {
     postView: "[href='#/posts/']",
@@ -55,7 +56,7 @@ const pageElements = {
     pageList: ".gh-list > *",
   },
   design: {
-    linkSideMenu: "ul.gh-nav-settings li:nth-child(3)",
+    linkSideMenu: ".gh-settings-main-grid:nth-child(2) a:nth-child(3)",
     menuItemNameInput:
       "#settings-navigation > .gh-blognav-item .gh-blognav-line span:first-of-type input",
     menuItemUrlInput:

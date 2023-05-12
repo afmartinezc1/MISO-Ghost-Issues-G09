@@ -24,6 +24,11 @@ When("I click SignIn", async function () {
 });
 
 // DESIGN //
+When("I click in Settings", async function () {
+  let element = await this.driver.$(global.pageElements.application.settingsButton);
+  return await element.click();
+});
+
 When("I click in Design", async function () {
   let element = await this.driver.$(global.pageElements.design.linkSideMenu);
   return await element.click();
