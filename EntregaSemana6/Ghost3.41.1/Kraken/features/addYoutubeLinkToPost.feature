@@ -1,53 +1,43 @@
-Feature: Create Post
+Feature: Create Tag
   
   @user1 @web
-  Scenario: Como usuario inicio sesion en ghost, creo un post, incluyo un enlace de un video de youtube, reviso que sea el primero en la lista de draft posts, entro a ese post y reviso que el título sea el ingresado previamente y que ademas haya quedado el video de youtube en un iframe
+  Scenario: Como usuario inicio sesion en ghost, creo un tag y reviso que haya quedado en la lista de tags con los datos de entrada dados previamente
     Given I navigate to page "<URL>"
     And I wait for 3 seconds
     When I enter email "<USERNAME>"
-    And I take screenshot with name "addYoutubeLinkToPost/1_enterEmail"
+    And I take screenshot with name "createTag/1_enterEmail"
     And I wait for 2 seconds
     And I enter password "<PASSWORD>"
-    And I take screenshot with name "addYoutubeLinkToPost/2_enterPassword"
+    And I take screenshot with name "createTag/2_enterPassword"
     And I wait for 2 seconds
     And I click SignIn
-    And I take screenshot with name "addYoutubeLinkToPost/3_clickSignIn"
+    And I take screenshot with name "createTag/3_clickSignIn"
     And I wait for 7 seconds
-    And I go to the posts view
-    And I take screenshot with name "addYoutubeLinkToPost/4_clickPostView"
+    And I take screenshot with name "createTag/4_mainPage"
+    And I go to the tags view
+    And I take screenshot with name "createTag/5_clickTagView"
     And I wait for 2 seconds
-    And I click new post
-    And I take screenshot with name "addYoutubeLinkToPost/5_clickNewPost"
+    And I click new tag
+    And I take screenshot with name "createTag/6_clickNewTag"
     And I wait for 2 seconds
-    And I click on add post extra content
-    And I take screenshot with name "addYoutubeLinkToPost/6_clickExtraContent"
+    And I enter tag name "FOO BAR BAZ"
+    And I take screenshot with name "createTag/7_enterTagName"
     And I wait for 2 seconds
-    And I click on add post youtube link
-    And I take screenshot with name "addYoutubeLinkToPost/7_clickYoutubeLink"
+    And I enter tag color "8889ec"
+    And I take screenshot with name "createTag/8_enterTagColor"
     And I wait for 2 seconds
-    And I enter post youtube link "https://www.youtube.com/watch?v=Jn09UdSb3aA"
-    And I take screenshot with name "addYoutubeLinkToPost/8_enterYoutubeLink"
+    And I enter tag slug "foo-bar-baz"
+    And I take screenshot with name "createTag/9_enterTagSlug"
     And I wait for 2 seconds
-    And I click on the application body
-    And I take screenshot with name "addYoutubeLinkToPost/9_clickOnBody"
+    And I enter tag description "<LOREM1>"
+    And I take screenshot with name "createTag/10_enterTagDescription"
     And I wait for 2 seconds
-    And I enter post title "FOO BAR BAZ"
-    And I take screenshot with name "addYoutubeLinkToPost/10_enterPostTitle"
+    And I save tag changes
+    And I take screenshot with name "createTag/11_clickSaveChanges"
     And I wait for 2 seconds
-    And I enter post content "<LOREM1>"
-    And I take screenshot with name "addYoutubeLinkToPost/11_enterPostContent"
+    And I take screenshot with name "createTag/12_tagCreated"
+    And I go to the tags view
+    And I take screenshot with name "createTag/13_clickTagView"
     And I wait for 2 seconds
-    And I click posts to go to previous page
-    And I take screenshot with name "addYoutubeLinkToPost/12_clickPreviousPage"
-    And I wait for 2 seconds
-    Then I should see the first draft post with title "FOO BAR BAZ"
-    And I take screenshot with name "addYoutubeLinkToPost/13_firstDraftPost"
-    And I wait for 2 seconds
-    When I click on the first draft post
-    And I take screenshot with name "addYoutubeLinkToPost/14_clickFirstDraftPost"
-    And I wait for 2 seconds
-    Then I should see that the post title is "FOO BAR BAZ"
-    And I take screenshot with name "addYoutubeLinkToPost/15_checkPostTitle"
-    And I wait for 2 seconds
-    Then I should see an iframe with the youtube video
-    And I take screenshot with name "addYoutubeLinkToPost/16_checkYoutubeLink"
+    Then I should see tag in tag list with name "FOO BAR BAZ", slug "foo-bar-baz" and description "<LOREM1>"
+    And I take screenshot with name "createTag/14_checkTagCreated"
