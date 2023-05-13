@@ -1,5 +1,5 @@
 Feature: Create Post
-  
+
   @user1 @web
   Scenario: Como usuario inicio sesion en ghost, creo un post, incluyo un enlace de un video de youtube, reviso que sea el primero en la lista de draft posts, entro a ese post y reviso que el título sea el ingresado previamente y que ademas haya quedado el video de youtube en un iframe
     Given I navigate to page "<URL>"
