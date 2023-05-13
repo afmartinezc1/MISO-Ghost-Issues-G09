@@ -10,28 +10,48 @@ Admeas encontrará las estrategias de pruebas usadas en las diferentes semanas, 
 Los cambios de esta semana respecto a la semana 5 son:
 - Se implementa en cada uno de los 40 escenarios (20 kraken / 20 cypress) de la antigua version de ghost (3.41.1), las capturas de pantalla luego de cada paso.
 - Se implentan 10 de los escenarios en la nueva version de ghost (4.44.0) usando la herramienta kraken
-    - EditarPost - Said
-    - EliminarPage - Said
-    - DesignNavBar - Andres
-    - EditStaff - Andres
-    - ChangeTitle - Andres
-    - PublicarPage - Esneider
-    - FiltrarPost - Esneider
-    - Oscar (Elegir 3 funcionalidades)
+    - filterPost
+    - addItemNavBarWithoutSave
+    - addTagToPage
+    - addTagToPost
+    - createPagePublish
+    - deletePageDraft
+    - deleteTag
+    - editPostDraft
+    - editSitePreferences
+    - editUser
 - Se implementa el script de comparacion VRT con la herramienta resemble.js
 
 
 Antes de empezar:
-0. Instalar las dependencias (chai, kraken, cypress) al igial que se menciona en la semana 5, pero en las carpetas de la semana 6 (ambas versiones de ghost)
-1. Haber corrido los test de cada una de las versiones de ghost con la herramienta kraken **EntregaSemana6\[VersionGhost]\Kraken**
-2. Asegurarse de que luego de correr los test se hayan creado las capturas de pantalla en la carpeta **EntregaSemana6\[VersionGhost]\Kraken\customReports\[feature]** en ambas versiones de ghost
+1. Instalar las dependencias (chai, kraken, cypress) al igual que se menciona en la semana 5, pero en las carpetas de la semana 6 (ambas versiones de ghost)
+2. Haber corrido los test de cada una de las versiones de ghost con la herramienta kraken **EntregaSemana6\\[VersionGhost]\Kraken** siguiendo los pasos de la semana 5:
+---
+    - Pasos para correr el proyecto de Kraken: 
+    1. Ingresar a la carpeta **EntregaSemana6/[versionGhost]/Kraken**
+    2. Ejecutar el comando ```npm install kraken-node```
+    3. Ejecutar el comando ```npm install chai```
+    4. Asegurarse que en la raíz de la carpeta **EntregaSemana6/[versionGhost]/Kraken/features** solo exista un archivo con extensión .feature que es el archivo que contiene el escenario de la prueba. Solo se debe correr un escenario a la vez.
+    5. Todas los escenarios se encuentran en la carpeta **EntregaSemana6/[versionGhost]/Kraken/features/scenarios**
+    6. Correr el test usando el comando ```npx kraken-node run``` desde la carpeta **EntregaSemana6/[versionGhost]/Kraken**
+---
+    - Pasos para correr el proyecto de Cypress: 
+    1. Ingresar a la carpeta **EntregaSemana6/[versionGhost]/Cypress**
+    2. Ejecutar el comando ```npm install cypress --save-dev```
+    3. Correr cypres usando el comando ```npx cypress open```
+    4. Escoger la opción E2E testing en la interfaz de cypress
+    5. Escoger Chrome como el navegador
+    4. Ejecutar una a una las pruebas E2E en la vista Specs
+6. Asegurarse de que luego de correr los test se hayan creado las capturas de pantalla en la carpeta **EntregaSemana6\[VersionGhost]\Kraken\customReports\[feature]** en ambas versiones de ghost
+
+**Nota: Para la nueva version de ghost solo se utilizo la herramienta **KRAKEN**
 
 Pasos para correr el proyecto reporte de resemble: 
 1. Ingresar a la carpeta **EntregaSemana6\Regresion**
 2. Correr el comando ```npm install resemblejs```
 3. Ejecutar el reporte mediante el comando ```node index.js```
 4. Una vez finalizada la ejecucion, ingresar en la carpeta **EntregaSemana6\Regresion\results** y en la subcarepta con la fecha en la que ejecuto el reporte
-5. Dentro encontrara una carpeta por cada "feature" (escenario) que contiene los screenshots y un reporte .html en el cual podra ver las diferencias encotnradas por resemble.
+5. Dentro encontrara una carpeta por cada "feature" (escenario) que contiene los screenshots y un reporte .html en el cual podra ver las diferencias encontradas por resemble.
 
 ### Entrega Semana 5
 
