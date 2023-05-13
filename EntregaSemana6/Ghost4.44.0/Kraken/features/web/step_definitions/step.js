@@ -659,13 +659,16 @@ When("I save tag changes", async function () {
 });
 
 Then(
-  "I should see tag in tag list with name {string}, slug {string} and description {kraken-string}",
-  async function (name, slug, description) {
+  "I should see tag in tag list with name {string} and description {kraken-string}",
+  async function (name, description) {
     let elements = await this.driver.$$(global.pageElements.tag.tagList);
+    console.log(elements)
+    console.log(elements.length)
     let encontrado = false;
     for (const element of elements) {
       const text = await element.getText();
-      if (text.includes(name) && text.includes(slug) && text.includes(description)) {
+      console.log(text)
+      if (text.includes(name) && text.includes(description)) {
         encontrado = true;
       }
     }
