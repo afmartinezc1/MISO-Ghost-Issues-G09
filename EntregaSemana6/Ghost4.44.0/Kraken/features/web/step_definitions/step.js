@@ -677,13 +677,13 @@ Then(
 );
 
 When(
-  "I click a tag with name {string}, slug {string} and description {kraken-string}",
-  async function (name, slug, description) {
+  "I click a tag with name {string} and description {kraken-string}",
+  async function (name, description) {
     let elements = await this.driver.$$(global.pageElements.tag.tagList);
     let last = null;
     for (const element of elements) {
       const text = await element.getText();
-      if (text.includes(name) && text.includes(slug) && text.includes(description)) {
+      if (text.includes(name) && text.includes(description)) {
         last = element;
       }
     }
