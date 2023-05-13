@@ -24,8 +24,8 @@ Los cambios de esta semana respecto a la semana 5 son:
 
 
 Antes de empezar:
-1. Instalar las dependencias (chai, kraken, cypress) al igial que se menciona en la semana 5, pero en las carpetas de la semana 6 (ambas versiones de ghost)
-2. Haber corrido los test de cada una de las versiones de ghost con la herramienta kraken **EntregaSemana6\[VersionGhost]\Kraken**
+1. Instalar las dependencias (chai, kraken, cypress) al igual que se menciona en la semana 5, pero en las carpetas de la semana 6 (ambas versiones de ghost)
+2. Haber corrido los test de cada una de las versiones de ghost con la herramienta kraken **EntregaSemana6\[VersionGhost]\Kraken** siguiendo los pasos de la semana 5
 3. Asegurarse de que luego de correr los test se hayan creado las capturas de pantalla en la carpeta **EntregaSemana6\[VersionGhost]\Kraken\customReports\[feature]** en ambas versiones de ghost
 
 Pasos para correr el proyecto reporte de resemble: 
