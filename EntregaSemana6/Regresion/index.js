@@ -40,7 +40,11 @@ async function executeTest(datetime) {
   let resultInfo = {};
   const folders = getDirectories("../Ghost4.44.0/Kraken/customReports");
   await folders.forEach(async (folder) => {
-    const feature = folder.split("/").slice(-1)[0];
+    let feature = ''
+    if(folder.includes('/'))
+      feature = folder.split("/").slice(-1)[0];
+    else
+      feature = folder.split("\\").slice(-1)[0];
 
     if (!fs.existsSync(`./results/${datetime}/${feature}`)) {
       fs.mkdirSync(`./results/${datetime}/${feature}`, { recursive: true });
@@ -55,8 +59,11 @@ async function executeTest(datetime) {
     const filesGhost4 = getFiles(folder);
     await filesGhost4.forEach(async (fileGhost4) => {
       const fileGhost3 = fileGhost4.replace("4.44.0", "3.41.1");
-
-      const step = fileGhost4.split("/").slice(-1)[0].replace(".png", "");
+      let step = ''
+      if(fileGhost4.includes('/'))
+        step = fileGhost4.split("/").slice(-1)[0].replace(".png", "");
+      else
+        step = fileGhost4.split("\\").slice(-1)[0].replace(".png", "");
 
       fs.copyFileSync(
         fileGhost3,
