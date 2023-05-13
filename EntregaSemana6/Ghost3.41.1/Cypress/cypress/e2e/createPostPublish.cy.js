@@ -13,42 +13,72 @@ describe("Create post published", () => {
     cy.wait(3000);
     // When I enter email "<USERNAME>"
     cy.get(pageElements.login.userInput).type(userName);
+    cy.screenshot(`${ScreenShoot}/createPostPublish/enterEmail`, {
+       overwrite:true 
+      });
     // And I wait for 2 seconds
     cy.wait(2000);
     // And I enter password "<PASSWORD>"
     cy.get(pageElements.login.passInput).type(password);
+    cy.screenshot(`${ScreenShoot}/createPostPublish/enterPassword`, {
+      overwrite:true 
+     });
     // And I wait for 2 seconds
     cy.wait(2000);
     // And I click SignIn
     cy.get(pageElements.login.loginBtn).click();
+    cy.screenshot(`${ScreenShoot}/createPostPublish/clickSignIn`, {
+      overwrite:true 
+     });
     // And I wait for 7 seconds
     cy.wait(7000);
     // And I go to the posts view
     cy.get(pageElements.post.postView).click();
+    cy.screenshot(`${ScreenShoot}/createPostPublish/clickPostView`, {
+      overwrite:true 
+     });
     // And I wait for 2 seconds
     cy.wait(2000);
     // And I click new post
     cy.get(pageElements.post.newPost).click();
+    cy.screenshot(`${ScreenShoot}/createPostPublish/clickNewView`, {
+      overwrite:true 
+     });
     // And I wait for 2 seconds
     cy.wait(2000);
     // And I enter post title "MY_PRIMER_POST1"
     cy.get(pageElements.post.postTitle).type("MY_FIRST_POST1");
+    cy.screenshot(`${ScreenShoot}/createPostPublish/clickPostTitle`, {
+      overwrite:true 
+     });
     // And I wait for 2 seconds
     cy.wait(2000);
     // And I enter post content "<LOREM1>"
     cy.get(pageElements.post.postContent).type(LOREM1);
+    cy.screenshot(`${ScreenShoot}/createPostPublish/clickPostContent`, {
+      overwrite:true 
+     });
     // And I wait for 2 seconds
     cy.wait(2000);
     // And I click publish to open dialog
     cy.get(pageElements.post.publishPost).click();
+    cy.screenshot(`${ScreenShoot}/createPostPublish/clickPostDialogPublish`, {
+      overwrite:true 
+     });
     // And I wait for 2 seconds
     cy.wait(2000);
     // And I click publish to confirm
     cy.get(pageElements.post.publishConfirm).click();
+    cy.screenshot(`${ScreenShoot}/createPostPublish/clickPostPublishConfirm`, {
+      overwrite:true 
+     });
     // And I wait for 2 seconds
     cy.wait(2000);
     // Then I navigate to post published"
     cy.visit(POST_PUBLICADO);
+    cy.screenshot(`${ScreenShoot}/createPostPublish/navegateToPost`, {
+      overwrite:true 
+     });
   
   });
 });
