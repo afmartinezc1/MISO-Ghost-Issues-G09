@@ -6,6 +6,33 @@ nuestra experiencia con las herramientas propuestas, asi como sus pros y sus con
 
 Admeas encontrará las estrategias de pruebas usadas en las diferentes semanas, y la justificacion del cambio realizado en la semana 4
 
+### Entrega Semana 6
+Los cambios de esta semana respecto a la semana 5 son:
+- Se implementa en cada uno de los 40 escenarios (20 kraken / 20 cypress) de la antigua version de ghost (3.41.1), las capturas de pantalla luego de cada paso.
+- Se implentan 10 de los escenarios en la nueva version de ghost (4.44.0) usando la herramienta kraken
+    - EditarPost - Said
+    - EliminarPage - Said
+    - DesignNavBar - Andres
+    - EditStaff - Andres
+    - ChangeTitle - Andres
+    - PublicarPage - Esneider
+    - FiltrarPost - Esneider
+    - Oscar (Elegir 3 funcionalidades)
+- Se implementa el script de comparacion VRT con la herramienta resemble.js
+
+
+Antes de empezar:
+0. Instalar las dependencias (chai, kraken, cypress) al igial que se menciona en la semana 5, pero en las carpetas de la semana 6 (ambas versiones de ghost)
+1. Haber corrido los test de cada una de las versiones de ghost con la herramienta kraken **EntregaSemana6\[VersionGhost]\Kraken**
+2. Asegurarse de que luego de correr los test se hayan creado las capturas de pantalla en la carpeta **EntregaSemana6\[VersionGhost]\Kraken\customReports\[feature]** en ambas versiones de ghost
+
+Pasos para correr el proyecto reporte de resemble: 
+1. Ingresar a la carpeta **EntregaSemana6\Regresion**
+2. Correr el comando ```npm install resemblejs```
+3. Ejecutar el reporte mediante el comando ```node index.js```
+4. Una vez finalizada la ejecucion, ingresar en la carpeta **EntregaSemana6\Regresion\results** y en la subcarepta con la fecha en la que ejecuto el reporte
+5. Dentro encontrara una carpeta por cada "feature" (escenario) que contiene los screenshots y un reporte .html en el cual podra ver las diferencias encotnradas por resemble.
+
 ### Entrega Semana 5
 
 Versiones:
