@@ -15,8 +15,8 @@ Feature: Add Tag to postseconds
     And I wait for 7 seconds
     And I take screenshot with name "addTagToPost/4_mainPage"
     And I go to the tags view
-    And I take screenshot with name "addTagToPost/5_clickTagView"
     And I wait for 2 seconds
+    And I take screenshot with name "addTagToPost/5_clickTagView"
     And I click new tag
     And I take screenshot with name "addTagToPost/6_clickNewTag"
     And I wait for 2 seconds
