@@ -133,6 +133,7 @@ Then("I should see the new site description with text {string}", async function 
 // STAFF //
 When("I click in Staff", async function () {
   let element = await this.driver.$(global.pageElements.staff.linkSideMenu);
+  await this.driver.$('.gh-first-header').scrollIntoView();
   return await element.click();
 });
 
