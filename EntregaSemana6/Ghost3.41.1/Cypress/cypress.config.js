@@ -9,11 +9,11 @@ module.exports = defineConfig({
     env: {
       pageElements: global.pageElements,
       ScreenShoot: "./customReports",
-      USERNAME: "s.nader21@uniandes.edu.co",
-      PASSWORD: "saidnader1987",
-      URL: "http://localhost:2369/ghost/#/signin",
-      EXISTING_URL: "http://localhost:2369/tag/getting-started/",
-      BLOG: "http://localhost:2369",
+      USERNAME: "andressvx@gmail.com",
+      PASSWORD: "PruebasMiso",
+      URL: "http://localhost:2368/ghost/#/signin",
+      EXISTING_URL: "http://localhost:2368/tag/getting-started/",
+      BLOG: "http://localhost:2368",
       LOREM:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
       LOREM1:
