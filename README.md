@@ -25,8 +25,26 @@ Los cambios de esta semana respecto a la semana 5 son:
 
 Antes de empezar:
 1. Instalar las dependencias (chai, kraken, cypress) al igual que se menciona en la semana 5, pero en las carpetas de la semana 6 (ambas versiones de ghost)
-2. Haber corrido los test de cada una de las versiones de ghost con la herramienta kraken **EntregaSemana6\[VersionGhost]\Kraken** siguiendo los pasos de la semana 5
-3. Asegurarse de que luego de correr los test se hayan creado las capturas de pantalla en la carpeta **EntregaSemana6\[VersionGhost]\Kraken\customReports\[feature]** en ambas versiones de ghost
+2. Haber corrido los test de cada una de las versiones de ghost con la herramienta kraken **EntregaSemana6\\[VersionGhost]\Kraken** siguiendo los pasos de la semana 5:
+---
+    - Pasos para correr el proyecto de Kraken: 
+    1. Ingresar a la carpeta **EntregaSemana6/[versionGhost]/Kraken**
+    2. Ejecutar el comando ```npm install kraken-node```
+    3. Ejecutar el comando ```npm install chai```
+    4. Asegurarse que en la raíz de la carpeta **EntregaSemana6/[versionGhost]/Kraken/features** solo exista un archivo con extensión .feature que es el archivo que contiene el escenario de la prueba. Solo se debe correr un escenario a la vez.
+    5. Todas los escenarios se encuentran en la carpeta **EntregaSemana6/[versionGhost]/Kraken/features/scenarios**
+    6. Correr el test usando el comando ```npx kraken-node run``` desde la carpeta **EntregaSemana6/[versionGhost]/Kraken**
+---
+    - Pasos para correr el proyecto de Cypress: 
+    1. Ingresar a la carpeta **EntregaSemana6/[versionGhost]/Cypress**
+    2. Ejecutar el comando ```npm install cypress --save-dev```
+    3. Correr cypres usando el comando ```npx cypress open```
+    4. Escoger la opción E2E testing en la interfaz de cypress
+    5. Escoger Chrome como el navegador
+    4. Ejecutar una a una las pruebas E2E en la vista Specs
+6. Asegurarse de que luego de correr los test se hayan creado las capturas de pantalla en la carpeta **EntregaSemana6\[VersionGhost]\Kraken\customReports\[feature]** en ambas versiones de ghost
+
+**Nota: Para la nueva version de ghost solo se utilizo la herramienta **KRAKEN**
 
 Pasos para correr el proyecto reporte de resemble: 
 1. Ingresar a la carpeta **EntregaSemana6\Regresion**
