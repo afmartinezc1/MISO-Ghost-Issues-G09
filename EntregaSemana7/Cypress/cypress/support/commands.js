@@ -26,3 +26,13 @@
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
+
+Cypress.Commands.add("aprioriData", () => {
+  cy.fixture("a-priori-data").then((aprioriData) => {
+    return aprioriData[Math.floor(Math.random() * aprioriData.length)];
+  });
+});
+
+Cypress.Commands.add("pseudoData", () => {
+  return cy.request("https://my.api.mockaroo.com/ghost_data.json?key=0d001640");
+});

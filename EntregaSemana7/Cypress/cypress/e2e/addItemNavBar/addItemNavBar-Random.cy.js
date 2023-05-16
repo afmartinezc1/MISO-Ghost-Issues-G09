@@ -6,6 +6,7 @@ const EXISTING_URL = Cypress.env("EXISTING_URL");
 const BLOG = Cypress.env("BLOG");
 describe("Add NavBar item", () => {
   it("Como usuario inicio sesion en ghost, creo un nuevo item para el navbar, reviso que se vea reflejado en la pagina, lo elimino, y reviso que efectivamente ya no se encuentre", async () => {
+    console.log(faker.lorem.words());
     //Given I navigate to page "<URL>"
     cy.visit(url);
     //When I enter email "<USERNAME>"
@@ -20,10 +21,10 @@ describe("Add NavBar item", () => {
     cy.get(pageElements.design.linkSideMenu).click();
     //And I wait for 2 seconds
     cy.wait(2000);
-    //And I fill name of menu item "new-NavBar-Item"
-    cy.get(pageElements.design.menuItemNameInput).type("new-NavBar-Item");
-    //And I fill url of menu item "<EXISTING_URL>"
-    cy.get(pageElements.design.menuItemUrlInput).type(EXISTING_URL);
+    //And I fill name of menu item apriori
+    cy.get(pageElements.design.menuItemNameInput).type(pseudoData.title_two);
+    //And I fill url of menu item apriori
+    cy.get(pageElements.design.menuItemUrlInput).type(pseudoData.url);
     //And I wait for 2 seconds
     cy.wait(2000);
     //And I save navBar design changes
@@ -34,8 +35,11 @@ describe("Add NavBar item", () => {
     cy.visit(BLOG);
     //And I wait for 3 seconds
     cy.wait(2000);
-    //And I should see a navBar item with name "new-NavBar-Item"
-    cy.get(pageElements.design.lastNavBarItem).should('have.text', 'new-NavBar-Item');
+    //And I should see a navBar item with name apriori
+    cy.get(pageElements.design.lastNavBarItem).should(
+      "have.text",
+      pseudoData.title_two
+    );
     //And I wait for 2 seconds
     cy.wait(2000);
     //And I navigate to page "<URL>"
@@ -58,7 +62,10 @@ describe("Add NavBar item", () => {
     cy.visit(BLOG);
     //And I wait for 3 seconds
     cy.wait(1000);
-    //Then I shouldn't see a navBar item with name "new-NavBar-Item"
-    cy.get(pageElements.design.lastNavBarItem).should('not.have.text', 'new-NavBar-Item');
+    //Then I shouldn't see a navBar item with name apriori
+    cy.get(pageElements.design.lastNavBarItem).should(
+      "not.have.text",
+      pseudoData.title_two
+    );
   });
 });

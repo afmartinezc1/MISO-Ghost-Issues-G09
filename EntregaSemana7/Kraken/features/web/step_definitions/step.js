@@ -1,7 +1,15 @@
 const { Given, When, Then } = require("@cucumber/cucumber");
 const { expect } = require("chai");
+const fetch = require("node-fetch");
 const exp = require("constants");
+const dataAPriori = require("../../../a-priori-data.json");
 require("./pageElements");
+const ramdomRow = getRandomRow();
+let pseudoData = {};
+
+When("I get pseudoData from api", async function () {
+  pseudoData = await fetchPseudoData();
+});
 
 When("I enter email {kraken-string}", async function (email) {
   let element = await this.driver.$(global.pageElements.login.userInput);
@@ -24,13 +32,47 @@ When("I click in Design", async function () {
   return await element.click();
 });
 
-When("I fill name of menu item {string}", async function (msg) {
+// fill new item name apriori{kraken-string}And I should see a navBa
+When("I fill name of menu item a-priori", async function () {
   let element = await this.driver.$(
     global.pageElements.design.menuItemNameInput
   );
-  return await element.setValue(msg);
+  return await element.setValue(dataAPriori[ramdomRow].title_two);
 });
 
+// fill new item name pseudo
+When("I fill name of menu item pseudo", async function () {
+  let element = await this.driver.$(
+    global.pageElements.design.menuItemNameInput
+  );
+  return await element.setValue(pseudoData.title_two);
+});
+
+// fill new item name random
+When("I fill name of menu item {kraken-string}", async function (name) {
+  let element = await this.driver.$(
+    global.pageElements.design.menuItemNameInput
+  );
+  return await element.setValue(name);
+});
+
+// fill new item url apriori
+When("I fill url of menu item pseudo", async function () {
+  let element = await this.driver.$(
+    global.pageElements.design.menuItemUrlInput
+  );
+  return await element.setValue(pseudoData.url);
+});
+
+// fill new item url pseudo
+When("I fill url of menu item a-priori", async function () {
+  let element = await this.driver.$(
+    global.pageElements.design.menuItemUrlInput
+  );
+  return await element.setValue(pseudoData.url);
+});
+
+// fill new item url random
 When("I fill url of menu item {kraken-string}", async function (url) {
   let element = await this.driver.$(
     global.pageElements.design.menuItemUrlInput
@@ -43,10 +85,25 @@ When("I save navBar design changes", async function () {
   return await element.click();
 });
 
-Then("I should see a navBar item with name {string}", async function (navItem) {
+// should see a navBar item with name a-priori
+Then("I should see a navBar item with name a-priori", async function () {
   let element = await this.driver.$(global.pageElements.design.lastNavBarItem);
   const navBarText = await element.getText();
-  expect(navBarText).to.equal(navItem.toUpperCase());
+  expect(navBarText).to.equal(dataAPriori[ramdomRow].title_two.toUpperCase());
+});
+
+// should see a navBar item with name pseudo
+Then("I should see a navBar item with name pseudo", async function () {
+  let element = await this.driver.$(global.pageElements.design.lastNavBarItem);
+  const navBarText = await element.getText();
+  expect(navBarText).to.equal(pseudoData.title_two.toUpperCase());
+});
+
+// should see a navBar item with name random
+Then("I should see a navBar item with name {kraken-string}", async function (name) {
+  let element = await this.driver.$(global.pageElements.design.lastNavBarItem);
+  const navBarText = await element.getText();
+  expect(navBarText).to.equal(name.toUpperCase());
 });
 
 When("I click in navBar delete button", async function () {
@@ -54,8 +111,29 @@ When("I click in navBar delete button", async function () {
   return await element.click();
 });
 
-Then("I shouldn't see a navBar item with name {string}", async function (navItem) {
-  let element = await this.driver.$(`.nav-${navItem.toLowerCase()} a`);
+// shouldn't see a navBar item with name a-priori
+Then("I shouldn't see a navBar item with name a-priori", async function () {
+  let element = await this.driver.$(
+    `.nav-${dataAPriori[ramdomRow].title_two.toLowerCase()} a`
+  );
+  const existNavItem = await element.isExisting();
+  expect(existNavItem).to.equal(false);
+});
+
+// shouldn't see a navBar item with pseudo
+Then("I shouldn't see a navBar item with name pseudo", async function () {
+  let element = await this.driver.$(
+    `.nav-${pseudoData.title_two.toLowerCase()} a`
+  );
+  const existNavItem = await element.isExisting();
+  expect(existNavItem).to.equal(false);
+});
+
+// shouldn't see a navBar item with random
+Then("I shouldn't see a navBar item with name {kraken-string}", async function (name) {
+  let element = await this.driver.$(
+    `.nav-${name.toLowerCase()} a`
+  );
   const existNavItem = await element.isExisting();
   expect(existNavItem).to.equal(false);
 });
@@ -70,17 +148,27 @@ When("I click on leave modal design button", async function () {
   return await element.click();
 });
 
-Then("I should see the new navBar item input with name {string}", async function (navItem) {
-  let element = await this.driver.$(global.pageElements.design.menuItemNameInput);
-  const navBarText = await element.getValue();
-  expect(navBarText).to.equal(navItem);
-});
+Then(
+  "I should see the new navBar item input with name {string}",
+  async function (navItem) {
+    let element = await this.driver.$(
+      global.pageElements.design.menuItemNameInput
+    );
+    const navBarText = await element.getValue();
+    expect(navBarText).to.equal(navItem);
+  }
+);
 
-Then("I shouldn't see the new navBar item input with name {string}", async function (navItem) {
-  let element = await this.driver.$(global.pageElements.design.menuItemNameInput);
-  const navBarText = await element.getValue();
-  expect(navBarText).to.not.equal(navItem);
-});
+Then(
+  "I shouldn't see the new navBar item input with name {string}",
+  async function (navItem) {
+    let element = await this.driver.$(
+      global.pageElements.design.menuItemNameInput
+    );
+    const navBarText = await element.getValue();
+    expect(navBarText).to.not.equal(navItem);
+  }
+);
 
 // GENERAL //
 When("I click in General", async function () {
@@ -88,37 +176,62 @@ When("I click in General", async function () {
   return await element.click();
 });
 
-When("I click on general settings title description expand button", async function () {
-  let element = await this.driver.$(global.pageElements.general.expandTitleBtn);
-  return await element.click();
-});
+When(
+  "I click on general settings title description expand button",
+  async function () {
+    let element = await this.driver.$(
+      global.pageElements.general.expandTitleBtn
+    );
+    return await element.click();
+  }
+);
 
-When("I fill general settings site title with text {string}", async function (title) {
-  let element = await this.driver.$(global.pageElements.general.titleSettingsInput);
-  return await element.setValue(title);
-});
+When(
+  "I fill general settings site title with text {string}",
+  async function (title) {
+    let element = await this.driver.$(
+      global.pageElements.general.titleSettingsInput
+    );
+    return await element.setValue(title);
+  }
+);
 
-When("I fill general settings site description with text {string}", async function (description) {
-  let element = await this.driver.$(global.pageElements.general.descriptionSettingsInput);
-  return await element.setValue(description);
-});
+When(
+  "I fill general settings site description with text {string}",
+  async function (description) {
+    let element = await this.driver.$(
+      global.pageElements.general.descriptionSettingsInput
+    );
+    return await element.setValue(description);
+  }
+);
 
 When("I save general settings changes", async function () {
   let element = await this.driver.$(global.pageElements.general.saveBtn);
   return await element.click();
 });
 
-Then("I should see the new site title with text {string}", async function (title) {
-  let element = await this.driver.$(global.pageElements.application.siteTitle);
-  const navBarText = await element.getText();
-  expect(navBarText).to.equal(title);
-});
+Then(
+  "I should see the new site title with text {string}",
+  async function (title) {
+    let element = await this.driver.$(
+      global.pageElements.application.siteTitle
+    );
+    const navBarText = await element.getText();
+    expect(navBarText).to.equal(title);
+  }
+);
 
-Then("I should see the new site description with text {string}", async function (description) {
-  let element = await this.driver.$(global.pageElements.application.siteDescription);
-  const navBarText = await element.getText();
-  expect(navBarText).to.equal(description);
-});
+Then(
+  "I should see the new site description with text {string}",
+  async function (description) {
+    let element = await this.driver.$(
+      global.pageElements.application.siteDescription
+    );
+    const navBarText = await element.getText();
+    expect(navBarText).to.equal(description);
+  }
+);
 
 // STAFF //
 When("I click in Staff", async function () {
@@ -131,30 +244,47 @@ When("I click in author user to modify", async function () {
   return await element.click();
 });
 
-When("I fill user full name in staff with text {string}", async function (name) {
-  let element = await this.driver.$(global.pageElements.staff.inputName);
-  return await element.setValue(name);
-});
+When(
+  "I fill user full name in staff with text {string}",
+  async function (name) {
+    let element = await this.driver.$(global.pageElements.staff.inputName);
+    return await element.setValue(name);
+  }
+);
 
-When("I fill user location in staff with text {string}", async function (location) {
-  let element = await this.driver.$(global.pageElements.staff.inputLocation);
-  return await element.setValue(location);
-});
+When(
+  "I fill user location in staff with text {string}",
+  async function (location) {
+    let element = await this.driver.$(global.pageElements.staff.inputLocation);
+    return await element.setValue(location);
+  }
+);
 
-When("I fill user biography in staff with text {kraken-string}", async function (biography) {
-  let element = await this.driver.$(global.pageElements.staff.inputBio);
-  return await element.setValue(biography);
-});
+When(
+  "I fill user biography in staff with text {kraken-string}",
+  async function (biography) {
+    let element = await this.driver.$(global.pageElements.staff.inputBio);
+    return await element.setValue(biography);
+  }
+);
 
-When("I fill user new password in staff with text {string}", async function (password) {
-  let element = await this.driver.$(global.pageElements.staff.inputPassword);
-  return await element.setValue(password);
-});
+When(
+  "I fill user new password in staff with text {string}",
+  async function (password) {
+    let element = await this.driver.$(global.pageElements.staff.inputPassword);
+    return await element.setValue(password);
+  }
+);
 
-When("I fill user new password verification in staff with text {string}", async function (password) {
-  let element = await this.driver.$(global.pageElements.staff.inputPasswordVerification);
-  return await element.setValue(password);
-});
+When(
+  "I fill user new password verification in staff with text {string}",
+  async function (password) {
+    let element = await this.driver.$(
+      global.pageElements.staff.inputPasswordVerification
+    );
+    return await element.setValue(password);
+  }
+);
 
 When("I save user new password staff changes", async function () {
   let element = await this.driver.$(global.pageElements.staff.saveNewPassBtn);
@@ -327,28 +457,20 @@ Then("I should see an iframe with the youtube video", async function () {
 });
 
 When("I click publish to show dialog to publish", async function () {
-  let element = await this.driver.$(
-    global.pageElements.post.publishPost
-  );
+  let element = await this.driver.$(global.pageElements.post.publishPost);
   return await element.click();
 });
 
 When("I click publish to confirm", async function () {
-  let element = await this.driver.$(
-    global.pageElements.post.publishConfirm
-  );
+  let element = await this.driver.$(global.pageElements.post.publishConfirm);
   return await element.click();
 });
 When("I click viewpost", async function () {
-  let element = await this.driver.$(
-    global.pageElements.post.publishConfirm
-  );
+  let element = await this.driver.$(global.pageElements.post.publishConfirm);
   return await element.click();
 });
 When("I click calendar", async function () {
-  let element = await this.driver.$(
-    global.pageElements.post.calendarSheduler
-  );
+  let element = await this.driver.$(global.pageElements.post.calendarSheduler);
   return await element.click();
 });
 
@@ -356,7 +478,9 @@ Then(
   "I should see the first post with state {string} {string}",
   async function (title, state) {
     let element = await this.driver.$(global.pageElements.post.firstPostInList);
-    let element1 = await this.driver.$(global.pageElements.post.firstPostInListStatus);
+    let element1 = await this.driver.$(
+      global.pageElements.post.firstPostInListStatus
+    );
     const actualTitle = await element.getText();
     const actualState = await element1.getText();
     expect(actualTitle).to.equal(title) && expect(actualState).to.equal(state);
@@ -369,12 +493,16 @@ When("I click filter post by state", async function () {
 });
 
 When("I click filter post by state Draft", async function () {
-  let element = await this.driver.$(global.pageElements.post.filterPostStateDraft);
+  let element = await this.driver.$(
+    global.pageElements.post.filterPostStateDraft
+  );
   return await element.click();
 });
 
 When("I click filter post by state Published", async function () {
-  let element = await this.driver.$(global.pageElements.post.filterPostStatePublished);
+  let element = await this.driver.$(
+    global.pageElements.post.filterPostStatePublished
+  );
   return await element.click();
 });
 
@@ -384,46 +512,45 @@ When("I click filter post by author", async function () {
 });
 
 When("I click filter post by author ghost", async function () {
-  let element = await this.driver.$(global.pageElements.post.filterPostAuthorGhost);
+  let element = await this.driver.$(
+    global.pageElements.post.filterPostAuthorGhost
+  );
   return await element.click();
 });
 
 When("I click filter post by state All", async function () {
-  let element = await this.driver.$(global.pageElements.post.filterPostStateAll);
+  let element = await this.driver.$(
+    global.pageElements.post.filterPostStateAll
+  );
   return await element.click();
 });
 
-Then(
-  "I should see posts with estado {string}",
-  async function (state) {
-    let elements = await this.driver.$$(global.pageElements.post.postList);
-    let estadoOk = true;
-    let i=0;
-    for (const element of elements) {
-      const text = await element.getText();
-      if (i>0 && !text.includes(state)) {
-        estadoOk = false;
-      }
-      i++;
+Then("I should see posts with estado {string}", async function (state) {
+  let elements = await this.driver.$$(global.pageElements.post.postList);
+  let estadoOk = true;
+  let i = 0;
+  for (const element of elements) {
+    const text = await element.getText();
+    if (i > 0 && !text.includes(state)) {
+      estadoOk = false;
     }
-    expect(estadoOk).to.equal(true);
+    i++;
   }
-);
+  expect(estadoOk).to.equal(true);
+});
 
-Then(
-  "I should see posts with author {string}",
-  async function (state) {
-    let elements = await this.driver.$$(global.pageElements.post.postList);
-    let estadoOk = true;
-    let i=0;
-    for (const element of elements) {
-      const text = await element.getText();
-      if (i>0 && !text.includes(state)) {
-        estadoOk = false;
-      }
-      i++;
+Then("I should see posts with author {string}", async function (state) {
+  let elements = await this.driver.$$(global.pageElements.post.postList);
+  let estadoOk = true;
+  let i = 0;
+  for (const element of elements) {
+    const text = await element.getText();
+    if (i > 0 && !text.includes(state)) {
+      estadoOk = false;
     }
-    expect(estadoOk).to.equal(true);
+    i++;
+  }
+  expect(estadoOk).to.equal(true);
 });
 
 When("I click tags list", async function () {
@@ -431,40 +558,34 @@ When("I click tags list", async function () {
   return await element.click();
 });
 
-When(
-  "I select tag {string}",
-  async function (tag) {
-    let elements = await this.driver.$$(global.pageElements.post.tagList);
-    let last = null;
-    for (const element of elements) {
-      const text = await element.getText();
-      if (text.includes(tag)) {
-        last = element;
-      }
+When("I select tag {string}", async function (tag) {
+  let elements = await this.driver.$$(global.pageElements.post.tagList);
+  let last = null;
+  for (const element of elements) {
+    const text = await element.getText();
+    if (text.includes(tag)) {
+      last = element;
     }
-    return await last.click();
   }
-);
+  return await last.click();
+});
 
 When("I click on close post settings", async function () {
   let element = await this.driver.$(global.pageElements.post.closePostSettings);
   return await element.click();
 });
 
-Then(
-  "I should see the selected tag {string}",
-  async function (tag) {
-    let elements = await this.driver.$$(global.pageElements.post.selectedTags);
-    let encontrado = false;
-    for (const element of elements) {
-      const text = await element.getText();
-      if (text.includes(tag)) {
-        encontrado = true;
-      }
+Then("I should see the selected tag {string}", async function (tag) {
+  let elements = await this.driver.$$(global.pageElements.post.selectedTags);
+  let encontrado = false;
+  for (const element of elements) {
+    const text = await element.getText();
+    if (text.includes(tag)) {
+      encontrado = true;
     }
-    expect(encontrado).to.equal(true);
   }
-);
+  expect(encontrado).to.equal(true);
+});
 
 // PAGES //
 When("I go to the pages view", async function () {
@@ -554,12 +675,16 @@ When("I click filter page by state", async function () {
 });
 
 When("I click filter page by state Draft", async function () {
-  let element = await this.driver.$(global.pageElements.post.filterPostStateDraft);
+  let element = await this.driver.$(
+    global.pageElements.post.filterPostStateDraft
+  );
   return await element.click();
 });
 
 When("I click filter page by state Published", async function () {
-  let element = await this.driver.$(global.pageElements.post.filterPostStatePublished);
+  let element = await this.driver.$(
+    global.pageElements.post.filterPostStatePublished
+  );
   return await element.click();
 });
 
@@ -569,48 +694,46 @@ When("I click filter page by author", async function () {
 });
 
 When("I click filter page by author ghost", async function () {
-  let element = await this.driver.$(global.pageElements.post.filterPostAuthorGhost);
+  let element = await this.driver.$(
+    global.pageElements.post.filterPostAuthorGhost
+  );
   return await element.click();
 });
 
 When("I click filter page by state All", async function () {
-  let element = await this.driver.$(global.pageElements.post.filterPostStateAll);
+  let element = await this.driver.$(
+    global.pageElements.post.filterPostStateAll
+  );
   return await element.click();
 });
 
-Then(
-  "I should see pages with estado {string}",
-  async function (state) {
-    let elements = await this.driver.$$(global.pageElements.page.pageList);
-    let estadoOk = true;
-    let i=0;
-    for (const element of elements) {
-      const text = await element.getText();
-      if (i>0 && !text.includes(state)) {
-        estadoOk = false;
-      }
-      i++;
+Then("I should see pages with estado {string}", async function (state) {
+  let elements = await this.driver.$$(global.pageElements.page.pageList);
+  let estadoOk = true;
+  let i = 0;
+  for (const element of elements) {
+    const text = await element.getText();
+    if (i > 0 && !text.includes(state)) {
+      estadoOk = false;
     }
-    expect(estadoOk).to.equal(true);
+    i++;
   }
-);
+  expect(estadoOk).to.equal(true);
+});
 
-Then(
-  "I should see pages with author {string}",
-  async function (state) {
-    let elements = await this.driver.$$(global.pageElements.post.postList);
-    let estadoOk = true;
-    let i=0;
-    for (const element of elements) {
-      const text = await element.getText();
-      if (i>0 && !text.includes(state)) {
-        estadoOk = false;
-      }
-      i++;
+Then("I should see pages with author {string}", async function (state) {
+  let elements = await this.driver.$$(global.pageElements.post.postList);
+  let estadoOk = true;
+  let i = 0;
+  for (const element of elements) {
+    const text = await element.getText();
+    if (i > 0 && !text.includes(state)) {
+      estadoOk = false;
     }
-    expect(estadoOk).to.equal(true);
+    i++;
   }
-);
+  expect(estadoOk).to.equal(true);
+});
 
 // TAGS //
 When("I go to the tags view", async function () {
@@ -655,7 +778,11 @@ Then(
     let encontrado = false;
     for (const element of elements) {
       const text = await element.getText();
-      if (text.includes(name) && text.includes(slug) && text.includes(description)) {
+      if (
+        text.includes(name) &&
+        text.includes(slug) &&
+        text.includes(description)
+      ) {
         encontrado = true;
       }
     }
@@ -670,7 +797,11 @@ When(
     let last = null;
     for (const element of elements) {
       const text = await element.getText();
-      if (text.includes(name) && text.includes(slug) && text.includes(description)) {
+      if (
+        text.includes(name) &&
+        text.includes(slug) &&
+        text.includes(description)
+      ) {
         last = element;
       }
     }
@@ -695,9 +826,29 @@ Then(
     let encontrado = false;
     for (const element of elements) {
       const text = await element.getText();
-      if (text.includes(name) && text.includes(slug) && text.includes(description)) {
+      if (
+        text.includes(name) &&
+        text.includes(slug) &&
+        text.includes(description)
+      ) {
         encontrado = true;
       }
     }
     expect(encontrado).to.equal(false);
-  });
+  }
+);
+
+function getRandomRow() {
+  return Math.floor(Math.random() * dataAPriori.length);
+}
+
+async function fetchPseudoData() {
+  try {
+    const response = await fetch(
+      "https://my.api.mockaroo.com/ghost_data.json?key=0d001640"
+    );
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+  }
+}
