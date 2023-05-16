@@ -21,6 +21,8 @@ Los cambios de esta semana respecto a la semana 5 son:
     - editSitePreferences
     - editUser
 - Se implementa el script de comparacion VRT con la herramienta resemble.js
+- Los comentarios y el video se encuentran el la [wiki](https://github.com/afmartinezc1/MISO-Ghost-Issues-G09/wiki) en el side menu, en el apartado Entrega semana 6
+- Las diferencias visuales se encuentran reportadas con el tag (Visual) en las issues del repositorio
 
 
 Antes de empezar:
