@@ -22,9 +22,11 @@ describe("Add NavBar item", () => {
       //And I wait for 2 seconds
       cy.wait(2000);
       //And I fill name of menu item apriori
-      cy.get(pageElements.design.menuItemNameInput).type(aprioriData.title_two);
+      cy.get(pageElements.design.menuItemNameInput).type(
+        aprioriData[0].title_two
+      );
       //And I fill url of menu item apriori
-      cy.get(pageElements.design.menuItemUrlInput).type(aprioriData.url);
+      cy.get(pageElements.design.menuItemUrlInput).type(aprioriData[0].url);
       //And I wait for 2 seconds
       cy.wait(2000);
       //And I save navBar design changes
@@ -38,7 +40,7 @@ describe("Add NavBar item", () => {
       //And I should see a navBar item with name apriori
       cy.get(pageElements.design.lastNavBarItem).should(
         "have.text",
-        aprioriData.title_two
+        aprioriData[0].title_two
       );
       //And I wait for 2 seconds
       cy.wait(2000);
@@ -65,7 +67,7 @@ describe("Add NavBar item", () => {
       //Then I shouldn't see a navBar item with name apriori
       cy.get(pageElements.design.lastNavBarItem).should(
         "not.have.text",
-        aprioriData.title_two
+        aprioriData[0].title_two
       );
     });
   });

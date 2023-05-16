@@ -2,9 +2,11 @@ const url = Cypress.env("URL");
 const userName = Cypress.env("USERNAME");
 const password = Cypress.env("PASSWORD");
 const pageElements = Cypress.env("pageElements");
-const LOREM1 = Cypress.env("LOREM1");
+import { faker } from "@faker-js/faker";
 describe("Create page draft", () => {
   it("Como usuario inicio sesion en ghost, creo una page, reviso que sea el primero en la lista de draft pages, entro a esa page y reviso que título y contenido sean los ingresados previamente", async () => {
+    const title = faker.lorem.words();
+    const text = faker.lorem.text().replace(/\n/g, "");
     // Given I navigate to page "<URL>"
     cy.visit(url);
     // And I wait for 3 seconds
@@ -29,23 +31,23 @@ describe("Create page draft", () => {
     cy.get(pageElements.page.newPage).click();
     // And I wait for 2 seconds
     cy.wait(2000);
-    // And I enter page title "FOO BAR BAZ"
-    cy.get(pageElements.page.pageTitle).type("FOO BAR BAZ");
+    // And I enter page title random
+    cy.get(pageElements.page.pageTitle).type(title);
     // And I wait for 2 seconds
     cy.wait(2000);
-    // And I enter page content "<LOREM1>"
-    cy.get(pageElements.page.pageContent).type(LOREM1);
+    // And I enter page content random
+    cy.get(pageElements.page.pageContent).type(text);
     // And I wait for 2 seconds
     cy.wait(2000);
     // And I click pages to go to previous page
     cy.get(pageElements.page.newPagePreviousPage).click();
     // And I wait for 2 seconds
     cy.wait(2000);
-    // Then I should see the first draft page with title "FOO BAR BAZ"
+    // Then I should see the first draft page with title random
     cy.get(pageElements.page.firstPageInList)
       .invoke("text")
       .then((text) => {
-        expect(text.trim()).to.equal("FOO BAR BAZ");
+        expect(text.trim()).to.equal(title);
       });
     // And I wait for 2 seconds
     cy.wait(2000);
@@ -53,11 +55,11 @@ describe("Create page draft", () => {
     cy.get(pageElements.page.firstPageInList).click();
     // And I wait for 2 seconds
     cy.wait(2000);
-    // Then I should see that the page title is "FOO BAR BAZ"
-    cy.get(pageElements.page.pageTitle).should("have.value", "FOO BAR BAZ");
+    // Then I should see that the page title is random
+    cy.get(pageElements.page.pageTitle).should("have.value", title);
     // And I wait for 2 seconds
     cy.wait(2000);
-    // Then I should see that the page content is "<LOREM1>"
-    cy.get(pageElements.page.pageContent).should("have.text", LOREM1);
+    // Then I should see that the page content is random
+    cy.get(pageElements.page.pageContent).should("have.text", text);
   });
 });

@@ -4,9 +4,9 @@ const password = Cypress.env("PASSWORD");
 const pageElements = Cypress.env("pageElements");
 const EXISTING_URL = Cypress.env("EXISTING_URL");
 const BLOG = Cypress.env("BLOG");
+import { faker } from "@faker-js/faker";
 describe("Add NavBar item", () => {
   it("Como usuario inicio sesion en ghost, creo un nuevo item para el navbar, reviso que se vea reflejado en la pagina, lo elimino, y reviso que efectivamente ya no se encuentre", async () => {
-    console.log(faker.lorem.words());
     //Given I navigate to page "<URL>"
     cy.visit(url);
     //When I enter email "<USERNAME>"
@@ -22,9 +22,11 @@ describe("Add NavBar item", () => {
     //And I wait for 2 seconds
     cy.wait(2000);
     //And I fill name of menu item apriori
-    cy.get(pageElements.design.menuItemNameInput).type(pseudoData.title_two);
+    const word = faker.lorem.word();
+    cy.get(pageElements.design.menuItemNameInput).type(word);
     //And I fill url of menu item apriori
-    cy.get(pageElements.design.menuItemUrlInput).type(pseudoData.url);
+    const fakeUrl = faker.internet.url();
+    cy.get(pageElements.design.menuItemUrlInput).type(fakeUrl);
     //And I wait for 2 seconds
     cy.wait(2000);
     //And I save navBar design changes
@@ -36,10 +38,7 @@ describe("Add NavBar item", () => {
     //And I wait for 3 seconds
     cy.wait(2000);
     //And I should see a navBar item with name apriori
-    cy.get(pageElements.design.lastNavBarItem).should(
-      "have.text",
-      pseudoData.title_two
-    );
+    cy.get(pageElements.design.lastNavBarItem).should("have.text", word);
     //And I wait for 2 seconds
     cy.wait(2000);
     //And I navigate to page "<URL>"
@@ -63,9 +62,6 @@ describe("Add NavBar item", () => {
     //And I wait for 3 seconds
     cy.wait(1000);
     //Then I shouldn't see a navBar item with name apriori
-    cy.get(pageElements.design.lastNavBarItem).should(
-      "not.have.text",
-      pseudoData.title_two
-    );
+    cy.get(pageElements.design.lastNavBarItem).should("not.have.text", word);
   });
 });
