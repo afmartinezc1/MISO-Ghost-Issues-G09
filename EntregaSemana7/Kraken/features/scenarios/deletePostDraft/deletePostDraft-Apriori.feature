@@ -12,27 +12,27 @@ Feature: Delete Post
     And I wait for 7 seconds
     And I click new post
     And I wait for 2 seconds
-    And I enter post title "FOO BAR BAZ"
+    And I enter post title a-priori-0
     And I wait for 2 seconds
-    And I enter post content "<LOREM1>"
+    And I enter post content a-priori-0
     And I wait for 2 seconds
     And I click posts to go to previous page
     And I wait for 2 seconds
-    Then I should see the first draft post with title "FOO BAR BAZ"
+    Then I should see the first draft post with title a-priori-0
     And I click new post
     And I wait for 2 seconds
-    And I enter post title "BAZ BAR FOO"
+    And I enter post title a-priori-1
     And I wait for 2 seconds
-    And I enter post content "<LOREM2>"
+    And I enter post content a-priori-1
     And I click posts to go to previous page
     And I wait for 2 seconds
-    Then I should see the first draft post with title "BAZ BAR FOO"
+    Then I should see the first draft post with title a-priori-1
     And I wait for 2 seconds
     When I click on the first draft post
     And I wait for 2 seconds
-    Then I should see that the post title is "BAZ BAR FOO"
+    Then I should see that the post title is a-priori-1
     And I wait for 2 seconds
-    Then I should see that the post content is "<LOREM2>"
+    Then I should see that the post content is a-priori-1
     And I wait for 2 seconds
     And I click on post settings
     And I wait for 2 seconds
@@ -42,8 +42,8 @@ Feature: Delete Post
     And I wait for 2 seconds
     When I click on the first draft post
     And I wait for 2 seconds
-    Then I should see that the post title is "FOO BAR BAZ"
+    Then I should see that the post title is a-priori-0
     And I wait for 2 seconds
-    Then I should see that the post content is "<LOREM1>"
+    Then I should see that the post content is a-priori-0
 
 

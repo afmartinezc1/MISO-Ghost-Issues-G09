@@ -14,27 +14,27 @@ Feature: Delete Page
     And I wait for 2 seconds
     And I click new page
     And I wait for 2 seconds
-    And I enter page title "FOO BAR BAZ"
+    And I enter page title a-priori-0
     And I wait for 2 seconds
-    And I enter page content "<LOREM1>"
+    And I enter page content a-priori-0
     And I wait for 2 seconds
     And I click pages to go to previous page
     And I wait for 2 seconds
-    Then I should see the first draft page with title "FOO BAR BAZ"
+    Then I should see the first draft page with title a-priori-0
     And I click new page
     And I wait for 2 seconds
-    And I enter page title "BAZ BAR FOO"
+    And I enter page title a-priori-1
     And I wait for 2 seconds
-    And I enter page content "<LOREM2>"
+    And I enter page content a-priori-1
     And I click pages to go to previous page
     And I wait for 2 seconds
-    Then I should see the first draft page with title "BAZ BAR FOO"
+    Then I should see the first draft page with title a-priori-1
     And I wait for 2 seconds
     When I click on the first draft page
     And I wait for 2 seconds
-    Then I should see that the page title is "BAZ BAR FOO"
+    Then I should see that the page title is a-priori-1
     And I wait for 2 seconds
-    Then I should see that the page content is "<LOREM2>"
+    Then I should see that the page content is a-priori-1
     And I wait for 2 seconds
     And I click on page settings
     And I wait for 2 seconds
@@ -44,7 +44,7 @@ Feature: Delete Page
     And I wait for 2 seconds
     When I click on the first draft page
     And I wait for 2 seconds
-    Then I should see that the page title is "FOO BAR BAZ"
+    Then I should see that the page title is a-priori-0
     And I wait for 2 seconds
-    Then I should see that the page content is "<LOREM1>"
+    Then I should see that the page content is a-priori-0
 

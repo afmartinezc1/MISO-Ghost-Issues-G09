@@ -4,7 +4,8 @@ const fetch = require("node-fetch");
 const exp = require("constants");
 const dataAPriori = require("../../../a-priori-data.json");
 require("./pageElements");
-const ramdomRow = getRandomRow();
+const randomRow0 = getRandomRow();
+const randomRow1 = getRandomRow();
 let pseudoData = {};
 
 When("I get pseudoData from api", async function () {
@@ -37,7 +38,7 @@ When("I fill name of menu item a-priori", async function () {
   let element = await this.driver.$(
     global.pageElements.design.menuItemNameInput
   );
-  return await element.setValue(dataAPriori[ramdomRow].title_two);
+  return await element.setValue(dataAPriori[randomRow0].title_two);
 });
 
 // fill new item name pseudo
@@ -45,7 +46,7 @@ When("I fill name of menu item pseudo", async function () {
   let element = await this.driver.$(
     global.pageElements.design.menuItemNameInput
   );
-  return await element.setValue(pseudoData.title_two);
+  return await element.setValue(pseudoData[0].title_two);
 });
 
 // fill new item name random
@@ -61,7 +62,7 @@ When("I fill url of menu item pseudo", async function () {
   let element = await this.driver.$(
     global.pageElements.design.menuItemUrlInput
   );
-  return await element.setValue(pseudoData.url);
+  return await element.setValue(pseudoData[0].url);
 });
 
 // fill new item url pseudo
@@ -89,22 +90,27 @@ When("I save navBar design changes", async function () {
 Then("I should see a navBar item with name a-priori", async function () {
   let element = await this.driver.$(global.pageElements.design.lastNavBarItem);
   const navBarText = await element.getText();
-  expect(navBarText).to.equal(dataAPriori[ramdomRow].title_two.toUpperCase());
+  expect(navBarText).to.equal(dataAPriori[randomRow0].title_two.toUpperCase());
 });
 
 // should see a navBar item with name pseudo
 Then("I should see a navBar item with name pseudo", async function () {
   let element = await this.driver.$(global.pageElements.design.lastNavBarItem);
   const navBarText = await element.getText();
-  expect(navBarText).to.equal(pseudoData.title_two.toUpperCase());
+  expect(navBarText).to.equal(pseudoData[0].title_two.toUpperCase());
 });
 
 // should see a navBar item with name random
-Then("I should see a navBar item with name {kraken-string}", async function (name) {
-  let element = await this.driver.$(global.pageElements.design.lastNavBarItem);
-  const navBarText = await element.getText();
-  expect(navBarText).to.equal(name.toUpperCase());
-});
+Then(
+  "I should see a navBar item with name {kraken-string}",
+  async function (name) {
+    let element = await this.driver.$(
+      global.pageElements.design.lastNavBarItem
+    );
+    const navBarText = await element.getText();
+    expect(navBarText).to.equal(name.toUpperCase());
+  }
+);
 
 When("I click in navBar delete button", async function () {
   let element = await this.driver.$(global.pageElements.design.deleteButton);
@@ -114,7 +120,7 @@ When("I click in navBar delete button", async function () {
 // shouldn't see a navBar item with name a-priori
 Then("I shouldn't see a navBar item with name a-priori", async function () {
   let element = await this.driver.$(
-    `.nav-${dataAPriori[ramdomRow].title_two.toLowerCase()} a`
+    `.nav-${dataAPriori[randomRow0].title_two.toLowerCase()} a`
   );
   const existNavItem = await element.isExisting();
   expect(existNavItem).to.equal(false);
@@ -123,20 +129,21 @@ Then("I shouldn't see a navBar item with name a-priori", async function () {
 // shouldn't see a navBar item with pseudo
 Then("I shouldn't see a navBar item with name pseudo", async function () {
   let element = await this.driver.$(
-    `.nav-${pseudoData.title_two.toLowerCase()} a`
+    `.nav-${pseudoData[0].title_two.toLowerCase()} a`
   );
   const existNavItem = await element.isExisting();
   expect(existNavItem).to.equal(false);
 });
 
 // shouldn't see a navBar item with random
-Then("I shouldn't see a navBar item with name {kraken-string}", async function (name) {
-  let element = await this.driver.$(
-    `.nav-${name.toLowerCase()} a`
-  );
-  const existNavItem = await element.isExisting();
-  expect(existNavItem).to.equal(false);
-});
+Then(
+  "I shouldn't see a navBar item with name {kraken-string}",
+  async function (name) {
+    let element = await this.driver.$(`.nav-${name.toLowerCase()} a`);
+    const existNavItem = await element.isExisting();
+    expect(existNavItem).to.equal(false);
+  }
+);
 
 When("I click on stay modal design button", async function () {
   let element = await this.driver.$(global.pageElements.design.stayBtn);
@@ -364,9 +371,58 @@ When("I enter post title {string}", async function (title) {
   return await element.setValue(title);
 });
 
+// Post title a-priori
+When("I enter post title a-priori-0", async function () {
+  let element = await this.driver.$(global.pageElements.post.postTitle);
+  return await element.setValue(dataAPriori[randomRow0].title);
+});
+
+When("I enter post title a-priori-1", async function () {
+  let element = await this.driver.$(global.pageElements.post.postTitle);
+  return await element.setValue(dataAPriori[randomRow1].title);
+});
+
+// Post-title pseudo
+When("I enter post title pseudo-0", async function () {
+  let element = await this.driver.$(global.pageElements.post.postTitle);
+  return await element.setValue(pseudoData[0].title);
+});
+
+When("I enter post title pseudo-1", async function () {
+  let element = await this.driver.$(global.pageElements.post.postTitle);
+  return await element.setValue(pseudoData[1].title);
+});
+
+// // Post-title random
+// When("I enter post title {kraken-string}", async function (post) {
+//   let element = await this.driver.$(global.pageElements.post.postTitle);
+//   return await element.setValue(post);
+// });
+
 When("I enter post content {kraken-string}", async function (content) {
   let element = await this.driver.$(global.pageElements.post.postContent);
   return await element.setValue(content);
+});
+
+// Post content a-priori
+When("I enter post content a-priori-0", async function () {
+  let element = await this.driver.$(global.pageElements.post.postContent);
+  return await element.setValue(dataAPriori[randomRow0].text);
+});
+
+When("I enter post content a-priori-1", async function () {
+  let element = await this.driver.$(global.pageElements.post.postContent);
+  return await element.setValue(dataAPriori[randomRow1].text);
+});
+
+When("I enter post content pseudo-0", async function () {
+  let element = await this.driver.$(global.pageElements.post.postContent);
+  return await element.setValue(pseudoData[0].text);
+});
+
+When("I enter post content pseudo-1", async function () {
+  let element = await this.driver.$(global.pageElements.post.postContent);
+  return await element.setValue(pseudoData[1].text);
 });
 
 When("I click posts to go to previous page", async function () {
@@ -391,6 +447,68 @@ Then("I should see that the post title is {string}", async function (title) {
   expect(actualTitle).to.equal(title);
 });
 
+// Post title a-priori
+Then(
+  "I should see the first draft post with title a-priori-0",
+  async function () {
+    let element = await this.driver.$(global.pageElements.post.firstPostInList);
+    const actualTitle = await element.getText();
+    expect(actualTitle).to.equal(dataAPriori[randomRow0].title);
+  }
+);
+
+Then("I should see that the post title is a-priori-0", async function () {
+  let element = await this.driver.$(global.pageElements.post.postTitle);
+  const actualTitle = await element.getValue();
+  expect(actualTitle).to.equal(dataAPriori[randomRow0].title);
+});
+
+Then(
+  "I should see the first draft post with title a-priori-1",
+  async function () {
+    let element = await this.driver.$(global.pageElements.post.firstPostInList);
+    const actualTitle = await element.getText();
+    expect(actualTitle).to.equal(dataAPriori[randomRow1].title);
+  }
+);
+
+Then("I should see that the post title is a-priori-1", async function () {
+  let element = await this.driver.$(global.pageElements.post.postTitle);
+  const actualTitle = await element.getValue();
+  expect(actualTitle).to.equal(dataAPriori[randomRow1].title);
+});
+
+// Post title pseudo
+Then(
+  "I should see the first draft post with title pseudo-0",
+  async function () {
+    let element = await this.driver.$(global.pageElements.post.firstPostInList);
+    const actualTitle = await element.getText();
+    expect(actualTitle).to.equal(pseudoData[0].title);
+  }
+);
+
+Then("I should see that the post title is pseudo-0", async function () {
+  let element = await this.driver.$(global.pageElements.post.postTitle);
+  const actualTitle = await element.getValue();
+  expect(actualTitle).to.equal(pseudoData[0].title);
+});
+
+Then(
+  "I should see the first draft post with title pseudo-1",
+  async function () {
+    let element = await this.driver.$(global.pageElements.post.firstPostInList);
+    const actualTitle = await element.getText();
+    expect(actualTitle).to.equal(pseudoData[1].title);
+  }
+);
+
+Then("I should see that the post title is pseudo-1", async function () {
+  let element = await this.driver.$(global.pageElements.post.postTitle);
+  const actualTitle = await element.getValue();
+  expect(actualTitle).to.equal(pseudoData[1].title);
+});
+
 Then(
   "I should see that the edited post content is {kraken-string}{kraken-string}",
   async function (content1, content2) {
@@ -408,6 +526,52 @@ Then(
     expect(actualContent).to.equal(content);
   }
 );
+
+// Post content a-priori
+Then(
+  "I should see that the edited post content is a-priori-1_a-priori-0",
+  async function () {
+    let element = await this.driver.$(global.pageElements.post.postContent);
+    const actualContent = await element.getText();
+    const content = `${dataAPriori[randomRow1].text}${dataAPriori[randomRow0].text}`;
+    expect(actualContent).to.equal(content);
+  }
+);
+
+Then("I should see that the post content is a-priori-0", async function () {
+  let element = await this.driver.$(global.pageElements.post.postContent);
+  const actualContent = await element.getText();
+  expect(actualContent).to.equal(dataAPriori[randomRow0].text);
+});
+
+Then("I should see that the post content is a-priori-1", async function () {
+  let element = await this.driver.$(global.pageElements.post.postContent);
+  const actualContent = await element.getText();
+  expect(actualContent).to.equal(dataAPriori[randomRow1].text);
+});
+
+// Post content pseudo
+Then(
+  "I should see that the edited post content is pseudo-1_pseudo-0",
+  async function () {
+    let element = await this.driver.$(global.pageElements.post.postContent);
+    const actualContent = await element.getText();
+    const content = `${pseudoData[1].text}${pseudoData[0].text}`;
+    expect(actualContent).to.equal(content);
+  }
+);
+
+Then("I should see that the post content is pseudo-0", async function () {
+  let element = await this.driver.$(global.pageElements.post.postContent);
+  const actualContent = await element.getText();
+  expect(actualContent).to.equal(pseudoData[0].text);
+});
+
+Then("I should see that the post content is pseudo-1", async function () {
+  let element = await this.driver.$(global.pageElements.post.postContent);
+  const actualContent = await element.getText();
+  expect(actualContent).to.equal(pseudoData[1].text);
+});
 
 When("I click on the first draft post", async function () {
   let element = await this.driver.$(global.pageElements.post.firstPostInList);
@@ -603,9 +767,53 @@ When("I enter page title {string}", async function (title) {
   return await element.setValue(title);
 });
 
+// Page title a-priori
+When("I enter page title a-priori-0", async function () {
+  let element = await this.driver.$(global.pageElements.page.pageTitle);
+  return await element.setValue(dataAPriori[randomRow0].title);
+});
+
+When("I enter page title a-priori-1", async function () {
+  let element = await this.driver.$(global.pageElements.page.pageTitle);
+  return await element.setValue(dataAPriori[randomRow1].title);
+});
+
+// Page title pseudo
+When("I enter page title pseudo-0", async function () {
+  let element = await this.driver.$(global.pageElements.page.pageTitle);
+  return await element.setValue(pseudoData[0].title);
+});
+
+When("I enter page title pseudo-1", async function () {
+  let element = await this.driver.$(global.pageElements.page.pageTitle);
+  return await element.setValue(pseudoData[0].title);
+});
+
 When("I enter page content {kraken-string}", async function (content) {
   let element = await this.driver.$(global.pageElements.page.pageContent);
   return await element.setValue(content);
+});
+
+// Page content a-priori
+When("I enter page content a-priori-0", async function () {
+  let element = await this.driver.$(global.pageElements.page.pageContent);
+  return await element.setValue(dataAPriori[randomRow0].text);
+});
+
+When("I enter page content a-priori-1", async function () {
+  let element = await this.driver.$(global.pageElements.page.pageContent);
+  return await element.setValue(dataAPriori[randomRow1].text);
+});
+
+// Page content pseudo
+When("I enter page content pseudo-0", async function () {
+  let element = await this.driver.$(global.pageElements.page.pageContent);
+  return await element.setValue(pseudoData[0].text);
+});
+
+When("I enter page content pseudo-1", async function () {
+  let element = await this.driver.$(global.pageElements.page.pageContent);
+  return await element.setValue(pseudoData[0].text);
 });
 
 When("I click pages to go to previous page", async function () {
@@ -630,6 +838,68 @@ Then("I should see that the page title is {string}", async function (title) {
   expect(actualTitle).to.equal(title);
 });
 
+// Page title a-priori
+Then(
+  "I should see the first draft page with title a-priori-0",
+  async function () {
+    let element = await this.driver.$(global.pageElements.page.firstPageInList);
+    const actualTitle = await element.getText();
+    expect(actualTitle).to.equal(dataAPriori[randomRow0].title);
+  }
+);
+
+Then("I should see that the page title is a-priori-0", async function () {
+  let element = await this.driver.$(global.pageElements.page.pageTitle);
+  const actualTitle = await element.getValue();
+  expect(actualTitle).to.equal(dataAPriori[randomRow0].title);
+});
+
+Then(
+  "I should see the first draft page with title a-priori-1",
+  async function () {
+    let element = await this.driver.$(global.pageElements.page.firstPageInList);
+    const actualTitle = await element.getText();
+    expect(actualTitle).to.equal(dataAPriori[randomRow1].title);
+  }
+);
+
+Then("I should see that the page title is a-priori-1", async function () {
+  let element = await this.driver.$(global.pageElements.page.pageTitle);
+  const actualTitle = await element.getValue();
+  expect(actualTitle).to.equal(dataAPriori[randomRow1].title);
+});
+
+// Page title pseudo
+Then(
+  "I should see the first draft page with title pseudo-0",
+  async function () {
+    let element = await this.driver.$(global.pageElements.page.firstPageInList);
+    const actualTitle = await element.getText();
+    expect(actualTitle).to.equal(pseudoData[0].title);
+  }
+);
+
+Then("I should see that the page title is pseudo-0", async function () {
+  let element = await this.driver.$(global.pageElements.page.pageTitle);
+  const actualTitle = await element.getValue();
+  expect(actualTitle).to.equal(pseudoData[0].title);
+});
+
+Then(
+  "I should see the first draft page with title pseudo-1",
+  async function () {
+    let element = await this.driver.$(global.pageElements.page.firstPageInList);
+    const actualTitle = await element.getText();
+    expect(actualTitle).to.equal(pseudoData[1].title);
+  }
+);
+
+Then("I should see that the page title is pseudo-1", async function () {
+  let element = await this.driver.$(global.pageElements.page.pageTitle);
+  const actualTitle = await element.getValue();
+  expect(actualTitle).to.equal(pseudoData[1].title);
+});
+
 Then(
   "I should see that the edited page content is {kraken-string}{kraken-string}",
   async function (content1, content2) {
@@ -648,6 +918,52 @@ Then(
     expect(actualContent).to.equal(content);
   }
 );
+
+// Page content a-priori
+Then(
+  "I should see that the edited page content is a-priori-1_a-priori-0",
+  async function () {
+    let element = await this.driver.$(global.pageElements.page.pageContent);
+    const actualContent = await element.getText();
+    const content = `${dataAPriori[randomRow1].text}${dataAPriori[randomRow0].text}`;
+    expect(actualContent).to.equal(content);
+  }
+);
+
+Then("I should see that the page content is a-priori-0", async function () {
+  let element = await this.driver.$(global.pageElements.page.pageContent);
+  const actualContent = await element.getText();
+  expect(actualContent).to.equal(dataAPriori[randomRow0].text);
+});
+
+Then("I should see that the page content is a-priori-1", async function () {
+  let element = await this.driver.$(global.pageElements.page.pageContent);
+  const actualContent = await element.getText();
+  expect(actualContent).to.equal(dataAPriori[randomRow1].text);
+});
+
+// Page content pseudo
+Then(
+  "I should see that the edited page content is pseudo-1_pseudo-0",
+  async function () {
+    let element = await this.driver.$(global.pageElements.page.pageContent);
+    const actualContent = await element.getText();
+    const content = `${pseudoData[1].text}${pseudoData[0].text}`;
+    expect(actualContent).to.equal(content);
+  }
+);
+
+Then("I should see that the page content is pseudo-0", async function () {
+  let element = await this.driver.$(global.pageElements.page.pageContent);
+  const actualContent = await element.getText();
+  expect(actualContent).to.equal(pseudoData[0].text);
+});
+
+Then("I should see that the page content is pseudo-1", async function () {
+  let element = await this.driver.$(global.pageElements.page.pageContent);
+  const actualContent = await element.getText();
+  expect(actualContent).to.equal(pseudoData[1].text);
+});
 
 When("I click on the first draft page", async function () {
   let element = await this.driver.$(global.pageElements.page.firstPageInList);

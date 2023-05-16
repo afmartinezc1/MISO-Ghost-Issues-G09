@@ -3,6 +3,8 @@ Feature: Create Page
   @user1 @web
   Scenario: Como usuario inicio sesion en ghost, creo una page, reviso que sea el primero en la lista de draft pages, entro a esa page y reviso que título y contenido sean los ingresados previamente
     Given I navigate to page "<URL>"
+    And I get pseudoData from api
+    And I get pseudoData from api
     And I wait for 3 seconds
     When I enter email "<USERNAME>"
     And I wait for 2 seconds
@@ -14,16 +16,16 @@ Feature: Create Page
     And I wait for 2 seconds
     And I click new page
     And I wait for 2 seconds
-    And I enter page title "FOO BAR BAZ"
+    And I enter page title pseudo-0
     And I wait for 2 seconds
-    And I enter page content "<LOREM1>"
+    And I enter page content pseudo-0
     And I wait for 2 seconds
     And I click pages to go to previous page
     And I wait for 2 seconds
-    Then I should see the first draft page with title "FOO BAR BAZ"
+    Then I should see the first draft page with title pseudo-0
     And I wait for 2 seconds
     When I click on the first draft page
     And I wait for 2 seconds
-    Then I should see that the page title is "FOO BAR BAZ"
+    Then I should see that the page title is pseudo-0
     And I wait for 2 seconds
-    Then I should see that the page content is "<LOREM1>"
+    Then I should see that the page content is pseudo-0
