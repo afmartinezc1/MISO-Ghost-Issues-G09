@@ -393,11 +393,11 @@ When("I enter post title pseudo-1", async function () {
   return await element.setValue(pseudoData[1].title);
 });
 
-// // Post-title random
-// When("I enter post title {kraken-string}", async function (post) {
-//   let element = await this.driver.$(global.pageElements.post.postTitle);
-//   return await element.setValue(post);
-// });
+// Post-title random
+When("I enter post title random {kraken-string}", async function (title) {
+  let element = await this.driver.$(global.pageElements.post.postTitle);
+  return await element.setValue(title);
+});
 
 When("I enter post content {kraken-string}", async function (content) {
   let element = await this.driver.$(global.pageElements.post.postContent);
@@ -508,6 +508,25 @@ Then("I should see that the post title is pseudo-1", async function () {
   const actualTitle = await element.getValue();
   expect(actualTitle).to.equal(pseudoData[1].title);
 });
+
+// Post-title random
+Then(
+  "I should see the first draft post with title random {kraken-string}",
+  async function (title) {
+    let element = await this.driver.$(global.pageElements.post.firstPostInList);
+    const actualTitle = await element.getText();
+    expect(actualTitle).to.equal(title);
+  }
+);
+
+Then(
+  "I should see that the post title is random {kraken-string}",
+  async function (title) {
+    let element = await this.driver.$(global.pageElements.post.postTitle);
+    const actualTitle = await element.getValue();
+    expect(actualTitle).to.equal(title);
+  }
+);
 
 Then(
   "I should see that the edited post content is {kraken-string}{kraken-string}",
