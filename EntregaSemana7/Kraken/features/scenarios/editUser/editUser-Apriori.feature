@@ -14,22 +14,22 @@ Feature: Edit Staff
     And I wait for 2 seconds
     And I click in author user to modify
     And I wait for 1 seconds
-    And I fill user full name in staff with text "Zyra"
+    And I fill user full name in staff with text a-priori
     And I wait for 1 seconds
-    And I fill user location in staff with text "New zeland"
+    And I fill user location in staff with text a-priori
     And I wait for 1 seconds
-    And I fill user biography in staff with text "<LOREM>"
+    And I fill user biography in staff with text a-priori
     And I wait for 1 seconds
     And I save user edit staff changes
     And I wait for 2 seconds
     And I click in Staff
     And I wait for 2 seconds
-    And I should see user full name in staff list with text "Zyra"
+    And I should see user full name in staff list with text a-priori
     And I wait for 2 seconds
     And I click in author user to modify
     And I wait for 2 seconds
-    And I should see user full name in edit user with text "Zyra"
+    And I should see user full name in edit user with text a-priori
     And I wait for 1 seconds
-    And I should see user location in edit user with text "New zeland"
+    And I should see user location in edit user with text a-priori
     And I wait for 1 seconds
-    Then I should see user biography in edit user with text "<LOREM>"
+    Then I should see user biography in edit user with text a-priori

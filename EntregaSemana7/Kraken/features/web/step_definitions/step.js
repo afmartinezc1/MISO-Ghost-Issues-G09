@@ -12,11 +12,37 @@ When("I get pseudoData from api", async function () {
   pseudoData = await fetchPseudoData();
 });
 
+//I enter email a-priori
+When("I enter email a-priori", async function () {
+  let element = await this.driver.$(global.pageElements.login.userInput);
+  return await element.setValue(dataAPriori[randomRow0].email);
+});
+
+//I enter email pseudo
+When("I enter email pseudo", async function () {
+  let element = await this.driver.$(global.pageElements.login.userInput);
+  return await element.setValue(pseudoData[0].email);
+});
+
+//I enter email random
 When("I enter email {kraken-string}", async function (email) {
   let element = await this.driver.$(global.pageElements.login.userInput);
   return await element.setValue(email);
 });
 
+//I enter password a-priori
+When("I enter password a-priori", async function () {
+  let element = await this.driver.$(global.pageElements.login.passInput);
+  return await element.setValue(dataAPriori[randomRow0].password);
+});
+
+//I enter password pseudo
+When("I enter password pseudo", async function () {
+  let element = await this.driver.$(global.pageElements.login.passInput);
+  return await element.setValue(pseudoData[0].password);
+});
+
+//I enter password random
 When("I enter password {kraken-string}", async function (password) {
   let element = await this.driver.$(global.pageElements.login.passInput);
   return await element.setValue(password);
@@ -33,7 +59,7 @@ When("I click in Design", async function () {
   return await element.click();
 });
 
-// fill new item name apriori{kraken-string}And I should see a navBa
+// fill new item name apriori
 When("I fill name of menu item a-priori", async function () {
   let element = await this.driver.$(
     global.pageElements.design.menuItemNameInput
@@ -57,7 +83,7 @@ When("I fill name of menu item {kraken-string}", async function (name) {
   return await element.setValue(name);
 });
 
-// fill new item url apriori
+// fill new item url pseudo
 When("I fill url of menu item pseudo", async function () {
   let element = await this.driver.$(
     global.pageElements.design.menuItemUrlInput
@@ -65,12 +91,12 @@ When("I fill url of menu item pseudo", async function () {
   return await element.setValue(pseudoData[0].url);
 });
 
-// fill new item url pseudo
+// fill new item url apriori
 When("I fill url of menu item a-priori", async function () {
   let element = await this.driver.$(
     global.pageElements.design.menuItemUrlInput
   );
-  return await element.setValue(pseudoData.url);
+  return await element.setValue(dataAPriori[0].url);
 });
 
 // fill new item url random
@@ -193,8 +219,31 @@ When(
   }
 );
 
+// fill general settings site title with a-priori
 When(
-  "I fill general settings site title with text {string}",
+  "I fill general settings site title with text a-priori",
+  async function () {
+    let element = await this.driver.$(
+      global.pageElements.general.titleSettingsInput
+    );
+    return await element.setValue(dataAPriori[randomRow0].title);
+  }
+);
+
+// fill general settings site title with pseudo
+When(
+  "I fill general settings site title with text pseudo",
+  async function () {
+    let element = await this.driver.$(
+      global.pageElements.general.titleSettingsInput
+    );
+    return await element.setValue(pseudoData[0].title);
+  }
+);
+
+// fill general settings site title with random
+When(
+  "I fill general settings site title with text {kraken-string}",
   async function (title) {
     let element = await this.driver.$(
       global.pageElements.general.titleSettingsInput
@@ -203,8 +252,31 @@ When(
   }
 );
 
+// fill general settings site description with a-priori
 When(
-  "I fill general settings site description with text {string}",
+  "I fill general settings site description with text a-priori",
+  async function () {
+    let element = await this.driver.$(
+      global.pageElements.general.descriptionSettingsInput
+    );
+    return await element.setValue(dataAPriori[randomRow0].title_two);
+  }
+);
+
+// fill general settings site description with pseudo
+When(
+  "I fill general settings site description with text pseudo",
+  async function () {
+    let element = await this.driver.$(
+      global.pageElements.general.descriptionSettingsInput
+    );
+    return await element.setValue(pseudoData[0].title_two);
+  }
+);
+
+// fill general settings site title with random
+When(
+  "I fill general settings site description with text {kraken-string}",
   async function (description) {
     let element = await this.driver.$(
       global.pageElements.general.descriptionSettingsInput
@@ -218,8 +290,33 @@ When("I save general settings changes", async function () {
   return await element.click();
 });
 
+// I should see the new site title with text a-priori
 Then(
-  "I should see the new site title with text {string}",
+  "I should see the new site title with text a-priori",
+  async function () {
+    let element = await this.driver.$(
+      global.pageElements.application.siteTitle
+    );
+    const navBarText = await element.getText();
+    expect(navBarText).to.equal(dataAPriori[randomRow0].title);
+  }
+);
+
+// I should see the new site title with text pseudo
+Then(
+  "I should see the new site title with text pseudo",
+  async function () {
+    let element = await this.driver.$(
+      global.pageElements.application.siteTitle
+    );
+    const navBarText = await element.getText();
+    expect(navBarText).to.equal(pseudoData[0].title);
+  }
+);
+
+// I should see the new site title with text random
+Then(
+  "I should see the new site title with text {kraken-string}",
   async function (title) {
     let element = await this.driver.$(
       global.pageElements.application.siteTitle
@@ -229,8 +326,33 @@ Then(
   }
 );
 
+// I should see the new site description with text a-priori
 Then(
-  "I should see the new site description with text {string}",
+  "I should see the new site description with text a-priori",
+  async function () {
+    let element = await this.driver.$(
+      global.pageElements.application.siteDescription
+    );
+    const navBarText = await element.getText();
+    expect(navBarText).to.equal(dataAPriori[randomRow0].title_two);
+  }
+);
+
+// I should see the new site description with text pseudo
+Then(
+  "I should see the new site description with text pseudo",
+  async function () {
+    let element = await this.driver.$(
+      global.pageElements.application.siteDescription
+    );
+    const navBarText = await element.getText();
+    expect(navBarText).to.equal(pseudoData[0].title_two);
+  }
+);
+
+// I should see the new site description with text random
+Then(
+  "I should see the new site description with text {kraken-string}",
   async function (description) {
     let element = await this.driver.$(
       global.pageElements.application.siteDescription
@@ -251,22 +373,106 @@ When("I click in author user to modify", async function () {
   return await element.click();
 });
 
+// fill user full name in staff with apriori
 When(
-  "I fill user full name in staff with text {string}",
+  "I fill user full name in staff with text a-priori",
+  async function () {
+    let element = await this.driver.$(global.pageElements.staff.inputName);
+    return await element.setValue(dataAPriori[randomRow0].first_name);
+  }
+);
+
+// fill user full name in staff with pseudo
+When(
+  "I fill user full name in staff with text pseudo",
+  async function () {
+    let element = await this.driver.$(global.pageElements.staff.inputName);
+    return await element.setValue(pseudoData[0].first_name);
+  }
+);
+
+// fill user full name in staff with rendom
+When(
+  "I fill user full name in staff with text {kraken-string}",
   async function (name) {
     let element = await this.driver.$(global.pageElements.staff.inputName);
     return await element.setValue(name);
   }
 );
 
+// I fill user email in staff with text a-priori
+Then(
+  "I fill user email in staff with text a-priori",
+  async function () {
+    let element = await this.driver.$(global.pageElements.staff.inputMail);
+    return await element.setValue(dataAPriori[randomRow0].email);
+  }
+);
+
+// I fill user email in staff with text pseudo
+Then(
+  "I fill user email in staff with text pseudo",
+  async function () {
+    let element = await this.driver.$(global.pageElements.staff.inputMail);
+    return await element.setValue(pseudoData[0].email);
+  }
+);
+
+// I fill user email in staff with text random
+Then(
+  "I fill user email in staff with text {kraken-string}",
+  async function (mail) {
+    let element = await this.driver.$(global.pageElements.staff.inputMail);
+    return await element.setValue(mail);
+  }
+);
+
+// fill user location in staff with a-priori
 When(
-  "I fill user location in staff with text {string}",
+  "I fill user location in staff with text a-priori",
+  async function () {
+    let element = await this.driver.$(global.pageElements.staff.inputLocation);
+    return await element.setValue(dataAPriori[randomRow0].address);
+  }
+);
+
+// fill user location in staff with pseudo
+When(
+  "I fill user location in staff with text pseudo",
+  async function () {
+    let element = await this.driver.$(global.pageElements.staff.inputLocation);
+    return await element.setValue(pseudoData[0].address);
+  }
+);
+
+// fill user location in staff with random
+When(
+  "I fill user location in staff with text {kraken-string}",
   async function (location) {
     let element = await this.driver.$(global.pageElements.staff.inputLocation);
     return await element.setValue(location);
   }
 );
 
+// fill user biography in staff with a-priori
+When(
+  "I fill user biography in staff with text a-priori",
+  async function () {
+    let element = await this.driver.$(global.pageElements.staff.inputBio);
+    return await element.setValue(dataAPriori[randomRow0].last_name);
+  }
+);
+
+// fill user biography in staff with pseudo
+When(
+  "I fill user biography in staff with text pseudo",
+  async function () {
+    let element = await this.driver.$(global.pageElements.staff.inputBio);
+    return await element.setValue(pseudoData[0].last_name);
+  }
+);
+
+// fill user biography in staff with random
 When(
   "I fill user biography in staff with text {kraken-string}",
   async function (biography) {
@@ -275,16 +481,58 @@ When(
   }
 );
 
+// fill user new password in staff with a-priori
 When(
-  "I fill user new password in staff with text {string}",
+  "I fill user new password in staff with text a-priori",
+  async function () {
+    let element = await this.driver.$(global.pageElements.staff.inputPassword);
+    return await element.setValue(dataAPriori[randomRow0].password);
+  }
+);
+
+// fill user new password in staff with pseudo
+When(
+  "I fill user new password in staff with text pseudo",
+  async function () {
+    let element = await this.driver.$(global.pageElements.staff.inputPassword);
+    return await element.setValue(pseudoData[0].password);
+  }
+);
+
+// fill user new password in staff with random
+When(
+  "I fill user new password in staff with text {kraken-string}",
   async function (password) {
     let element = await this.driver.$(global.pageElements.staff.inputPassword);
     return await element.setValue(password);
   }
 );
 
+// fill user new password verification in staff with a-priori
 When(
-  "I fill user new password verification in staff with text {string}",
+  "I fill user new password verification in staff with text a-priori",
+  async function () {
+    let element = await this.driver.$(
+      global.pageElements.staff.inputPasswordVerification
+    );
+    return await element.setValue(dataAPriori[randomRow0].password);
+  }
+);
+
+// fill user new password verification in staff with pseudo
+When(
+  "I fill user new password verification in staff with text pseudo",
+  async function () {
+    let element = await this.driver.$(
+      global.pageElements.staff.inputPasswordVerification
+    );
+    return await element.setValue(pseudoData[0].password);
+  }
+);
+
+// fill user new password verification in staff with random
+When(
+  "I fill user new password verification in staff with text {kraken-string}",
   async function (password) {
     let element = await this.driver.$(
       global.pageElements.staff.inputPasswordVerification
@@ -313,8 +561,29 @@ When("I save user edit staff changes", async function () {
   return await element.click();
 });
 
+// verify user full name in staff list with text a-priori
 Then(
-  "I should see user full name in staff list with text {string}",
+  "I should see user full name in staff list with text a-priori",
+  async function () {
+    let element = await this.driver.$(global.pageElements.staff.userEditedName);
+    const actualTitle = await element.getText();
+    expect(actualTitle).to.equal(dataAPriori[randomRow0].first_name);
+  }
+);
+
+// verify user full name in staff list with text pseudo
+Then(
+  "I should see user full name in staff list with text pseudo",
+  async function () {
+    let element = await this.driver.$(global.pageElements.staff.userEditedName);
+    const actualTitle = await element.getText();
+    expect(actualTitle).to.equal(pseudoData[0].first_name);
+  }
+);
+
+// verify user full name in staff list with text random
+Then(
+  "I should see user full name in staff list with text {kraken-string}",
   async function (name) {
     let element = await this.driver.$(global.pageElements.staff.userEditedName);
     const actualTitle = await element.getText();
@@ -322,8 +591,29 @@ Then(
   }
 );
 
+// verify user full name in edit user with text a-priori
 Then(
-  "I should see user full name in edit user with text {string}",
+  "I should see user full name in edit user with text a-priori",
+  async function () {
+    let element = await this.driver.$(global.pageElements.staff.inputName);
+    const actualTitle = await element.getValue();
+    expect(actualTitle).to.equal(dataAPriori[randomRow0].first_name);
+  }
+);
+
+// verify user full name in edit user with text pseudo
+Then(
+  "I should see user full name in edit user with text pseudo",
+  async function () {
+    let element = await this.driver.$(global.pageElements.staff.inputName);
+    const actualTitle = await element.getValue();
+    expect(actualTitle).to.equal(pseudoData[0].first_name);
+  }
+);
+
+// verify user full name in edit user with text random
+Then(
+  "I should see user full name in edit user with text {kraken-string}",
   async function (name) {
     let element = await this.driver.$(global.pageElements.staff.inputName);
     const actualTitle = await element.getValue();
@@ -331,8 +621,29 @@ Then(
   }
 );
 
+// verify user location in edit user with text a-priori
 Then(
-  "I should see user location in edit user with text {string}",
+  "I should see user location in edit user with text a-priori",
+  async function () {
+    let element = await this.driver.$(global.pageElements.staff.inputLocation);
+    const actualTitle = await element.getValue();
+    expect(actualTitle).to.equal(dataAPriori[randomRow0].address);
+  }
+);
+
+// verify user location in edit user with text pseudo
+Then(
+  "I should see user location in edit user with text pseudo",
+  async function () {
+    let element = await this.driver.$(global.pageElements.staff.inputLocation);
+    const actualTitle = await element.getValue();
+    expect(actualTitle).to.equal(pseudoData[0].address);
+  }
+);
+
+// verify user location in edit user with text random
+Then(
+  "I should see user location in edit user with text {kraken-string}",
   async function (location) {
     let element = await this.driver.$(global.pageElements.staff.inputLocation);
     const actualTitle = await element.getValue();
@@ -340,6 +651,27 @@ Then(
   }
 );
 
+// verify user biography in edit user with text a-priori
+Then(
+  "I should see user biography in edit user with text a-priori",
+  async function () {
+    let element = await this.driver.$(global.pageElements.staff.inputBio);
+    const actualTitle = await element.getValue();
+    expect(actualTitle).to.equal(dataAPriori[randomRow0].last_name);
+  }
+);
+
+// verify user biography in edit user with text pseudo
+Then(
+  "I should see user biography in edit user with text pseudo",
+  async function () {
+    let element = await this.driver.$(global.pageElements.staff.inputBio);
+    const actualTitle = await element.getValue();
+    expect(actualTitle).to.equal(pseudoData[0].last_name);
+  }
+);
+
+// verify user biography in edit user with text random
 Then(
   "I should see user biography in edit user with text {kraken-string}",
   async function (biography) {
