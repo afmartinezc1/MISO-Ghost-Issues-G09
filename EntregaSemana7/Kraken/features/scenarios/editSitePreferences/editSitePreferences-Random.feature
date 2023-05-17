@@ -14,14 +14,14 @@ Feature: Edit General Settings
     And I wait for 2 seconds
     And I click on general settings title description expand button
     And I wait for 1 seconds
-    And I fill general settings site title with text "New Site Title"
+    And I fill general settings site title with text "$name_1"
     And I wait for 1 seconds
-    And I fill general settings site description with text "New Site Description"
+    And I fill general settings site description with text "$name_2"
     And I wait for 1 seconds
     And I save general settings changes
     And I wait for 2 seconds
-    And I should see the new site title with text "New Site Title"
+    And I should see the new site title with text "$$name_1"
     And I wait for 1 seconds
     And I navigate to page "<BLOG>"
     And I wait for 3 seconds
-    Then I should see the new site description with text "New Site Description"
+    Then I should see the new site description with text "$$name_2"

@@ -83,6 +83,7 @@ const pageElements = {
     inputName: "#user-name",
     inputLocation: "#user-location",
     inputBio: "#user-bio",
+    inputMail: "#user-email",
     inputPassword: "#user-password-new",
     inputPasswordVerification: "#user-new-password-verification",
     saveBtn: ".gh-btn-blue",
