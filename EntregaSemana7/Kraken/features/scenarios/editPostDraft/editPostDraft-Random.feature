@@ -12,26 +12,27 @@ Feature: Edit Post
     And I wait for 7 seconds
     And I click new post
     And I wait for 2 seconds
-    And I enter post title a-priori-0
+    And I enter post title random "$name_0"
     And I wait for 2 seconds
-    And I enter post content a-priori-0
-    And I wait for 2 seconds
-    And I click posts to go to previous page
-    And I wait for 2 seconds
-    Then I should see the first draft post with title a-priori-0
-    And I wait for 2 seconds
-    When I click on the first draft post
-    And I wait for 2 seconds
-    And I enter post title a-priori-1
-    And I wait for 2 seconds
-    And I enter post content a-priori-1
+    And I enter post content "$string_0"
     And I wait for 2 seconds
     And I click posts to go to previous page
     And I wait for 2 seconds
-    Then I should see the first draft post with title a-priori-1
+    Then I should see the first draft post with title random "$$name_0"
     And I wait for 2 seconds
     When I click on the first draft post
     And I wait for 2 seconds
-    Then I should see that the post title is a-priori-1
+    And I enter post title random "$name_1"
     And I wait for 2 seconds
-    Then I should see that the edited post content is a-priori-1_a-priori-0
+    And I enter post content "$string_1"
+    And I wait for 2 seconds
+    And I click posts to go to previous page
+    And I wait for 2 seconds
+    Then I should see the first draft post with title random "$$name_1"
+    And I wait for 2 seconds
+    When I click on the first draft post
+    And I wait for 2 seconds
+    Then I should see that the post title is random "$$name_1"
+    And I wait for 2 seconds
+    Then I should see that the edited post content is "$$string_1""$$string_0"
+

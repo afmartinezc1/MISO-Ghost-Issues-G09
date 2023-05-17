@@ -231,15 +231,12 @@ When(
 );
 
 // fill general settings site title with pseudo
-When(
-  "I fill general settings site title with text pseudo",
-  async function () {
-    let element = await this.driver.$(
-      global.pageElements.general.titleSettingsInput
-    );
-    return await element.setValue(pseudoData[0].title);
-  }
-);
+When("I fill general settings site title with text pseudo", async function () {
+  let element = await this.driver.$(
+    global.pageElements.general.titleSettingsInput
+  );
+  return await element.setValue(pseudoData[0].title);
+});
 
 // fill general settings site title with random
 When(
@@ -291,28 +288,18 @@ When("I save general settings changes", async function () {
 });
 
 // I should see the new site title with text a-priori
-Then(
-  "I should see the new site title with text a-priori",
-  async function () {
-    let element = await this.driver.$(
-      global.pageElements.application.siteTitle
-    );
-    const navBarText = await element.getText();
-    expect(navBarText).to.equal(dataAPriori[randomRow0].title);
-  }
-);
+Then("I should see the new site title with text a-priori", async function () {
+  let element = await this.driver.$(global.pageElements.application.siteTitle);
+  const navBarText = await element.getText();
+  expect(navBarText).to.equal(dataAPriori[randomRow0].title);
+});
 
 // I should see the new site title with text pseudo
-Then(
-  "I should see the new site title with text pseudo",
-  async function () {
-    let element = await this.driver.$(
-      global.pageElements.application.siteTitle
-    );
-    const navBarText = await element.getText();
-    expect(navBarText).to.equal(pseudoData[0].title);
-  }
-);
+Then("I should see the new site title with text pseudo", async function () {
+  let element = await this.driver.$(global.pageElements.application.siteTitle);
+  const navBarText = await element.getText();
+  expect(navBarText).to.equal(pseudoData[0].title);
+});
 
 // I should see the new site title with text random
 Then(
@@ -374,22 +361,16 @@ When("I click in author user to modify", async function () {
 });
 
 // fill user full name in staff with apriori
-When(
-  "I fill user full name in staff with text a-priori",
-  async function () {
-    let element = await this.driver.$(global.pageElements.staff.inputName);
-    return await element.setValue(dataAPriori[randomRow0].first_name);
-  }
-);
+When("I fill user full name in staff with text a-priori", async function () {
+  let element = await this.driver.$(global.pageElements.staff.inputName);
+  return await element.setValue(dataAPriori[randomRow0].first_name);
+});
 
 // fill user full name in staff with pseudo
-When(
-  "I fill user full name in staff with text pseudo",
-  async function () {
-    let element = await this.driver.$(global.pageElements.staff.inputName);
-    return await element.setValue(pseudoData[0].first_name);
-  }
-);
+When("I fill user full name in staff with text pseudo", async function () {
+  let element = await this.driver.$(global.pageElements.staff.inputName);
+  return await element.setValue(pseudoData[0].first_name);
+});
 
 // fill user full name in staff with rendom
 When(
@@ -401,22 +382,16 @@ When(
 );
 
 // I fill user email in staff with text a-priori
-Then(
-  "I fill user email in staff with text a-priori",
-  async function () {
-    let element = await this.driver.$(global.pageElements.staff.inputMail);
-    return await element.setValue(dataAPriori[randomRow0].email);
-  }
-);
+Then("I fill user email in staff with text a-priori", async function () {
+  let element = await this.driver.$(global.pageElements.staff.inputMail);
+  return await element.setValue(dataAPriori[randomRow0].email);
+});
 
 // I fill user email in staff with text pseudo
-Then(
-  "I fill user email in staff with text pseudo",
-  async function () {
-    let element = await this.driver.$(global.pageElements.staff.inputMail);
-    return await element.setValue(pseudoData[0].email);
-  }
-);
+Then("I fill user email in staff with text pseudo", async function () {
+  let element = await this.driver.$(global.pageElements.staff.inputMail);
+  return await element.setValue(pseudoData[0].email);
+});
 
 // I fill user email in staff with text random
 Then(
@@ -428,22 +403,16 @@ Then(
 );
 
 // fill user location in staff with a-priori
-When(
-  "I fill user location in staff with text a-priori",
-  async function () {
-    let element = await this.driver.$(global.pageElements.staff.inputLocation);
-    return await element.setValue(dataAPriori[randomRow0].address);
-  }
-);
+When("I fill user location in staff with text a-priori", async function () {
+  let element = await this.driver.$(global.pageElements.staff.inputLocation);
+  return await element.setValue(dataAPriori[randomRow0].address);
+});
 
 // fill user location in staff with pseudo
-When(
-  "I fill user location in staff with text pseudo",
-  async function () {
-    let element = await this.driver.$(global.pageElements.staff.inputLocation);
-    return await element.setValue(pseudoData[0].address);
-  }
-);
+When("I fill user location in staff with text pseudo", async function () {
+  let element = await this.driver.$(global.pageElements.staff.inputLocation);
+  return await element.setValue(pseudoData[0].address);
+});
 
 // fill user location in staff with random
 When(
@@ -455,22 +424,16 @@ When(
 );
 
 // fill user biography in staff with a-priori
-When(
-  "I fill user biography in staff with text a-priori",
-  async function () {
-    let element = await this.driver.$(global.pageElements.staff.inputBio);
-    return await element.setValue(dataAPriori[randomRow0].last_name);
-  }
-);
+When("I fill user biography in staff with text a-priori", async function () {
+  let element = await this.driver.$(global.pageElements.staff.inputBio);
+  return await element.setValue(dataAPriori[randomRow0].last_name);
+});
 
 // fill user biography in staff with pseudo
-When(
-  "I fill user biography in staff with text pseudo",
-  async function () {
-    let element = await this.driver.$(global.pageElements.staff.inputBio);
-    return await element.setValue(pseudoData[0].last_name);
-  }
-);
+When("I fill user biography in staff with text pseudo", async function () {
+  let element = await this.driver.$(global.pageElements.staff.inputBio);
+  return await element.setValue(pseudoData[0].last_name);
+});
 
 // fill user biography in staff with random
 When(
@@ -482,22 +445,16 @@ When(
 );
 
 // fill user new password in staff with a-priori
-When(
-  "I fill user new password in staff with text a-priori",
-  async function () {
-    let element = await this.driver.$(global.pageElements.staff.inputPassword);
-    return await element.setValue(dataAPriori[randomRow0].password);
-  }
-);
+When("I fill user new password in staff with text a-priori", async function () {
+  let element = await this.driver.$(global.pageElements.staff.inputPassword);
+  return await element.setValue(dataAPriori[randomRow0].password);
+});
 
 // fill user new password in staff with pseudo
-When(
-  "I fill user new password in staff with text pseudo",
-  async function () {
-    let element = await this.driver.$(global.pageElements.staff.inputPassword);
-    return await element.setValue(pseudoData[0].password);
-  }
-);
+When("I fill user new password in staff with text pseudo", async function () {
+  let element = await this.driver.$(global.pageElements.staff.inputPassword);
+  return await element.setValue(pseudoData[0].password);
+});
 
 // fill user new password in staff with random
 When(
@@ -1137,7 +1094,13 @@ When("I enter page title pseudo-0", async function () {
 
 When("I enter page title pseudo-1", async function () {
   let element = await this.driver.$(global.pageElements.page.pageTitle);
-  return await element.setValue(pseudoData[0].title);
+  return await element.setValue(pseudoData[1].title);
+});
+
+// Page-title random
+When("I enter page title random {kraken-string}", async function (title) {
+  let element = await this.driver.$(global.pageElements.page.pageTitle);
+  return await element.setValue(title);
 });
 
 When("I enter page content {kraken-string}", async function (content) {
@@ -1164,7 +1127,7 @@ When("I enter page content pseudo-0", async function () {
 
 When("I enter page content pseudo-1", async function () {
   let element = await this.driver.$(global.pageElements.page.pageContent);
-  return await element.setValue(pseudoData[0].text);
+  return await element.setValue(pseudoData[1].text);
 });
 
 When("I click pages to go to previous page", async function () {
@@ -1250,6 +1213,25 @@ Then("I should see that the page title is pseudo-1", async function () {
   const actualTitle = await element.getValue();
   expect(actualTitle).to.equal(pseudoData[1].title);
 });
+
+// Page title random
+Then(
+  "I should see the first draft page with title random {kraken-string}",
+  async function (title) {
+    let element = await this.driver.$(global.pageElements.page.firstPageInList);
+    const actualTitle = await element.getText();
+    expect(actualTitle).to.equal(title);
+  }
+);
+
+Then(
+  "I should see that the page title is random {kraken-string}",
+  async function (title) {
+    let element = await this.driver.$(global.pageElements.page.pageTitle);
+    const actualTitle = await element.getValue();
+    expect(actualTitle).to.equal(title);
+  }
+);
 
 Then(
   "I should see that the edited page content is {kraken-string}{kraken-string}",
