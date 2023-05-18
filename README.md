@@ -6,6 +6,54 @@ nuestra experiencia con las herramientas propuestas, asi como sus pros y sus con
 
 Admeas encontrará las estrategias de pruebas usadas en las diferentes semanas, y la justificacion del cambio realizado en la semana 4
 
+### Entrega Semana 7
+
+
+Versiones:
+- Cypres: 12.11.0
+- Node: 14.21.3
+- Ghost: 3.41.1
+- Npm: 6.14.18
+- Chai: 4.3.7
+- Kraken-node: 1.0.24
+
+Antes de empezar:
+1. Tener instalada la version de ghost que se menciona arriba
+2. Haber ejecutado la aplicacion la primera vez y tener un usuario administrador definido para poder ingresar
+3. Ingresar a los archivos de configuracion de cada proyecto 
+    - Kraken: EntregaSemana5\Kraken\properties.json
+    - Cypress: EntregaSemana5\Cypress\cypress.config.js
+4. En ambos archivos configurar las propiedades del json (USERNAME, PASSWORD)
+5. En ambos archivos configurar el puerto de las propiedades (URL, EXISTING_URL, BLOG) para que coincida con el puerto en el que esta corriendo su version de ghost
+
+Nota: Se sugiere borrar la BD de Ghost antes de realizar los suites de prueba en cada herramienta y para hacerlo se debe ingresar (con Ghost detenido) a la carpeta **ghost/content/data** y eliminar el archivo ghost-local.db. Una vez hecho esto, se debe correr ```ghost start``` para crear un usuario administrador. Lo anterior para realizar las pruebas en un entorno limpio.
+
+Pasos para correr el proyecto de Kraken: 
+1. Ingresar a la carpeta **EntregaSemana5\Kraken**
+2. Ejecutar el comando ```npm install kraken-node```
+3. Ejecutar el comando ```npm install chai```
+4. Ejecutar el comando ```npm install node-fetch@2```
+5. Asegurarse que en la raíz de la carpeta **EntregaSemana5/Kraken/features** solo exista un archivo con extensión .feature que es el archivo que contiene el escenario de la prueba. Solo se debe correr un escenario a la vez.
+6. Todas los escenarios se encuentran en la carpeta **EntregaSemana5/Kraken/features/scenarios**
+7. Correr el test usando el comando ```npx kraken-node run``` desde la carpeta **EntregaSemana5/Kraken**
+
+Pasos para correr el proyecto de Cypress: 
+1. Ingresar a la carpeta **EntregaSemana5\Cypress**
+2. Ejecutar el comando ```npm install cypress --save-dev```
+3. Ejecutar el comando ```npm install @faker-js/faker --save-dev```
+4. Correr cypres usando el comando ```npx cypress open```
+5. Escoger la opción E2E testing en la interfaz de cypress
+6. Escoger Chrome como el navegador
+7. Ejecutar una a una las pruebas E2E en la vista Specs
+
+Los cambios de esta semana respecto a la semana 6 son:
+- Se implementan 120 escenarios utilizando estrategias de generación de datos según se explica en XXXXXXXX, 60 en cypress y 60 en kraken.
+- El código de esta entrega se encuentra en la carpeta EntregaSemana7. Adentro se encuentran 2 carpetas, en 1 se encuentran los 60 escenarios implementados en cypress y en la otra los 60 escenarios implementados en kraken
+- En cypress para cada funcionalidad se tiene una carpeta adentro de la carpeta cypress/e2e. En dicha carpeta se tienen implementados 3 escenarios, 1 por cada estrategia de generación de datos.
+- Para esta semana se debe tener instalada la libreria faker.
+- En kraken para cada funcionalidad se tiene una carpeta adentro de la carpeta features/scenarios. En dicha carpeta se tienen implementados 3 escenarios, 1 por cada estrategia de generación de datos. No olvidar que el escenario que se quiera correr se debe sacar de cada carpeta y ponerlo en la raiz de la carpeta feature.
+- Para esta semana se debe tener instalada la libreria node-fetch@2.
+
 ### Entrega Semana 6
 Los cambios de esta semana respecto a la semana 5 son:
 - Se implementa en cada uno de los 40 escenarios (20 kraken / 20 cypress) de la antigua version de ghost (3.41.1), las capturas de pantalla luego de cada paso.
