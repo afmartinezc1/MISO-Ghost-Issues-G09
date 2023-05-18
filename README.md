@@ -50,7 +50,7 @@ Los cambios de esta semana respecto a la semana 6 son:
 - Se implementan 120 escenarios utilizando estrategias de generación de datos según se explica en XXXXXXXX, 60 en cypress y 60 en kraken.
 - El código de esta entrega se encuentra en la carpeta EntregaSemana7. Adentro se encuentran 2 carpetas, en 1 se encuentran los 60 escenarios implementados en cypress y en la otra los 60 escenarios implementados en kraken
 - En cypress para cada funcionalidad se tiene una carpeta adentro de la carpeta cypress/e2e. En dicha carpeta se tienen implementados 3 escenarios, 1 por cada estrategia de generación de datos.
-- Para esta semana se debe tener instalada la libreria faker.
+- Para esta semana se debe tener instalada la libreria @faker-js/faker.
 - En kraken para cada funcionalidad se tiene una carpeta adentro de la carpeta features/scenarios. En dicha carpeta se tienen implementados 3 escenarios, 1 por cada estrategia de generación de datos. No olvidar que el escenario que se quiera correr se debe sacar de cada carpeta y ponerlo en la raiz de la carpeta feature.
 - Para esta semana se debe tener instalada la libreria node-fetch@2.
 
