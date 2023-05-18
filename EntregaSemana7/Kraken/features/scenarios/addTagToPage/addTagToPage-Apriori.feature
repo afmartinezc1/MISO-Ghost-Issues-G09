@@ -1,7 +1,7 @@
-Feature: Add Tag to post
+Feature: Add Tag to page
   
   @user1 @web
-  Scenario: Como usuario inicio sesion en ghost, creo un tag y un post, selecciono el post, le agregó el tag y verificó que el tag se agregó correctamente
+  Scenario: Como usuario inicio sesion en ghost, creo un tag y un page, selecciono el page, le agregó el tag y verificó que el tag se agregó correctamente
     Given I navigate to page "<URL>"
     And I wait for 3 seconds
     When I enter email "<USERNAME>"
@@ -14,49 +14,49 @@ Feature: Add Tag to post
     And I wait for 2 seconds
     And I click new tag
     And I wait for 2 seconds
-    And I enter tag name random "$name_0"
+    And I enter tag name a-priori-0
     And I wait for 2 seconds
-    And I enter tag color random
+    And I enter tag color a-priori-0
     And I wait for 2 seconds
-    And I enter tag slug random "$$name_0"
+    And I enter tag slug a-priori-0
     And I wait for 2 seconds
-    And I enter tag description random "$string_0"
+    And I enter tag description a-priori-0
     And I wait for 2 seconds
     And I save tag changes
     And I wait for 2 seconds
     And I go to the tags view
     And I wait for 2 seconds
-    Then I should see tag in tag list with name random "$$name_0", slug random "$$name_0" and description random "$$string_0"
-    And I go to the posts view
+    Then I should see tag in tag list with name a-priori-0, slug a-priori-0 and description a-priori-0
+    And I go to the pages view
     And I wait for 2 seconds
-    And I click new post
+    And I click new page
     And I wait for 2 seconds
-    And I enter post title random "$name_1"
+    And I enter page title a-priori-0
     And I wait for 2 seconds
-    And I enter post content "$string_1"
+    And I enter page content a-priori-0
     And I wait for 2 seconds
-    And I click posts to go to previous page
+    And I click pages to go to previous page
     And I wait for 2 seconds
-    Then I should see the first draft post with title random "$$name_1"
+    Then I should see the first draft page with title a-priori-0
     And I wait for 2 seconds
-    When I click on the first draft post
+    When I click on the first draft page
     And I wait for 2 seconds
     And I click on post settings
     And I wait for 2 seconds
     And I click tags list
     And I wait for 2 seconds
-    And I select tag random "$$name_0"
+    And I select tag a-priori-0
     And I wait for 2 seconds
     And I click on close post settings
     And I wait for 2 seconds
-    And I click posts to go to previous page
+    And I click pages to go to previous page
     And I wait for 2 seconds
     And I click on leave modal design button
     And I wait for 2 seconds
-    Then I should see the first draft post with title random "$$name_1"
+    Then I should see the first draft page with title a-priori-0
     And I wait for 2 seconds
-    When I click on the first draft post
+    When I click on the first draft page
     And I wait for 2 seconds
     And I click on post settings
     And I wait for 2 seconds
-    Then I should see the selected tag random "$$name_0"
+    Then I should see the selected tag a-priori-0
