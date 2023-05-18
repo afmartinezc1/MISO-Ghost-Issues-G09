@@ -1061,7 +1061,31 @@ When("I click tags list", async function () {
   return await element.click();
 });
 
-When("I select tag {string}", async function (tag) {
+When("I select tag a-priori-0", async function () {
+  let elements = await this.driver.$$(global.pageElements.post.tagList);
+  let last = null;
+  for (const element of elements) {
+    const text = await element.getText();
+    if (text.includes(dataAPriori[randomRow0].title_two)) {
+      last = element;
+    }
+  }
+  return await last.click();
+});
+
+When("I select tag pseudo-0", async function () {
+  let elements = await this.driver.$$(global.pageElements.post.tagList);
+  let last = null;
+  for (const element of elements) {
+    const text = await element.getText();
+    if (text.includes(pseudoData[0].title_two)) {
+      last = element;
+    }
+  }
+  return await last.click();
+});
+
+When("I select tag random {kraken-string}", async function (tag) {
   let elements = await this.driver.$$(global.pageElements.post.tagList);
   let last = null;
   for (const element of elements) {
@@ -1078,7 +1102,31 @@ When("I click on close post settings", async function () {
   return await element.click();
 });
 
-Then("I should see the selected tag {string}", async function (tag) {
+Then("I should see the selected tag a-priori-0", async function () {
+  let elements = await this.driver.$$(global.pageElements.post.selectedTags);
+  let encontrado = false;
+  for (const element of elements) {
+    const text = await element.getText();
+    if (text.includes(dataAPriori[randomRow0].title_two)) {
+      encontrado = true;
+    }
+  }
+  expect(encontrado).to.equal(true);
+});
+
+Then("I should see the selected tag pseudo-0", async function () {
+  let elements = await this.driver.$$(global.pageElements.post.selectedTags);
+  let encontrado = false;
+  for (const element of elements) {
+    const text = await element.getText();
+    if (text.includes(pseudoData[0].title_two)) {
+      encontrado = true;
+    }
+  }
+  expect(encontrado).to.equal(true);
+});
+
+Then("I should see the selected tag random {kraken-string}", async function (tag) {
   let elements = await this.driver.$$(global.pageElements.post.selectedTags);
   let encontrado = false;
   for (const element of elements) {
