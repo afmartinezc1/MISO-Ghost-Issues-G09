@@ -40,10 +40,11 @@ Antes de empezar:
     - Pasos para correr el proyecto de Cypress: 
     1. Ingresar a la carpeta **EntregaSemana6/[versionGhost]/Cypress**
     2. Ejecutar el comando ```npm install cypress --save-dev```
-    3. Correr cypres usando el comando ```npx cypress open```
-    4. Escoger la opción E2E testing en la interfaz de cypress
-    5. Escoger Chrome como el navegador
-    4. Ejecutar una a una las pruebas E2E en la vista Specs
+    3. Ejecutar el comando ```npm install @faker-js/faker --save-dev```
+    4. Correr cypres usando el comando ```npx cypress open```
+    5. Escoger la opción E2E testing en la interfaz de cypress
+    6. Escoger Chrome como el navegador
+    7. Ejecutar una a una las pruebas E2E en la vista Specs
 6. Asegurarse de que luego de correr los test se hayan creado las capturas de pantalla en la carpeta **EntregaSemana6\[VersionGhost]\Kraken\customReports\[feature]** en ambas versiones de ghost
 
 **Nota: Para la nueva version de ghost solo se utilizo la herramienta **KRAKEN**
