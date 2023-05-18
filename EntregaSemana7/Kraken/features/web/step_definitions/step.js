@@ -1701,7 +1701,45 @@ When("I click on confirm tag delete", async function () {
 });
 
 Then(
-  "I should not see tag in tag list with name {string}, slug {string} and description {kraken-string}",
+  "I should not see tag in tag list with name a-priori-0, slug a-priori-0 and description a-priori-0",
+  async function () {
+    let elements = await this.driver.$$(global.pageElements.tag.tagList);
+    let encontrado = false;
+    for (const element of elements) {
+      const text = await element.getText();
+      if (
+        text.includes(dataAPriori[randomRow0].title_two) &&
+        text.includes(dataAPriori[randomRow0].title_two) &&
+        text.includes(dataAPriori[randomRow0].text.substring(0,500))
+      ) {
+        encontrado = true;
+      }
+    }
+    expect(encontrado).to.equal(false);
+  }
+);
+
+Then(
+  "I should not see tag in tag list with name pseudo-0, slug pseudo-0 and description pseudo-0",
+  async function () {
+    let elements = await this.driver.$$(global.pageElements.tag.tagList);
+    let encontrado = false;
+    for (const element of elements) {
+      const text = await element.getText();
+      if (
+        text.includes(pseudoData[0].title_two) &&
+        text.includes(pseudoData[0].title_two) &&
+        text.includes(pseudoData[0].text.substring(0,500))
+      ) {
+        encontrado = true;
+      }
+    }
+    expect(encontrado).to.equal(false);
+  }
+);
+
+Then(
+  "I should not see tag in tag list with name random {kraken-string}, slug random {kraken-string} and description random {kraken-string}",
   async function (name, slug, description) {
     let elements = await this.driver.$$(global.pageElements.tag.tagList);
     let encontrado = false;
