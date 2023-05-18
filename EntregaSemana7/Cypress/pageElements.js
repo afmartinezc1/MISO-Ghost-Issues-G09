@@ -77,6 +77,7 @@ const pageElements = {
     userEdited: ".apps-grid-cell:last-of-type",
     inputName: "#user-name",
     inputLocation: "#user-location",
+    inputMail: "#user-email",
     inputBio: "#user-bio",
     inputPassword: "#user-password-new",
     inputPasswordVerification: "#user-new-password-verification",
@@ -85,6 +86,7 @@ const pageElements = {
     saveNewPassBtn: ".button-change-password",
     userProfile: ".gh-user-avatar",
     signout: ".user-menu-signout",
+    error: ".error:nth-child(2) p"
   },
   tag: {
     tagView: "ul.gh-nav-manage li:nth-child(4)",
