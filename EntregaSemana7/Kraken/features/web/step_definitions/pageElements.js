@@ -91,6 +91,7 @@ const pageElements = {
     saveNewPassBtn: ".button-change-password",
     userProfile: ".gh-user-avatar",
     signout: ".user-menu-signout",
+    error: ".error:nth-child(2) p"
   },
   tag: {
     tagView: "[href='#/tags/']",

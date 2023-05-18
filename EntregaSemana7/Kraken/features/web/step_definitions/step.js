@@ -487,6 +487,28 @@ When(
   }
 );
 
+// fill user new password verification in staff with diferent a-priori
+When(
+  "I fill user new password verification in staff with diferent text a-priori",
+  async function () {
+    let element = await this.driver.$(
+      global.pageElements.staff.inputPasswordVerification
+    );
+    return await element.setValue(dataAPriori[randomRow1].password);
+  }
+);
+
+// fill user new password verification in staff with diferent pseudo
+When(
+  "I fill user new password verification in staff with diferent text pseudo",
+  async function () {
+    let element = await this.driver.$(
+      global.pageElements.staff.inputPasswordVerification
+    );
+    return await element.setValue(pseudoData[1].password);
+  }
+);
+
 // fill user new password verification in staff with random
 When(
   "I fill user new password verification in staff with text {kraken-string}",
@@ -517,6 +539,15 @@ When("I save user edit staff changes", async function () {
   let element = await this.driver.$(global.pageElements.staff.saveBtn);
   return await element.click();
 });
+
+Then(
+  "I shouldn see error in password match",
+  async function () {
+    let element = await this.driver.$(global.pageElements.staff.error);
+    const error = await element.getText();
+    expect(error).to.equal('Your new passwords do not match');
+  }
+);
 
 // verify user full name in staff list with text a-priori
 Then(
