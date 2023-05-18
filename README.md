@@ -47,7 +47,7 @@ Pasos para correr el proyecto de Cypress:
 7. Ejecutar una a una las pruebas E2E en la vista Specs
 
 Los cambios de esta semana respecto a la semana 6 son:
-- Se implementan 120 escenarios utilizando estrategias de generación de datos según se explica en esta [pagina](Estrategias-de-generación-de-datos-aleatorios), 60 en cypress y 60 en kraken.
+- Se implementan 120 escenarios utilizando estrategias de generación de datos según se explica en esta [pagina](https://github.com/afmartinezc1/MISO-Ghost-Issues-G09/wiki/Estrategias-de-generación-de-datos-aleatorios), 60 en cypress y 60 en kraken.
 - El código de esta entrega se encuentra en la carpeta EntregaSemana7. Adentro se encuentran 2 carpetas, en 1 se encuentran los 60 escenarios implementados en cypress y en la otra los 60 escenarios implementados en kraken
 - En cypress para cada funcionalidad se tiene una carpeta adentro de la carpeta cypress/e2e. En dicha carpeta se tienen implementados 3 escenarios, 1 por cada estrategia de generación de datos.
 - Para esta semana se debe tener instalada la libreria @faker-js/faker.
