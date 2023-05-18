@@ -21,8 +21,8 @@ Antes de empezar:
 1. Tener instalada la version de ghost que se menciona arriba
 2. Haber ejecutado la aplicacion la primera vez y tener un usuario administrador definido para poder ingresar
 3. Ingresar a los archivos de configuracion de cada proyecto 
-    - Kraken: EntregaSemana5\Kraken\properties.json
-    - Cypress: EntregaSemana5\Cypress\cypress.config.js
+    - Kraken: EntregaSemana7\Kraken\properties.json
+    - Cypress: EntregaSemana7\Cypress\cypress.config.js
 4. En ambos archivos configurar las propiedades del json (USERNAME, PASSWORD)
 5. En ambos archivos configurar el puerto de las propiedades (URL, EXISTING_URL, BLOG) para que coincida con el puerto en el que esta corriendo su version de ghost
 
