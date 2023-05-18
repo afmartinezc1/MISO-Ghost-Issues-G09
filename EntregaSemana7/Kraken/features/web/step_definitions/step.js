@@ -1400,9 +1400,19 @@ When("I enter tag name a-priori-0", async function () {
   return await element.setValue(dataAPriori[randomRow0].title_two);
 });
 
+When("I enter tag name a-priori-1", async function () {
+  let element = await this.driver.$(global.pageElements.tag.inputName);
+  return await element.setValue(dataAPriori[randomRow1].title_two);
+});
+
 When("I enter tag name pseudo-0", async function () {
   let element = await this.driver.$(global.pageElements.tag.inputName);
   return await element.setValue(pseudoData[0].title_two);
+});
+
+When("I enter tag name pseudo-1", async function () {
+  let element = await this.driver.$(global.pageElements.tag.inputName);
+  return await element.setValue(pseudoData[1].title_two);
 });
 
 When("I enter tag name random {kraken-string}", async function (name) {
@@ -1415,9 +1425,19 @@ When("I enter tag color a-priori-0", async function () {
   return await element.setValue(dataAPriori[randomRow0].color.substring(1));
 });
 
+When("I enter tag color a-priori-1", async function () {
+  let element = await this.driver.$(global.pageElements.tag.inputColor);
+  return await element.setValue(dataAPriori[randomRow1].color.substring(1));
+});
+
 When("I enter tag color pseudo-0", async function () {
   let element = await this.driver.$(global.pageElements.tag.inputColor);
   return await element.setValue(pseudoData[0].color.substring(1));
+});
+
+When("I enter tag color pseudo-1", async function () {
+  let element = await this.driver.$(global.pageElements.tag.inputColor);
+  return await element.setValue(pseudoData[1].color.substring(1));
 });
 
 When("I enter tag color random", async function () {
@@ -1437,9 +1457,19 @@ When("I enter tag slug a-priori-0", async function () {
   return await element.setValue(dataAPriori[randomRow0].title_two);
 });
 
+When("I enter tag slug a-priori-1", async function () {
+  let element = await this.driver.$(global.pageElements.tag.inputSlug);
+  return await element.setValue(dataAPriori[randomRow1].title_two);
+});
+
 When("I enter tag slug pseudo-0", async function () {
   let element = await this.driver.$(global.pageElements.tag.inputSlug);
   return await element.setValue(pseudoData[0].title_two);
+});
+
+When("I enter tag slug pseudo-1", async function () {
+  let element = await this.driver.$(global.pageElements.tag.inputSlug);
+  return await element.setValue(pseudoData[1].title_two);
 });
 
 When("I enter tag slug random {kraken-string}", async function (slug) {
@@ -1452,9 +1482,19 @@ When("I enter tag description a-priori-0", async function () {
   return await element.setValue(dataAPriori[randomRow0].text.substring(0,500));
 });
 
+When("I enter tag description a-priori-1", async function () {
+  let element = await this.driver.$(global.pageElements.tag.inputDescription);
+  return await element.setValue(dataAPriori[randomRow1].text.substring(0,500));
+});
+
 When("I enter tag description pseudo-0", async function () {
   let element = await this.driver.$(global.pageElements.tag.inputDescription);
   return await element.setValue(pseudoData[0].text.substring(0,500));
+});
+
+When("I enter tag description pseudo-1", async function () {
+  let element = await this.driver.$(global.pageElements.tag.inputDescription);
+  return await element.setValue(pseudoData[1].text.substring(0,500));
 });
 
 When("I enter tag description random {kraken-string}", async function (description) {
@@ -1487,6 +1527,25 @@ Then(
 );
 
 Then(
+  "I should see tag in tag list with name a-priori-1, slug a-priori-1 and description a-priori-1",
+  async function () {
+    let elements = await this.driver.$$(global.pageElements.tag.tagList);
+    let encontrado = false;
+    for (const element of elements) {
+      const text = await element.getText();
+      if (
+        text.includes(dataAPriori[randomRow1].title_two) &&
+        text.includes(dataAPriori[randomRow1].title_two) &&
+        text.includes(dataAPriori[randomRow1].text.substring(0,500))
+      ) {
+        encontrado = true;
+      }
+    }
+    expect(encontrado).to.equal(true);
+  }
+);
+
+Then(
   "I should see tag in tag list with name pseudo-0, slug pseudo-0 and description pseudo-0",
   async function () {
     let elements = await this.driver.$$(global.pageElements.tag.tagList);
@@ -1497,6 +1556,25 @@ Then(
         text.includes(pseudoData[0].title_two) &&
         text.includes(pseudoData[0].title_two) &&
         text.includes(pseudoData[0].text.substring(0,500))
+      ) {
+        encontrado = true;
+      }
+    }
+    expect(encontrado).to.equal(true);
+  }
+);
+
+Then(
+  "I should see tag in tag list with name pseudo-1, slug pseudo-1 and description pseudo-1",
+  async function () {
+    let elements = await this.driver.$$(global.pageElements.tag.tagList);
+    let encontrado = false;
+    for (const element of elements) {
+      const text = await element.getText();
+      if (
+        text.includes(pseudoData[1].title_two) &&
+        text.includes(pseudoData[1].title_two) &&
+        text.includes(pseudoData[1].text.substring(0,500))
       ) {
         encontrado = true;
       }
@@ -1525,7 +1603,45 @@ Then(
 );
 
 When(
-  "I click a tag with name {string}, slug {string} and description {kraken-string}",
+  "I click a tag with name a-priori-0, slug a-priori-0 and description a-priori-0",
+  async function () {
+    let elements = await this.driver.$$(global.pageElements.tag.tagList);
+    let last = null;
+    for (const element of elements) {
+      const text = await element.getText();
+      if (
+        text.includes(dataAPriori[randomRow0].title_two) &&
+        text.includes(dataAPriori[randomRow0].title_two) &&
+        text.includes(dataAPriori[randomRow0].text.substring(0,500))
+      ) {
+        last = element;
+      }
+    }
+    return await last.click();
+  }
+);
+
+When(
+  "I click a tag with name pseudo-0, slug pseudo-0 and description pseudo-0",
+  async function () {
+    let elements = await this.driver.$$(global.pageElements.tag.tagList);
+    let last = null;
+    for (const element of elements) {
+      const text = await element.getText();
+      if (
+        text.includes(pseudoData[0].title_two) &&
+        text.includes(pseudoData[0].title_two) &&
+        text.includes(pseudoData[0].text.substring(0,500))
+      ) {
+        last = element;
+      }
+    }
+    return await last.click();
+  }
+);
+
+When(
+  "I click a tag with name random {kraken-string}, slug random {kraken-string} and description random {kraken-string}",
   async function (name, slug, description) {
     let elements = await this.driver.$$(global.pageElements.tag.tagList);
     let last = null;
