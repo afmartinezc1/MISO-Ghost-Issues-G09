@@ -37,6 +37,10 @@ const pageElements = {
     filterPostAuthorGhost: ".ember-power-select-options > li:last-child",
     postList: ".posts-list",
     filterPostStateAll: ".ember-power-select-options > li:nth-child(1)",
+    inputTag: "#tag-input",
+    tagList: ".ember-power-select-options > *",
+    closePostSettings: "button.close",
+    selectedTags: ".ember-power-select-multiple-options > *",
   },
   page: {
     pageView: ".gh-nav-list [href='#/pages/']",
