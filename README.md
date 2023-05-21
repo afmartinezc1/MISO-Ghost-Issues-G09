@@ -35,7 +35,7 @@ Pasos para correr el proyecto de Kraken:
 4. Ejecutar el comando ```npm install node-fetch@2```
 5. Asegurarse que en la raíz de la carpeta **EntregaSemana7/Kraken/features** solo exista un archivo con extensión .feature que es el archivo que contiene el escenario de la prueba. Solo se debe correr un escenario a la vez.
 6. Todas los escenarios se encuentran en la carpeta **EntregaSemana7/Kraken/features/scenarios**
-7. Correr el test usando el comando ```npx kraken-node run``` desde la carpeta **EntregaSemana5/Kraken**
+7. Correr el test usando el comando ```npx kraken-node run``` desde la carpeta **EntregaSemana7/Kraken**
 
 Pasos para correr el proyecto de Cypress: 
 1. Ingresar a la carpeta **EntregaSemana7\Cypress**
