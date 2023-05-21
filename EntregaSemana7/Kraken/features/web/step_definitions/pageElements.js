@@ -54,6 +54,8 @@ const pageElements = {
     deletePageBtn: "button.settings-menu-delete-button",
     confirmDeleteBtn: "button.gh-btn-red",
     pageList: ".gh-list > *",
+    firstPageInListStatus:
+      ".gh-list > li:nth-child(2) .gh-content-status-draft",
   },
   design: {
     linkSideMenu: "ul.gh-nav-settings li:nth-child(3)",

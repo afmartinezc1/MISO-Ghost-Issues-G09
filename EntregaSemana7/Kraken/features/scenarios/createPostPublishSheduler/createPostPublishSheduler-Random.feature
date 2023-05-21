@@ -9,14 +9,14 @@ Feature: Create Post and publish sheduled
     And I enter password "<PASSWORD>"
     And I wait for 2 seconds
     And I click SignIn
-    And I wait for 7 seconds
+     And I wait for 7 seconds
     And I go to the posts view
     And I wait for 2 seconds
     And I click new post
     And I wait for 2 seconds
-    And I enter post title "MY_SECOND_POST"
+    And I enter post title random "$name_0"
     And I wait for 2 seconds
-    And I enter post content "<LOREM1>"
+    And I enter post content "$string_0"
     And I wait for 2 seconds
     And I click publish to show dialog to publish
     And I wait for 2 seconds
@@ -26,5 +26,5 @@ Feature: Create Post and publish sheduled
     And I wait for 1 seconds
     And I click posts to go to previous page
     And I wait for 2 seconds
-    Then I should see the first post with state "MY_SECOND_POST" "SCHEDULED"
+    Then I should see the first posts scheduled random "$$name_0"
     And I wait for 2 seconds

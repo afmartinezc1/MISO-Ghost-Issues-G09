@@ -2,11 +2,10 @@ const url = Cypress.env("URL");
 const userName = Cypress.env("USERNAME");
 const password = Cypress.env("PASSWORD");
 const pageElements = Cypress.env("pageElements");
-const LOREM1 = Cypress.env("LOREM1");
-const POST_PUBLICADO=Cypress.env("POST_PUBLICADO");
-const PAGE_PUBLICADO=Cypress.env("PAGE_PUBLICADO");
-describe("Create post published", () => {
-  it("Como usuario inicio sesion en ghost, creo un post, publicarlo y entrar el viewsite y verificar que exista", async () => {
+describe("Create page published", () => {
+  it("Como usuario inicio sesion en ghost, creo una page, publicarlo regresar a la lista de pages y verificar que este publicado", async () => {
+    cy.pseudoData().then((response) => {
+    const [data0] = response.body;
     // Given I navigate to page "<URL>"
     cy.visit(url);
     // And I wait for 3 seconds
@@ -23,20 +22,20 @@ describe("Create post published", () => {
     cy.get(pageElements.login.loginBtn).click();
     // And I wait for 7 seconds
     cy.wait(7000);
-    // And I go to the posts view
-    cy.get(pageElements.post.postView).click();
+    // And I go to the pages view
+    cy.get(pageElements.page.pageView).click();
     // And I wait for 2 seconds
     cy.wait(2000);
-    // And I click new post
-    cy.get(pageElements.post.newPost).click();
+    // And I click new page
+    cy.get(pageElements.page.newPage).click();
     // And I wait for 2 seconds
     cy.wait(2000);
-    // And I enter post title "MY_PRIMER_POST1"
-    cy.get(pageElements.post.postTitle).type("MY_FIRST_POST1");
+    // And I enter page title pseudo
+    cy.get(pageElements.page.pageTitle).type(data0.title);
     // And I wait for 2 seconds
     cy.wait(2000);
-    // And I enter post content "<LOREM1>"
-    cy.get(pageElements.post.postContent).type(LOREM1);
+    // And I enter post content pseudo
+    cy.get(pageElements.page.pageContent).type(data0.text);
     // And I wait for 2 seconds
     cy.wait(2000);
     // And I click publish to open dialog
@@ -47,8 +46,14 @@ describe("Create post published", () => {
     cy.get(pageElements.post.publishConfirm).click();
     // And I wait for 2 seconds
     cy.wait(2000);
-    // Then I navigate to post published"
-    cy.visit(POST_PUBLICADO);
-  
+    // And I click pages to go to previous page
+    cy.get(pageElements.page.newPagePreviousPage).click();
+    // And I wait for 2 seconds
+    cy.wait(2000);
+    // Then I should see the post published pseudo"
+    cy.get(pageElements.page.pageList)
+        .should('contain', data0.title)
+        .and('contain', "Published")
+  });
   });
 });

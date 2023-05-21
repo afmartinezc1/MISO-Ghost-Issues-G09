@@ -1,7 +1,7 @@
 Feature: Create Post and publish
   
   @user1 @web
-  Scenario: Como usuario inicio sesion en ghost, creo un post, publicarlo y entrar el viewsite y verificar que exista
+  Scenario: Como usuario inicio sesion en ghost, creo un post, regresarse al viewsite y verificar que se creó con el estado publicado
     Given I navigate to page "<URL>"
     And I wait for 3 seconds
     When I enter email "<USERNAME>"
@@ -14,14 +14,16 @@ Feature: Create Post and publish
     And I wait for 2 seconds
     And I click new post
     And I wait for 2 seconds
-    And I enter post title "MY_FIRST_POST"
+    And I enter post title a-priori-0
     And I wait for 2 seconds
-    And I enter post content "<LOREM1>"
+    And I enter post content a-priori-0
     And I wait for 2 seconds
     And I click publish to show dialog to publish
     And I wait for 2 seconds
     When I click publish to confirm
     And I wait for 2 seconds
-    Then I navigate to page "<POST_PUBLICADO>"
+    And I click posts to go to previous page
+    And I wait for 2 seconds
+    Then I should see the post published a-priori
     And I wait for 2 seconds
 

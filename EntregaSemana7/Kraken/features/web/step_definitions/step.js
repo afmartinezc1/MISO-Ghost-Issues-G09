@@ -1138,6 +1138,41 @@ Then("I should see the selected tag random {kraken-string}", async function (tag
   expect(encontrado).to.equal(true);
 });
 
+Then("I should see the post published a-priori", async function () {
+  let elements = await this.driver.$$(global.pageElements.post.postList);
+  let encontrado = false;
+  for (const element of elements) {
+    const text = await element.getText();
+    if (text.includes(dataAPriori[randomRow0].title) && text.includes("PUBLISHED")) {
+      encontrado = true;
+    }
+  }
+  expect(encontrado).to.equal(true);
+});
+
+Then(
+  "I should see the first post with state a-priori {string}",
+  async function  (state) {
+    let element = await this.driver.$(global.pageElements.post.firstPostInList);
+    let element1 = await this.driver.$(global.pageElements.post.firstPostInListStatus);
+    const actualTitle = await element.getText();
+    const actualState = await element1.getText();
+    expect(actualTitle).to.equal(dataAPriori[randomRow0].title) && expect(actualState).to.equal(state);
+
+  }
+);
+Then("I should see the post published pseudo", async function () {
+  let elements = await this.driver.$$(global.pageElements.post.postList);
+  let encontrado = false;
+  for (const element of elements) {
+    const text = await element.getText();
+    if (text.includes(pseudoData[0].title) && text.includes("PUBLISHED")) {
+      encontrado = true;
+    }
+  }
+  expect(encontrado).to.equal(true);
+});
+
 // PAGES //
 When("I go to the pages view", async function () {
   let element = await this.driver.$(global.pageElements.page.pageView);
@@ -1191,6 +1226,56 @@ When("I enter page content {kraken-string}", async function (content) {
 When("I enter page content a-priori-0", async function () {
   let element = await this.driver.$(global.pageElements.page.pageContent);
   return await element.setValue(dataAPriori[randomRow0].text);
+});
+
+When("I enter page url a-priori-0", async function () {
+  let element = await this.driver.$(global.pageElements.page.pageContent);
+  return await element.setValue(dataAPriori[randomRow0].url);
+});
+
+When("I enter page url pseudo-0", async function () {
+  let element = await this.driver.$(global.pageElements.page.pageContent);
+  return await element.setValue(pseudoData[0].url);
+});
+
+Then(
+  "I should see the first posts with state pseudo {string}",
+  async function  (state) {
+    let element = await this.driver.$(global.pageElements.post.firstPostInList);
+    let element1 = await this.driver.$(global.pageElements.post.firstPostInListStatus);
+    const actualTitle = await element.getText();
+    const actualState = await element1.getText();
+    expect(actualTitle).to.equal(pseudoData[0].title) && expect(actualState).to.equal(state);
+  }
+);
+
+Then("I should see the post published random {kraken-string}", async function (data) {
+  let elements = await this.driver.$$(global.pageElements.page.pageList);
+  let encontrado = false;
+  for (const element of elements) {
+    const text = await element.getText();
+    if (text.includes(data) && text.includes("PUBLISHED")) {
+      encontrado = true;
+    }
+  }
+  expect(encontrado).to.equal(true);
+});
+
+Then(
+  "I should see the first posts scheduled random {kraken-string}",
+  async function  (data) {
+    let element = await this.driver.$(global.pageElements.post.firstPostInList);
+    let element1 = await this.driver.$(global.pageElements.post.firstPostInListStatus);
+    const actualTitle = await element.getText();
+    const actualState = await element1.getText();
+    expect(actualTitle).to.equal(data) && expect(actualState).to.equal("SCHEDULED");
+
+  }
+);
+
+When("I enter page url random {kraken-string}", async function (url) {
+  let element = await this.driver.$(global.pageElements.page.pageContent);
+  return await element.setValue(url);
 });
 
 When("I enter page content a-priori-1", async function () {
@@ -1354,6 +1439,131 @@ Then("I should see that the page content is a-priori-1", async function () {
   expect(actualContent).to.equal(dataAPriori[randomRow1].text);
 });
 
+Then("I should see the page published a-priori", async function () {
+  let elements = await this.driver.$$(global.pageElements.page.pageList);
+  let encontrado = false;
+  for (const element of elements) {
+    const text = await element.getText();
+    if (text.includes(dataAPriori[randomRow0].title) && text.includes("PUBLISHED")) {
+      encontrado = true;
+    }
+  }
+  expect(encontrado).to.equal(true);
+});
+
+Then("I should see the page published pseudo", async function () {
+  let elements = await this.driver.$$(global.pageElements.page.pageList);
+  let encontrado = false;
+  for (const element of elements) {
+    const text = await element.getText();
+    if (text.includes(pseudoData[0].title) && text.includes("PUBLISHED")) {
+      encontrado = true;
+    }
+  }
+  expect(encontrado).to.equal(true);
+});
+
+Then(
+  "I should see the first pages with state a-priori {string}",
+  async function  (state) {
+    let element = await this.driver.$(global.pageElements.page.firstPageInList);
+    let element1 = await this.driver.$(global.pageElements.page.firstPageInListStatus);
+    const actualTitle = await element.getText();
+    const actualState = await element1.getText();
+    expect(actualTitle).to.equal(dataAPriori[randomRow0].title) && expect(actualState).to.equal(state);
+
+  }
+);
+Then("I should see the page published random {kraken-string}", async function (data) {
+  let elements = await this.driver.$$(global.pageElements.page.pageList);
+  let encontrado = false;
+  for (const element of elements) {
+    const text = await element.getText();
+    if (text.includes(data) && text.includes("PUBLISHED")) {
+      encontrado = true;
+    }
+  }
+  expect(encontrado).to.equal(true);
+});
+
+When("I click page published url a-priori", async function () {
+  let elements = await this.driver.$$(global.pageElements.page.pageList);
+  let encontrado = false;
+  for (const element of elements) {
+    const text = await element.getText();
+    if (text.includes(dataAPriori[randomRow0].title) && text.includes("PUBLISHED")) {
+      return await element.click();
+    }
+  }
+ 
+});
+
+When("I click page published url random {kraken-string}", async function (data) {
+  let elements = await this.driver.$$(global.pageElements.page.pageList);
+  let encontrado = false;
+  for (const element of elements) {
+    const text = await element.getText();
+    if (text.includes(data) && text.includes("PUBLISHED")) {
+      return await element.click();
+    }
+  }
+ 
+});
+
+When("I click page published url pseudo", async function () {
+  let elements = await this.driver.$$(global.pageElements.page.pageList);
+  let encontrado = false;
+  for (const element of elements) {
+    const text = await element.getText();
+    if (text.includes(pseudoData[0].title) && text.includes("PUBLISHED")) {
+      return await element.click();
+    }
+  }
+ 
+});
+
+Then("I should see the page published url a-priori", async function () {
+  let element = await this.driver.$(global.pageElements.page.pageContent);
+  const text= await element.getText();
+  expect(text).to.equal(dataAPriori[randomRow0].url);
+ 
+});
+
+Then("I should see the page published url pseudo", async function () {
+  let element = await this.driver.$(global.pageElements.page.pageContent);
+  const text= await element.getText();
+  expect(text).to.equal(pseudoData[0].url);
+});
+
+Then("I should see the page published url random {kraken-string}", async function (data) {
+  let element = await this.driver.$(global.pageElements.page.pageContent);
+  const text= await element.getText();
+  expect(text).to.equal(data);
+});
+
+Then(
+  "I should see the first pages with state pseudo {string}",
+  async function  (state) {
+    let element = await this.driver.$(global.pageElements.page.firstPageInList);
+    let element1 = await this.driver.$(global.pageElements.page.firstPageInListStatus);
+    const actualTitle = await element.getText();
+    const actualState = await element1.getText();
+    expect(actualTitle).to.equal(pseudoData[0].title) && expect(actualState).to.equal(state);
+
+  }
+);
+
+Then(
+  "I should see the first pages scheduled random {kraken-string}",
+  async function  (data) {
+    let element = await this.driver.$(global.pageElements.page.firstPageInList);
+    let element1 = await this.driver.$(global.pageElements.page.firstPageInListStatus);
+    const actualTitle = await element.getText();
+    const actualState = await element1.getText();
+    expect(actualTitle).to.equal(data) && expect(actualState).to.equal("SCHEDULED");
+
+  }
+);
 // Page content pseudo
 Then(
   "I should see that the edited page content is pseudo-1_pseudo-0",

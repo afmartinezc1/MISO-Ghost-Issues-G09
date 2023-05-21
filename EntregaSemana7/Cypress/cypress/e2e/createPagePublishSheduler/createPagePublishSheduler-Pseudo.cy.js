@@ -2,11 +2,11 @@ const url = Cypress.env("URL");
 const userName = Cypress.env("USERNAME");
 const password = Cypress.env("PASSWORD");
 const pageElements = Cypress.env("pageElements");
-const LOREM1 = Cypress.env("LOREM1");
-const POST_PUBLICADO=Cypress.env("POST_PUBLICADO");
-const PAGE_PUBLICADO=Cypress.env("PAGE_PUBLICADO");
+
 describe("Create post sheduled", () => {
-  it("Como usuario inicio sesion en ghost, creo un post, programar la publicacion por 5 minutos y verificar que quedó programado", async () => {
+  it("Como usuario inicio sesion en ghost, creo una page, programar la publicacion por 5 minutos y verificar que quedó programado", async () => {
+    cy.pseudoData().then((response) => {
+      const [data] = response.body;
     // Given I navigate to page "<URL>"
     cy.visit(url);
     // And I wait for 3 seconds
@@ -23,20 +23,20 @@ describe("Create post sheduled", () => {
     cy.get(pageElements.login.loginBtn).click();
     // And I wait for 7 seconds
     cy.wait(7000);
-    // And I go to the posts view
-    cy.get(pageElements.post.postView).click();
+    // And I go to the pages view
+    cy.get(pageElements.page.pageView).click();
     // And I wait for 2 seconds
     cy.wait(2000);
-    // And I click new post
-    cy.get(pageElements.post.newPost).click();
+    // And I click new page
+    cy.get(pageElements.page.newPage).click();
     // And I wait for 2 seconds
     cy.wait(2000);
-    // And I enter post title "MY_PRIMER_POST1"
-    cy.get(pageElements.post.postTitle).type("MY_SECOND_POST");
+    // And I enter page title pseudo
+    cy.get(pageElements.page.pageTitle).type(data.title);
     // And I wait for 2 seconds
     cy.wait(2000);
-    // And I enter post content "<LOREM1>"
-    cy.get(pageElements.post.postContent).type(LOREM1);
+    // And I enter page content pseudo
+    cy.get(pageElements.page.pageContent).type(data.text);
     // And I wait for 2 seconds
     cy.wait(2000);
     // And I click publish to open dialog
@@ -51,16 +51,16 @@ describe("Create post sheduled", () => {
     cy.get(pageElements.post.publishConfirm).click();
     // And I wait for 2 seconds
     cy.wait(2000);
-     // And I click posts to go to previous page
-     cy.get(pageElements.post.newPostPreviousPage).click();
+     // And I click page to go to previous page
+     cy.get(pageElements.page.newPagePreviousPage).click();
      // And I wait for 2 seconds
      cy.wait(2000);
-    // Then I navigate to post published"
+    // Then I navigate to page published"
     cy.get(pageElements.post.firstPostInListStatus)
       .invoke("text")
       .then((text) => {
         expect(text.trim()).to.equal("Scheduled");
       });
-  
+    });
   });
 });
