@@ -8,7 +8,7 @@ Este repositorio sirve de insumo para ejecución de pruebas automatizadas E2E so
 
 En la [wiki](https://github.com/afmartinezc1/MISO-Ghost-Issues-G09/wiki) encontrará diferentes observaciones con respecto a las herramientas usadas en esta estrategia y enlaces a los diferentes documentos en los cuales explicamos nuestra experiencia durante las semanas que duro el sprint. Además, también encontrará los **inventarios de pruebas manuales** que se realizaron las primeras semanas del sprint por cada uno de los grupos. 
 
-El video con la explicacion de la estrategia, los pros y contras, y los resultados, es el siguiente: [Estrategia final de pruebas](https://uniandes-my.sharepoint.com/:v:/g/personal/s_nader21_uniandes_edu_co/ER4Q7Lugu1hKsKrkkvIC80EBjCP1z74Z3dit6I3B9RAW5w?e=ITbfLa)
+El video con la explicacion de la estrategia, los pros y contras, y los resultados, es el siguiente: [Estrategia final de pruebas](https://uniandes-my.sharepoint.com/:v:/g/personal/s_nader21_uniandes_edu_co/Eclad7OxDr9OkmT_aXnwCVgB20wB9own2yjNpbTuMw25jQ?e=qs0gay)
 
 ### Consideraciones:
 
