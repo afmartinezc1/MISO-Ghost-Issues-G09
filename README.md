@@ -46,7 +46,7 @@ Antes de empezar:
 
 ### Pasos para correr el proyecto de Cypress:
 
-1.  Ingresar a la carpeta de pruebas que desee ejecutar (**E2E-DatosAleatorios/**, **RegresionVisual/Ghost3.41.1/**, y **RegresionVisual/Ghost4.44.0/**), y realizar los siguientes pasos sobre la carpeta **\\Cypress**
+1.  Ingresar a la carpeta de pruebas que desee ejecutar (**E2E-DatosAleatorios/**), y realizar los siguientes pasos sobre la carpeta **\\Cypress**
 2.  Ejecutar el comando `npm install cypress --save-dev`
 3.  Ejecutar el comando `npm install @faker-js/faker --save-dev`
 4.  Correr cypres usando el comando `npx cypress open`
