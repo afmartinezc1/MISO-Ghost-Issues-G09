@@ -46,7 +46,7 @@ Antes de empezar:
 
 ### Pasos para correr el proyecto de Cypress:
 
-1.  Ingresar a la carpeta de pruebas que desee ejecutar (**E2E-DatosAleatorios/**, **RegresionVisual/Ghost3.41.1/**, y **RegresionVisual/Ghost4.44.0/**), y realizar los siguientes pasos sobre la carpeta **\\Cypress**
+1.  Ingresar a la carpeta de pruebas que desee ejecutar (**E2E-DatosAleatorios/**), y realizar los siguientes pasos sobre la carpeta **\\Cypress**
 2.  Ejecutar el comando `npm install cypress --save-dev`
 3.  Ejecutar el comando `npm install @faker-js/faker --save-dev`
 4.  Correr cypres usando el comando `npx cypress open`
@@ -88,12 +88,11 @@ Antes de empezar:
 
 #### Monkeys
 1.  Ingresar a la carpeta **PruebasExploratorias\\ghost-mokeys**
-2.  Es necesario iniciar ghost 3.41.1 con el comando `ghost start`
-3.  Configurar la url de la página de ghost en el archivo **monkey.config.json** y **smart-monkey.config.json**
-4.  En el archivo **monkey.cy.js** y **smart-monkey.cy.js** se deben configurar las credenciales del administrador en la función **login()**
-5.  Correr el comando `npm install`
-6.  Para ejecutar monkeys aleatorios se debe correr el comando `cypress run --config-file .\monkey.config.js` y para ejecutar smart mokeys se debe correr el comando `cypress run --config-file .\smart-monkey.config.js`
-7.  Una vez finalizada la ejecución, ingresar en la carpeta **PruebasExploratorias\\ghost-mokeys\\results** para revisar el video con los resultados de la prueba
+2.  Configurar la url de la página de ghost en el archivo **monkey.config.json** y **smart-monkey.config.json**
+3.  En el archivo **monkey.cy.js** y **smart-monkey.cy.js** se deben configurar las credenciales del administrador en la función **login()**
+4.  Correr el comando `npm install`
+5.  Para ejecutar monkeys aleatorios se debe correr el comando `cypress run --config-file .\monkey.config.js` y para ejecutar smart mokeys se debe correr el comando `cypress run --config-file .\smart-monkey.config.js`
+6.  Una vez finalizada la ejecución, ingresar en la carpeta **PruebasExploratorias\\ghost-mokeys\\results** para revisar el video con los resultados de la prueba
 
 {FALTAN ESTOS PASOS (Esneider)}
 
