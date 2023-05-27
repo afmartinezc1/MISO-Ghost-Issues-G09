@@ -6,7 +6,7 @@ Este repositorio sirve de insumo para ejecución de pruebas automatizadas E2E so
 *   **RegresionVisual:** Contiene una comparativa de la versión bajo pruebas vs. una versión más reciente para validar que cambios ha sufrido la interfaz de usuario.
 *   **PruebasExploratorias:** Contiene las pruebas exploratorias realizadas durante la semana dos, para familiarizarse con el flujo de la aplicacion. 
 
-En la [wiki](https://github.com/afmartinezc1/MISO-Ghost-Issues-G09/wiki) encontrará diferentes observaciones con respecto a las herramientas usadas en esta estrategia y enlaces a los diferentes documentos en los cuales explicamos nuestra experiencia durante las semanas que duro el sprint. Además, también encontrará el inventario de pruebas manuales que se realizaron las primeras semanas del sprint
+En la [wiki](https://github.com/afmartinezc1/MISO-Ghost-Issues-G09/wiki) encontrará diferentes observaciones con respecto a las herramientas usadas en esta estrategia y enlaces a los diferentes documentos en los cuales explicamos nuestra experiencia durante las semanas que duro el sprint. Además, también encontrará el **inventario de pruebas manuales** que se realizaron las primeras semanas del sprint
 
 ### Consideraciones:
 
@@ -59,7 +59,7 @@ Antes de empezar:
 *   En cypress para cada funcionalidad se tiene una carpeta adentro de la carpeta cypress/e2e. En dicha carpeta se tienen implementados 3 escenarios, 1 por cada estrategia de generación de datos.
 *   En kraken para cada funcionalidad se tiene una carpeta adentro de la carpeta features/scenarios. En dicha carpeta se tienen implementados 3 escenarios, 1 por cada estrategia de generación de datos. No olvidar que el escenario que se quiera correr se debe sacar de cada carpeta y ponerlo en la raiz de la carpeta feature.
 
-**Nota:** En caso de ejecutar las pruebas de regresion visual (**RegresionVisual/Ghost3.41.1/**, y **RegresionVisual/Ghost4.44.0/**) tenga en cuenta que:
+**Notas de la regresion visual:** En caso de ejecutar las pruebas de regresion visual (**RegresionVisual/Ghost3.41.1/**, y **RegresionVisual/Ghost4.44.0/**) tenga en cuenta que:
 
 *   Se implementaron 10 de los escenarios en la nueva version de ghost (4.44.0) usando la herramienta kraken
     *   filterPost
