@@ -96,7 +96,15 @@ Antes de empezar:
 5.  Para ejecutar monkeys aleatorios se debe correr el comando `cypress run --config-file .\monkey.config.js` y para ejecutar smart mokeys se debe correr el comando `cypress run --config-file .\smart-monkey.config.js`
 6.  Una vez finalizada la ejecución, ingresar en la carpeta **PruebasExploratorias\\ghost-mokeys\\results** para revisar el video con los resultados de la prueba
 
-{FALTAN ESTOS PASOS (Esneider)}
+#### Rippers
+
+1.  Ingresar a la carpeta **PruebasExploratorias\\ghost-ripper**
+2.  Configurar la url de la página de ghost y credenciales en el archivo **config.json** 
+3.  Correr el comando `npm install`
+4.  Para ejecutar el ripper se debe correr el comando `node index.js`
+5.  Una vez finalizada la ejecución, ingresar en la carpeta **PruebasExploratorias\\ghost-ripper\\results** para revisar los screenshoot de las pruebas
+6.  Para ver el reporte, ingresar en al archivo **index.html** 
+
 
 ### Funcionalidades y escenarios de prueba:
 
